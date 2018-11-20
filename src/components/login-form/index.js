@@ -5,7 +5,9 @@ export default class LoginForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        console.log('handleSubmit');
+        let email = document.getElementById('login-email').value;
+        let password = document.getElementById('login-password').value;
+        let remember = document.getElementById('login-remember-me').checked;
     }
 
     render(){
@@ -16,11 +18,11 @@ export default class LoginForm extends React.Component {
                             <img className="logo" src="logo.png" alt="RevCascade Logo" />
                             <strong className="slogan">Automating eCommerce.</strong>
                             <form onSubmit={this.handleSubmit.bind(this)}>
-                                <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" />
-                                <input className="is-one-quarter input login-fields" type="password" placeholder="Password" />
+                                <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" id="login-email" />
+                                <input className="is-one-quarter input login-fields" type="password" placeholder="Password" id="login-password" />
                                 <div className="login-remember-me">
                                     <label className="checkbox is-pulled-left">
-                                        <input type="checkbox" className="is-pulled-left" />
+                                        <input type="checkbox" className="is-pulled-left" id="login-remember-me" />
                                         Remember me?
                                     </label>
                                 </div>
