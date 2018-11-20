@@ -10,24 +10,37 @@ div.login-form {
         margin: 25px auto;
     }
 
+    strong.slogan{
+        display: block;
+        margin-bottom: 20px;
+    }
+
     input.login-fields{
         width: 85%;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
 
         height: 42px;
         padding: 10px 16px;
         font-size: 15px;
         line-height: 1.3333333;
         border-radius: 0;
+
     }
 
-    button.login-button {
-        width: 85%;
-        height: 42px;
+    input[type="checkbox"]{
+        margin-right: 10px;
     }
 
     div.login-remember-me {
         width: 85%;
+        margin: 0 auto;
+        font-weight: bold;
+    }
+
+    button.login-button {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        width: 85%;
+        height: 42px;
     }
 }
