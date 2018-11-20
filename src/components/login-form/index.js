@@ -7,7 +7,7 @@ export default class LoginForm extends React.Component {
             <div className="section">
                     <div className="columns">
                         <div className="column box is-one-fifth is-offset-two-fifths is-radiusless has-text-centered login-form">
-                            <img className="logo" src="logo.png" />
+                            <img className="logo" src="logo.png" alt="RevCascade Logo" />
                             <strong className="slogan">Automating eCommerce.</strong>
                             <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" />
                             <input className="is-one-quarter input login-fields" type="password" placeholder="Password" />
