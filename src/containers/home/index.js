@@ -5,7 +5,6 @@ import LoginForm from '../../components/login-form/index';
 
 const Home = props => (
   <div>
-    <h1>Home</h1>
     <LoginForm />
   </div>
 )

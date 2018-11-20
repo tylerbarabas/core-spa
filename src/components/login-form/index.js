@@ -1,9 +1,16 @@
 import React from 'react'
+import './index.scss'
 
 export default class LoginForm extends React.Component {
     render(){
         return(
-            <h3>LoginForm</h3>
+            <div className="section">
+                    <div className="columns">
+                        <div className="column box is-one-fifth is-offset-two-fifths is-radiusless has-text-centered login-form">
+                            <strong>Automating eCommerce</strong>
+                        </div>
+                    </div>
+            </div>
         );
     }
 }
