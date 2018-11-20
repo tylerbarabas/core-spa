@@ -8,6 +8,7 @@ import {
   decrement,
   decrementAsync
 } from '../../modules/counter'
+import LoginForm from '../../components/login-form/index';
 
 const Home = props => (
   <div>
@@ -33,6 +34,7 @@ const Home = props => (
         Go to about page via redux
       </button>
     </p>
+    <LoginForm />
   </div>
 )
 
