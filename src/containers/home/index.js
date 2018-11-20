@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import LoginForm from '../../components/login-form/index';
+import LoginForm from '../../components/login-form'
 
 const Home = props => (
   <div>
@@ -9,7 +9,7 @@ const Home = props => (
   </div>
 )
 
-const mapStateToProps = ({ counter }) => ({
+const mapStateToProps = ({ counter }) => ({ 
 })
 
 const mapDispatchToProps = dispatch =>

@@ -5,7 +5,9 @@ const SECRET = "QaEbVIlHqV3MrHxK8znsdjIoCDwdluERIvwYNvW7bZ8QH9rxe2Ga5D3U5aSNSDPn
 const GRANT_TYPE = 'password';
 
 export default {
-    getAuthToken: ()=>{
-        
+    getAuthToken: async () => {
+        console.log('getAuthToken');
+        let req = await fetch('disney.com');
+        return req;
     }
 };

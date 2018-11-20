@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './store'
 import App from './containers/app'
+import { requestToken } from './modules/token'
 
 import 'sanitize.css/sanitize.css'
 import './index.css'
@@ -20,3 +21,4 @@ render(
   </Provider>,
   target
 )
+
