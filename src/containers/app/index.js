@@ -2,6 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from '../home'
 import About from '../about'
+import 'bulma'
 
 const App = () => (
   <div>
