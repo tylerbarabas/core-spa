@@ -9,4 +9,25 @@ div.login-form {
         width: 35%;
         margin: 25px auto;
     }
+
+    input.login-fields{
+        width: 85%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        height: 42px;
+        padding: 10px 16px;
+        font-size: 15px;
+        line-height: 1.3333333;
+        border-radius: 0;
+    }
+
+    button.login-button {
+        width: 85%;
+        height: 42px;
+    }
+
+    div.login-remember-me {
+        width: 85%;
+    }
 }
