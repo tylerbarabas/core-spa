@@ -1,5 +1,12 @@
-.login-form {
+div.login-form {
     background-color: #ecf0f1;
     font-size: 14px;
     color: #333;
+    margin-top: 20px;
+
+    img.logo{
+        display: block;
+        width: 35%;
+        margin: 25px auto;
+    }
 }
