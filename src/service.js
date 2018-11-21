@@ -1,6 +1,6 @@
 let Config;
 try {
-    Config = require('./client_config')
+    Config = require('./client_config').default
 } catch{
     throw new Error('Client config not found.');
 }
