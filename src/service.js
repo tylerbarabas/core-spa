@@ -6,7 +6,6 @@ const GRANT_TYPE = 'password';
 
 export default {
     getAuthToken: async () => {
-        console.log('getAuthToken');
         let req = await fetch('disney.com');
         return req;
     }

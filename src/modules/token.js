@@ -12,6 +12,8 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
+    console.log(state);
+    console.log(action);
     switch (action.type) {
         case TOKEN_REQUESTED:
             return {
@@ -36,8 +38,7 @@ export default (state = initialState, action) => {
     }
 }
 
-const requestToken = () => {
-
+export const requestToken = () => {
     return dispatch => {
 
         dispatch({

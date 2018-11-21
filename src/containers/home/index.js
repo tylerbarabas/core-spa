@@ -9,7 +9,7 @@ const Home = props => (
   </div>
 )
 
-const mapStateToProps = ({ counter }) => ({ 
+const mapStateToProps = () => ({ 
 })
 
 const mapDispatchToProps = dispatch =>
