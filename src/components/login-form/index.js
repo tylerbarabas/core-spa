@@ -7,7 +7,7 @@ export default class LoginForm extends React.Component {
         e.preventDefault();
         let email = document.getElementById('login-email').value;
         let password = document.getElementById('login-password').value;
-        let remember = document.getElementById('login-remember-me').checked;
+//        let remember = document.getElementById('login-remember-me').checked;
 
         this.props.onSubmit(email, password);
     }

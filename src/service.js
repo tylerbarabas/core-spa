@@ -1,5 +1,4 @@
 const CLIENT_ID = "OKe9Ls6EVh7UDFW56w95y7UKITeHooWJP72UaZBa";
-const SECRET = "QaEbVIlHqV3MrHxK8znsdjIoCDwdluERIvwYNvW7bZ8QH9rxe2Ga5D3U5aSNSDPnkpag1GkaBBRSR8QnQP8BLXDJxBGyeYgnc3HrQfJFh4YsmRt5apnzpfN9FCgsFiWV";
 const GRANT_TYPE = 'password';
 
 const HOST = 'https://api-staging.revcascade.com';
@@ -10,7 +9,7 @@ export default {
 
         let fd = new FormData();
         fd.append('client_id', CLIENT_ID);
-        fd.append('grant_type', 'password');
+        fd.append('grant_type', GRANT_TYPE);
         fd.set('username', email);
         fd.set('password', password);
 
