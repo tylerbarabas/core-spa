@@ -7,19 +7,18 @@ const uri_authToken = `${HOST}/auth/token/`;
 
 export default {
     getAuthToken: async () => {
+        let fd = new FormData();
+        fd.append('client_id', CLIENT_ID);
+        fd.append('grant_type', 'password');
+        fd.set('username', 'tyler@revcascade.com');
+        fd.set('password', 'makemoney');
+
         let res = await fetch(uri_authToken, {  
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            mode: 'no-cors',
-            body: JSON.stringify({
-                'client_id': CLIENT_ID,
-                'client_secret': SECRET,
-                'grant_type': GRANT_TYPE
-            })
-        });
-        console.log('res?', res);
-        return res;
+            body: fd
+        })
+        let data = await res.json();
+
+        return data;
     }
 };
