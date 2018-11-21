@@ -1,15 +1,21 @@
-const CLIENT_ID = "OKe9Ls6EVh7UDFW56w95y7UKITeHooWJP72UaZBa";
-const GRANT_TYPE = 'password';
+let Config;
+try {
+    Config = require('./client_config')
+} catch{
+    throw new Error('Client config not found.');
+}
 
-const HOST = 'https://api-staging.revcascade.com';
-const uri_authToken = `${HOST}/auth/token/`;
+const fullPath = path => `${Config.HOST}${path}`;
+
+const uri_authToken = fullPath('/auth/token/');
+
 
 export default {
     getAuthToken: async (email, password) => {
 
         let fd = new FormData();
-        fd.append('client_id', CLIENT_ID);
-        fd.append('grant_type', GRANT_TYPE);
+        fd.append('client_id', Config.CLIENT_ID);
+        fd.append('grant_type', Config.GRANT_TYPE);
         fd.set('username', email);
         fd.set('password', password);
 
@@ -17,6 +23,7 @@ export default {
             method: 'POST',
             body: fd
         })
+
         let data = await res.json();
 
         return data;
