@@ -12,25 +12,27 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-    console.log(state);
-    console.log(action);
     switch (action.type) {
         case TOKEN_REQUESTED:
             return {
                 ...state,
                 isRequesting: true,
+                errorMsg: null
             }
 
         case TOKEN_SUCCESS:
             return {
                 ...state,
                 isRequesting: false,
+                errorMsg: null,
+                accessToken: action.accessToken
             }
 
         case TOKEN_FAIL:
             return {
                 ...state,
                 isRequesting: false,
+                errorMsg: action.errorMsg
             }
 
         default:
@@ -38,21 +40,31 @@ export default (state = initialState, action) => {
     }
 }
 
-export const requestToken = () => {
+export const requestToken = (email, password) => {
     return dispatch => {
 
         dispatch({
             type: TOKEN_REQUESTED
         })
 
-        return Service.getAuthToken().then(res => {
+        return Service.getAuthToken(email, password).then(res => {
+            if (!res.hasOwnProperty('error')) {
+                dispatch({
+                    type: TOKEN_SUCCESS,
+                    accessToken: res.access_token,
+                    tokenType: res.token_type,
+                })
+            } else {
+                dispatch({
+                    type: TOKEN_FAIL,
+                    errorMsg: res.error_description
+                })
+            }
+        }).catch(res => {
             dispatch({
-                type: TOKEN_SUCCESS
-            })
-        }).catch(()=>{
-             dispatch({
-                type: TOKEN_FAIL
-            })           
+                type: TOKEN_FAIL,
+                errorMsg: res.error_description
+            }) 
         });
     }
 }

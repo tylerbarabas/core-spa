@@ -8,28 +8,31 @@ export default class LoginForm extends React.Component {
         let email = document.getElementById('login-email').value;
         let password = document.getElementById('login-password').value;
         let remember = document.getElementById('login-remember-me').checked;
+
+        this.props.onSubmit(email, password);
     }
 
     render(){
+        console.log('render lf', this.props);
         return(
             <div className="section">
-                    <div className="columns">
-                        <div className="column box is-one-fifth is-offset-two-fifths is-radiusless has-text-centered login-form">
-                            <img className="logo" src="logo.png" alt="RevCascade Logo" />
-                            <strong className="slogan">Automating eCommerce.</strong>
-                            <form onSubmit={this.handleSubmit.bind(this)}>
-                                <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" id="login-email" />
-                                <input className="is-one-quarter input login-fields" type="password" placeholder="Password" id="login-password" />
-                                <div className="login-remember-me">
-                                    <label className="checkbox is-pulled-left">
-                                        <input type="checkbox" className="is-pulled-left" id="login-remember-me" />
-                                        Remember me?
-                                    </label>
-                                </div>
-                                <button type="submit" className="button is-primary login-button">Sign In</button>
-                            </form>
-                        </div>
+                <div className="columns">
+                    <div className="column box is-one-fifth is-offset-two-fifths is-radiusless has-text-centered login-form">
+                        <img className="logo" src="logo.png" alt="RevCascade Logo" />
+                        <strong className="slogan">Automating eCommerce.</strong>
+                        <form onSubmit={this.handleSubmit.bind(this)}>
+                            <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" id="login-email" />
+                            <input className="is-one-quarter input login-fields" type="password" placeholder="Password" id="login-password" />
+                            <div className="login-remember-me">
+                                <label className="checkbox is-pulled-left">
+                                    <input type="checkbox" className="is-pulled-left" id="login-remember-me" />
+                                    Remember me?
+                                </label>
+                            </div>
+                            <button type="submit" className="button is-primary login-button">Sign In</button>
+                        </form>
                     </div>
+                </div>
             </div>
         );
     }

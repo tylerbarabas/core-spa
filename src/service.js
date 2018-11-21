@@ -6,12 +6,13 @@ const HOST = 'https://api-staging.revcascade.com';
 const uri_authToken = `${HOST}/auth/token/`;
 
 export default {
-    getAuthToken: async () => {
+    getAuthToken: async (email, password) => {
+
         let fd = new FormData();
         fd.append('client_id', CLIENT_ID);
         fd.append('grant_type', 'password');
-        fd.set('username', 'tyler@revcascade.com');
-        fd.set('password', 'makemoney');
+        fd.set('username', email);
+        fd.set('password', password);
 
         let res = await fetch(uri_authToken, {  
             method: 'POST',
