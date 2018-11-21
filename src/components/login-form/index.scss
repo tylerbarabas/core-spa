@@ -12,7 +12,12 @@ div.login-form {
 
     strong.slogan{
         display: block;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+
+        &.error-msg {
+            color: red;
+            font-weight: 300;
+        }
     }
 
     input.login-fields{

@@ -13,13 +13,13 @@ export default class LoginForm extends React.Component {
     }
 
     render(){
-        console.log('render lf', this.props);
+        let { errorMsg, isRequesting } = this.props;
         return(
             <div className="section">
                 <div className="columns">
                     <div className="column box is-one-fifth is-offset-two-fifths is-radiusless has-text-centered login-form">
                         <img className="logo" src="logo.png" alt="RevCascade Logo" />
-                        <strong className="slogan">Automating eCommerce.</strong>
+                        <strong className={"slogan "+(errorMsg?'error-msg':'')}>{ (!errorMsg) ? "Automating eCommerce." : errorMsg }</strong>
                         <form onSubmit={this.handleSubmit.bind(this)}>
                             <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" id="login-email" />
                             <input className="is-one-quarter input login-fields" type="password" placeholder="Password" id="login-password" />
