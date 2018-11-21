@@ -1,8 +1,8 @@
 import Service from '../service'
 
-export const TOKEN_REQUESTED = 'token/TOKEN_REQUESTED'
-export const TOKEN_SUCCESS = 'token/TOKEN_SUCCESS'
-export const TOKEN_FAIL = 'token/TOKEN_FAIL'
+export const AUTH_REQUESTED = 'token/AUTH_REQUESTED'
+export const AUTH_SUCCESS = 'token/AUTH_SUCCESS'
+export const AUTH_FAIL = 'token/AUTH_FAIL'
 
 const initialState = {
     accessToken: null,
@@ -13,14 +13,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case TOKEN_REQUESTED:
+        case AUTH_REQUESTED:
             return {
                 ...state,
                 isRequesting: true,
                 errorMsg: null
             }
 
-        case TOKEN_SUCCESS:
+        case AUTH_SUCCESS:
             return {
                 ...state,
                 isRequesting: false,
@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
                 accessToken: action.accessToken
             }
 
-        case TOKEN_FAIL:
+        case AUTH_FAIL:
             return {
                 ...state,
                 isRequesting: false,
@@ -44,25 +44,25 @@ export const requestToken = (email, password) => {
     return dispatch => {
 
         dispatch({
-            type: TOKEN_REQUESTED
+            type: AUTH_REQUESTED
         })
 
         return Service.getAuthToken(email, password).then(res => {
             if (!res.hasOwnProperty('error')) {
                 dispatch({
-                    type: TOKEN_SUCCESS,
+                    type: AUTH_SUCCESS,
                     accessToken: res.access_token,
                     tokenType: res.token_type,
                 })
             } else {
                 dispatch({
-                    type: TOKEN_FAIL,
+                    type: AUTH_FAIL,
                     errorMsg: res.error_description
                 })
             }
         }).catch(res => {
             dispatch({
-                type: TOKEN_FAIL,
+                type: AUTH_FAIL,
                 errorMsg: res.error_description
             }) 
         });

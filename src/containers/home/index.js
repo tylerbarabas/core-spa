@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import LoginForm from '../../components/login-form'
-import { requestToken } from '../../modules/token';
+import { requestToken } from '../../modules/auth';
 
 class Home extends React.Component {
     render(){
@@ -10,16 +10,16 @@ class Home extends React.Component {
             <div>
                 <LoginForm
                     onSubmit={this.props.requestToken}
-                    errorMsg={this.props.token.errorMsg}
-                    isRequesting={this.props.token.isRequesting}
+                    errorMsg={this.props.auth.errorMsg}
+                    isRequesting={this.props.auth.isRequesting}
                 />
             </div>
         ) 
     }
 }
 
-const mapStateToProps = ({ token }) => ({ 
-    token
+const mapStateToProps = ({ auth }) => ({ 
+    auth
 })
 
 const mapDispatchToProps = dispatch =>
