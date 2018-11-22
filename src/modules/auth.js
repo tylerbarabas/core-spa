@@ -59,11 +59,14 @@ export const requestToken = (email, password) => {
             type: AUTH_REQUESTED
         })
 
-        return Service.getAuthToken(email, password).then(res => {
+        return Service.getAuthToken(email, password).then(async res => {
             if (!res.hasOwnProperty('error')) {
                 dispatch({
                     type: AUTH_SUCCESS
                 })
+
+                let res = await Service.getMyUser();
+                console.log('YEA!', res);
             } else {
                 dispatch({
                     type: AUTH_FAIL,

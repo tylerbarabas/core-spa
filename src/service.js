@@ -8,9 +8,10 @@ try {
 const fullPath = path => `${Config.HOST}${path}`;
 
 const uri_authToken = fullPath('/auth/token/');
+const uri_getMyUser = fullPath('/v1/users/me/');
 
 let Auth = {
-    authToken: null,
+    accessToken: null,
     tokenType: null
 };
 
@@ -34,5 +35,14 @@ export default {
         Auth.tokenType = data.token_type;
 
         return data;
+    },
+    getMyUser: async () => {
+        let res = await fetch(uri_getMyUser, {
+            headers: {
+                'Authorization': `${Auth.tokenType} ${Auth.accessToken}`
+            }
+        });
+
+        return await res.json();
     }
 };
