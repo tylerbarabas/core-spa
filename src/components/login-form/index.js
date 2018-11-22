@@ -4,6 +4,10 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 export default class LoginForm extends React.Component {
+    constructor(){
+        super();
+        this.isInitialLoad = true;
+    }
 
     handleSubmit(e){
         e.preventDefault();
@@ -18,12 +22,25 @@ export default class LoginForm extends React.Component {
         return (this.props.isRequesting) ? (<FontAwesomeIcon icon={faSpinner} />) : '';
     }
 
+    animateContainer( isFinishedMounting = false ){
+        const { errorMsg } = this.props;
+        const staticClasses = 'column box is-one-fifth is-offset-two-fifths is-radiusless has-text-centered animated login-form';
+        let animClass = '';
+        if ( errorMsg !== null ) animClass = 'pulse';
+        if ( this.isInitialLoad ) {
+            animClass = 'fadeInDown';
+            this.isInitialLoad = false;
+        }
+
+        return `${staticClasses} ${animClass}`;
+    }
+
     render(){
         let { errorMsg, isRequesting } = this.props;
         return(
             <div className="section">
                 <div className="columns">
-                    <div className="column box is-one-fifth is-offset-two-fifths is-radiusless has-text-centered login-form">
+                    <div className={this.animateContainer()}>
                         <img className="logo" src="logo.png" alt="RevCascade Logo" />
                         <strong className={"slogan "+(errorMsg?'error-msg':'')}>{ (!errorMsg) ? "Automating eCommerce." : errorMsg }</strong>
                         <form onSubmit={this.handleSubmit.bind(this)}>
