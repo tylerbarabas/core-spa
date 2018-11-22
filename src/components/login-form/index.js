@@ -49,6 +49,15 @@ export default class LoginForm extends React.Component {
         return `${staticClasses} ${animClass}`;
     }
 
+    getMessage(){
+        let { errorMsg, isRequesting } = this.props;
+        let msg = 'Automating eCommerce.';
+        if ( errorMsg ) msg = errorMsg;
+        if ( isRequesting ) msg = 'Signing in...';
+
+        return msg;
+    }
+
     render(){
         let { errorMsg, isRequesting } = this.props;
         return(
@@ -56,7 +65,7 @@ export default class LoginForm extends React.Component {
                 <div className="columns">
                     <div className={this.animateContainer()}>
                         <img className="logo" src="logo.png" alt="RevCascade Logo" />
-                        <strong className={"slogan "+(errorMsg?'error-msg':'')}>{ (!errorMsg) ? "Automating eCommerce." : errorMsg }</strong>
+                        <strong className={"slogan "+(errorMsg?'error-msg':'')}>{ this.getMessage() }</strong>
                         <form onSubmit={this.handleSubmit.bind(this)}>
                             <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" id="login-email" />
                             <input className="is-one-quarter input login-fields" type="password" placeholder="Password" id="login-password" />

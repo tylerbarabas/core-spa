@@ -51,7 +51,7 @@ export const errorFound = errorMsg => {
                 type: AUTH_FAIL,
                 errorMsg
             }) 
-        },1)
+        },250)
    }
 }
 
