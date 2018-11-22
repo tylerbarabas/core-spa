@@ -1,4 +1,6 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 export default class LoginForm extends React.Component {
@@ -10,6 +12,10 @@ export default class LoginForm extends React.Component {
 //        let remember = document.getElementById('login-remember-me').checked;
 
         this.props.onSubmit(email, password);
+    }
+
+    isSpinner(){
+        return (this.props.isRequesting) ? (<FontAwesomeIcon icon={faSpinner} />) : '';
     }
 
     render(){
@@ -29,7 +35,7 @@ export default class LoginForm extends React.Component {
                                     Remember me?
                                 </label>
                             </div>
-                            <button type="submit" className="button is-primary login-button">Sign In</button>
+                            <button type="submit" className="button is-primary login-button" disabled={(isRequesting)}>Sign In {this.isSpinner()}</button>
                         </form>
                     </div>
                 </div>
