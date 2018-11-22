@@ -40,6 +40,21 @@ export default (state = initialState, action) => {
     }
 }
 
+export const errorFound = errorMsg => {
+    return dispatch => {
+        dispatch({
+            type: AUTH_REQUESTED
+        })
+
+        return setTimeout(()=>{
+            dispatch({
+                type: AUTH_FAIL,
+                errorMsg
+            }) 
+        },1)
+   }
+}
+
 export const requestToken = (email, password) => {
     return dispatch => {
 

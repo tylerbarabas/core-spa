@@ -15,11 +15,23 @@ export default class LoginForm extends React.Component {
         let password = document.getElementById('login-password').value;
 //        let remember = document.getElementById('login-remember-me').checked;
 
-        this.props.onSubmit(email, password);
+        let errors = this.checkErrors(email, password);
+
+        if (errors.length === 0)
+            this.props.onSubmit(email, password);
+        else
+            this.props.onError(errors[0]);
+    }
+
+    checkErrors(email, password){
+        let errors = [];
+        if (email.length < 1) errors.push('Email cannot be empty.');
+        if (password.length < 1) errors.push('Password cannot be empty.');
+        return errors;
     }
 
     isSpinner(){
-        return (this.props.isRequesting) ? (<FontAwesomeIcon icon={faSpinner} />) : '';
+        return (this.props.isRequesting) ? (<FontAwesomeIcon icon={faSpinner} spin />) : '';
     }
 
     animateContainer( isFinishedMounting = false ){
