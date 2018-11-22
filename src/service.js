@@ -9,6 +9,10 @@ const fullPath = path => `${Config.HOST}${path}`;
 
 const uri_authToken = fullPath('/auth/token/');
 
+let Auth = {
+    authToken: null,
+    tokenType: null
+};
 
 export default {
     getAuthToken: async (email, password) => {
@@ -25,6 +29,9 @@ export default {
         })
 
         let data = await res.json();
+
+        Auth.accessToken = data.access_token;
+        Auth.tokenType = data.token_type;
 
         return data;
     }

@@ -5,8 +5,6 @@ export const AUTH_SUCCESS = 'token/AUTH_SUCCESS'
 export const AUTH_FAIL = 'token/AUTH_FAIL'
 
 const initialState = {
-    accessToken: null,
-    tokenType: null,
     isRequesting: false,
     errorMsg: null
 }
@@ -25,7 +23,6 @@ export default (state = initialState, action) => {
                 ...state,
                 isRequesting: false,
                 errorMsg: null,
-                accessToken: action.accessToken
             }
 
         case AUTH_FAIL:
@@ -65,9 +62,7 @@ export const requestToken = (email, password) => {
         return Service.getAuthToken(email, password).then(res => {
             if (!res.hasOwnProperty('error')) {
                 dispatch({
-                    type: AUTH_SUCCESS,
-                    accessToken: res.access_token,
-                    tokenType: res.token_type,
+                    type: AUTH_SUCCESS
                 })
             } else {
                 dispatch({
