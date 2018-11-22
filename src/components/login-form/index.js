@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import * as EmailValidator from 'email-validator'
 import './index.scss'
 
 export default class LoginForm extends React.Component {
@@ -26,6 +27,7 @@ export default class LoginForm extends React.Component {
     checkErrors(email, password){
         let errors = [];
         if (email.length < 1) errors.push('Email cannot be empty.');
+        if (!EmailValidator.validate(email)) errors.push('Please use a valid email address');
         if (password.length < 1) errors.push('Password cannot be empty.');
         return errors;
     }
