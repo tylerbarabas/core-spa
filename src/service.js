@@ -14,6 +14,7 @@ let Auth = {
     accessToken: null,
     tokenType: null
 };
+const getAuthHeaders = () => ({'Authorization': `${Auth.tokenType} ${Auth.accessToken}`});
 
 export default {
     getAuthToken: async (email, password) => {
@@ -38,9 +39,7 @@ export default {
     },
     getMyUser: async () => {
         let res = await fetch(uri_getMyUser, {
-            headers: {
-                'Authorization': `${Auth.tokenType} ${Auth.accessToken}`
-            }
+            headers: getAuthHeaders()
         });
 
         return await res.json();
