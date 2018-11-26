@@ -64,9 +64,6 @@ export const requestToken = (email, password) => {
                 dispatch({
                     type: AUTH_SUCCESS
                 })
-
-                let res = await Service.getMyUser();
-                console.log('YEA!', res);
             } else {
                 dispatch({
                     type: AUTH_FAIL,
