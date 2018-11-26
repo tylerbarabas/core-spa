@@ -6,7 +6,8 @@ export const AUTH_FAIL = 'token/AUTH_FAIL'
 
 const initialState = {
     isRequesting: false,
-    errorMsg: null
+    errorMsg: null,
+    isAuthenticated: false,
 }
 
 export default (state = initialState, action) => {
@@ -23,13 +24,15 @@ export default (state = initialState, action) => {
                 ...state,
                 isRequesting: false,
                 errorMsg: null,
+                isAuthenticated: true
             }
 
         case AUTH_FAIL:
             return {
                 ...state,
                 isRequesting: false,
-                errorMsg: action.errorMsg
+                errorMsg: action.errorMsg,
+                isAuthenticated: false
             }
 
         default:
