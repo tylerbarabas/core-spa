@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import LoginForm from '../../components/login-form'
 import { requestToken, errorFound } from '../../modules/auth';
 
-class Home extends React.Component {
+class Login extends React.Component {
     render(){
         return (
             <div>
@@ -35,4 +35,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(Login)
