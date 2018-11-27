@@ -2,15 +2,17 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import Login from '../login'
 
 class PrivateRoute extends React.Component {
     render () {
-        console.log('privateRoute render', this.props);
-        return ( <Route {...this.props} render={() => (
-            this.props.auth.isAuthenticated === true
-              ? <this.props.pcomponent {...this.props} />
-              : <Redirect to='/login' />
-          )} /> )
+        return ( <Route {...this.props} render={() => {
+            if (this.props.auth.isAuthenticated === true) {
+                return (<this.props.pcomponent {...this.props} />);
+            } else {
+                return (<Login />)
+            }
+          }} /> )
     }
 }
 

@@ -7,16 +7,14 @@ import { requestToken, errorFound } from '../../modules/auth';
 
 class Login extends React.Component {
     render(){
-        console.log('login render', this.props.auth.isAuthenticated);
-        return this.props.auth.isAuthenticated === false
-           ? ( <div>
-                <LoginForm
-                    onSubmit={this.props.requestToken}
-                    onError={this.props.errorFound}
-                    errorMsg={this.props.auth.errorMsg}
-                    isRequesting={this.props.auth.isRequesting}
-                />
-            </div> ) : <Redirect to='/' />
+       return ( <div>
+            <LoginForm
+                onSubmit={this.props.requestToken}
+                onError={this.props.errorFound}
+                errorMsg={this.props.auth.errorMsg}
+                isRequesting={this.props.auth.isRequesting}
+            />
+        </div> )
     }
 }
 
