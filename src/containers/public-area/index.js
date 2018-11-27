@@ -2,11 +2,11 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-class DashboardAgain extends React.Component {
+class PublicArea extends React.Component {
     render(){
         return (
             <div>
-                This is the dashboard AGAIN.
+                This is a public area.
             </div>
         ) 
     }
@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardAgain)
+)(PublicArea)
