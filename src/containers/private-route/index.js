@@ -6,7 +6,7 @@ import Login from '../login'
 
 class PrivateRoute extends React.Component {
     render () {
-        return ( <Route {...this.props} render={() => {
+        return ( <Route exact {...this.props} render={() => {
             if (this.props.auth.isAuthenticated === true) {
                 return (<this.props.pcomponent {...this.props} />);
             } else {
