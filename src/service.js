@@ -14,6 +14,7 @@ let Auth = {
     accessToken: null,
     tokenType: null
 };
+
 const getAuthHeaders = () => ({'Authorization': `${Auth.tokenType} ${Auth.accessToken}`});
 
 export default {

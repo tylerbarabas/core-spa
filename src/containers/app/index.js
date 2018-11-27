@@ -1,19 +1,44 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import PrivateRoute from '../private-route'
 import Dashboard from '../dashboard'
 import PublicArea from '../public-area'
+import NotFound from '../not-found'
 import 'bulma'
 import 'animate.css'
 import './base.scss'
 
-const App = () => (
-  <div>
-    <main>
-      <PrivateRoute path="/" pcomponent={Dashboard} />
-      <Route path="/public-area" component={PublicArea} />
-    </main>
-  </div>
-)
+class App extends React.Component {
+    render(){
+        let { isAuthenticated } = this.props.auth;;
+        return(
+          <div>
+            <main>
+              <Switch>
+                <PrivateRoute exact path="/" component={Dashboard} isAuthenticated={isAuthenticated} />
+                <Route exact path="/public-area" component={PublicArea} />
+                <Route component={NotFound} />
+              </Switch>
+            </main>
+          </div>
+        )
+    }
+}
 
-export default App
+const mapStateToProps = ({ auth }) => ({ 
+    auth
+})
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+    },
+    dispatch
+  )
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
