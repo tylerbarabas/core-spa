@@ -61,5 +61,9 @@ export default {
         //Write some logic here to test the validity of the token
 
         return true; 
+    },
+    destroyCookie: () => {
+        Cookie.erase('at');
+        Cookie.erase('tt');
     }
 };

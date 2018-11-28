@@ -92,6 +92,7 @@ export const requestToken = (email, password) => {
 
 export const logout = () => {
     return dispatch => {
+        Service.destroyCookie();
         dispatch({
             type: LOGOUT
         })
