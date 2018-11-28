@@ -1,8 +1,9 @@
 import Service from '../service'
 
-export const AUTH_REQUESTED = 'token/AUTH_REQUESTED'
-export const AUTH_SUCCESS = 'token/AUTH_SUCCESS'
-export const AUTH_FAIL = 'token/AUTH_FAIL'
+export const AUTH_REQUESTED = 'auth/AUTH_REQUESTED'
+export const AUTH_SUCCESS = 'auth/AUTH_SUCCESS'
+export const AUTH_FAIL = 'auth/AUTH_FAIL'
+export const LOGOUT = 'auth/LOGOUT'
 
 const initialState = {
     isRequesting: false,
@@ -33,6 +34,13 @@ export default (state = initialState, action) => {
                 isRequesting: false,
                 errorMsg: action.errorMsg,
                 isAuthenticated: false
+            }
+
+        case LOGOUT:
+            return {
+                ...state,
+                errorMsg: null,
+                isAuthenticated: false,
             }
 
         default:
@@ -78,6 +86,14 @@ export const requestToken = (email, password) => {
                 type: AUTH_FAIL,
                 errorMsg: res.error_description
             }) 
-        });
+        })
+    }
+}
+
+export const logout = () => {
+    return dispatch => {
+        dispatch({
+            type: LOGOUT
+        })
     }
 }
