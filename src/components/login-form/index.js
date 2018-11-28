@@ -14,12 +14,12 @@ export default class LoginForm extends React.Component {
         e.preventDefault();
         let email = document.getElementById('login-email').value;
         let password = document.getElementById('login-password').value;
-//        let remember = document.getElementById('login-remember-me').checked;
+        let remember = document.getElementById('login-remember-me').checked;
 
         let errors = this.checkErrors(email, password);
 
         if (errors.length === 0)
-            this.props.onSubmit(email, password);
+            this.props.onSubmit(email, password, remember);
         else
             this.props.onError(errors[0]);
     }

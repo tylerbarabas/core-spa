@@ -63,14 +63,14 @@ export const errorFound = errorMsg => {
    }
 }
 
-export const requestToken = (email, password) => {
+export const requestToken = (email, password, remember = false) => {
     return dispatch => {
 
         dispatch({
             type: AUTH_REQUESTED
         })
 
-        return Service.getAuthToken(email, password).then(async res => {
+        return Service.getAuthToken(email, password, remember).then(async res => {
             if (!res.hasOwnProperty('error')) {
                 dispatch({
                     type: AUTH_SUCCESS
