@@ -12,7 +12,7 @@ import './base.scss'
 
 class App extends React.Component {
     render(){
-        let { isAuthenticated } = this.props.auth;;
+        let { isAuthenticated } = this.props.auth;
         return(
           <div>
             <main>

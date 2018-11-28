@@ -1,3 +1,5 @@
+import Cookie from 'browser-cookies'
+
 let Config;
 try {
     Config = require('./client_config').default
@@ -36,6 +38,9 @@ export default {
         Auth.accessToken = data.access_token;
         Auth.tokenType = data.token_type;
 
+        Cookie.set('at', data.access_token);
+        Cookie.set('tt', data.token_type);
+
         return data;
     },
     getMyUser: async () => {
@@ -44,5 +49,17 @@ export default {
         });
 
         return await res.json();
+    },
+    isValidCookie: () => {
+        Auth.accessToken = Cookie.get('at');
+        Auth.tokenType = Cookie.get('tt');
+
+        if (Auth.accessToken === null || Auth.tokenType === null) {
+            return false;
+        }
+
+        //Write some logic here to test the validity of the token
+
+        return true; 
     }
 };
