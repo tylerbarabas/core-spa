@@ -36,7 +36,7 @@ export const getMyUser = () => {
             type: USER_REQUESTED
         })
 
-        return Service.getAuthToken(email, password, remember).then(async res => {
+        return Service.getAuthToken().then(async res => {
             if (!res.hasOwnProperty('error')) {
                 dispatch({
                     type: USER_SUCCESS

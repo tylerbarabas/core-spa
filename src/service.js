@@ -20,7 +20,7 @@ let Auth = {
 const getAuthHeaders = () => ({'Authorization': `${Auth.tokenType} ${Auth.accessToken}`});
 
 export default {
-    getAuthToken: async (email, password, remember = false) => {
+    getAuthToken: async (email, password) => {
 
         let fd = new FormData();
         fd.append('client_id', Config.CLIENT_ID);
@@ -38,7 +38,7 @@ export default {
         Auth.accessToken = data.access_token;
         Auth.tokenType = data.token_type;
 
-        let cookieDays = (remember) ? 2 : 0;
+        const cookieDays = 2;
 
         Cookie.set('at', data.access_token, { expires: cookieDays });
         Cookie.set('tt', data.token_type, { expires: cookieDays });

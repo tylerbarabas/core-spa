@@ -14,12 +14,11 @@ export default class LoginForm extends React.Component {
         e.preventDefault();
         let email = document.getElementById('login-email').value;
         let password = document.getElementById('login-password').value;
-        let remember = document.getElementById('login-remember-me').checked;
 
         let errors = this.checkErrors(email, password);
 
         if (errors.length === 0)
-            this.props.onSubmit(email, password, remember);
+            this.props.onSubmit(email, password);
         else
             this.props.onError(errors[0]);
     }
@@ -69,12 +68,6 @@ export default class LoginForm extends React.Component {
                         <form onSubmit={this.handleSubmit.bind(this)}>
                             <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" id="login-email" />
                             <input className="is-one-quarter input login-fields" type="password" placeholder="Password" id="login-password" />
-                            <div className="login-remember-me">
-                                <label className="checkbox is-pulled-left">
-                                    <input type="checkbox" className="is-pulled-left" id="login-remember-me" />
-                                    Remember me?
-                                </label>
-                            </div>
                             <button type="submit" className="button is-primary login-button" disabled={(isRequesting)}>Sign In {this.isSpinner()}</button>
                         </form>
                     </div>
