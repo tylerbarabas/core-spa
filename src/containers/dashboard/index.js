@@ -2,8 +2,13 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logout } from '../../modules/auth'
+import { getMyUser } from '../../modules/user'
 
 class Dashboard extends React.Component {
+    componentDidMount(){
+        this.props.getMyUser();
+    }
+
     logout(){
         this.props.logout();
     }
@@ -18,13 +23,15 @@ class Dashboard extends React.Component {
     }
 }
 
-const mapStateToProps = () => ({ 
+const mapStateToProps = ({ user }) => ({ 
+    user
 })
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-        logout
+        logout,
+        getMyUser
     },
     dispatch
   )

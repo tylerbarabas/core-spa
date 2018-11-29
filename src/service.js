@@ -60,8 +60,6 @@ export default {
             return false;
         }
 
-        //Write some logic here to test the validity of the token
-
         return true; 
     },
     destroyCookie: () => {

@@ -5,19 +5,28 @@ export const USER_SUCCESS = 'auth/USER_SUCCESS'
 export const USER_FAIL = 'auth/USER_FAIL'
 
 const initialState = {
-    name: null
+    id: null,
+    firstName: null,
+    lastName: null,
+    email: null,
+    isRevcascade: null,
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case USER_REQUESTED:
             return {
-                ...state
+                ...state,
             }
 
         case USER_SUCCESS:
             return {
                 ...state,
+                id: action.id, 
+                firstName: action.firstName,
+                lastName: action.lastName,
+                email: action.email,
+                isRevcascade: action.isRevcascade,
             }
 
         case USER_FAIL:
@@ -36,10 +45,15 @@ export const getMyUser = () => {
             type: USER_REQUESTED
         })
 
-        return Service.getAuthToken().then(async res => {
+        return Service.getMyUser().then(async res => {
             if (!res.hasOwnProperty('error')) {
                 dispatch({
-                    type: USER_SUCCESS
+                    type: USER_SUCCESS,
+                    id: res.id,
+                    firstName: res.first_name,
+                    lastName: res.last_name,
+                    email: res.email,
+                    isRevcascade: res.is_revcascade,
                 })
             } else {
                 dispatch({
