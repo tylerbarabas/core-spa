@@ -13,9 +13,17 @@ class Dashboard extends React.Component {
         this.props.logout();
     }
 
+    componentDidUpdate(){
+        if (this.props.user.isError) this.logout();
+    }
+
+    isUser(){
+        return (this.props.user.id === null) ? 'is-invisible' : '';
+    }
+
     render(){
         return (
-            <div>
+            <div className={this.isUser()}>
                 This is the dashboard.
                 <div onClick={this.logout.bind(this)}>LOG OUT</div>
             </div>

@@ -10,6 +10,7 @@ const initialState = {
     lastName: null,
     email: null,
     isRevcascade: null,
+    isError: false
 }
 
 export default (state = initialState, action) => {
@@ -17,6 +18,7 @@ export default (state = initialState, action) => {
         case USER_REQUESTED:
             return {
                 ...state,
+                isError: false,
             }
 
         case USER_SUCCESS:
@@ -32,6 +34,7 @@ export default (state = initialState, action) => {
         case USER_FAIL:
             return {
                 ...state,
+                isError: true
             }
         default:
             return state
@@ -46,14 +49,15 @@ export const getMyUser = () => {
         })
 
         return Service.getMyUser().then(async res => {
-            if (!res.hasOwnProperty('error')) {
+            if (res.ok) {
+                let data = await res.json();
                 dispatch({
                     type: USER_SUCCESS,
-                    id: res.id,
-                    firstName: res.first_name,
-                    lastName: res.last_name,
-                    email: res.email,
-                    isRevcascade: res.is_revcascade,
+                    id: data.id,
+                    firstName: data.first_name,
+                    lastName: data.last_name,
+                    email: data.email,
+                    isRevcascade: data.is_revcascade,
                 })
             } else {
                 dispatch({

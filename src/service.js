@@ -50,7 +50,7 @@ export default {
             headers: getAuthHeaders()
         });
 
-        return await res.json();
+        return res;
     },
     isValidCookie: () => {
         Auth.accessToken = Cookie.get('at');
