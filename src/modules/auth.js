@@ -12,6 +12,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
+    console.log('action', action);
     switch (action.type) {
         case AUTH_REQUESTED:
             return {
@@ -32,7 +33,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isRequesting: false,
-                errorMsg: action.errorMsg,
+                errorMsg: action.errorMsg || 'Invalid login credentials.',
                 isAuthenticated: false
             }
 
