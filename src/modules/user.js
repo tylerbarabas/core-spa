@@ -1,5 +1,7 @@
 import Service from '../service'
 
+import { LOGOUT } from './auth'
+
 export const USER_REQUESTED = 'auth/USER_REQUESTED'
 export const USER_SUCCESS = 'auth/USER_SUCCESS'
 export const USER_FAIL = 'auth/USER_FAIL'
@@ -9,7 +11,6 @@ export const BRANDS_FAIL = 'auth/BRANDS_FAIL'
 export const RETAILERS_REQUESTED = 'auth/RETAILERS_REQUESTED'
 export const RETAILERS_SUCCESS = 'auth/RETAILERS_SUCCESS'
 export const RETAILERS_FAIL = 'auth/RETAILERS_FAIL'
-
 
 
 const initialState = {
@@ -87,6 +88,9 @@ export default (state = initialState, action) => {
                 isRequesting: false,
             }
 
+        case LOGOUT:
+            return initialState;
+
         default:
             return state
     }
@@ -102,7 +106,24 @@ export const getMyUser = () => {
         return Service.getMyUser().then(async res => {
             if (res.ok) {
                 let data = await res.json();
-                console.log('data', data); 
+
+                if (!data.isRevcascade) {
+                    data.brands = [];
+                    data.retailers = [];
+
+                    let brandsRes = await Service.getMyBrands();
+                    if (brandsRes.ok) {
+                        let brandsData = await brandsRes.json();
+                        data.brands = brandsData.results;
+                    }
+
+                    let retailersRes = await Service.getMyRetailers();
+                    if (retailersRes.ok) {
+                        let retailersData = await retailersRes.json();
+                        data.retailers = retailersData.results;
+                    }
+                }
+
                 dispatch({
                     type: USER_SUCCESS,
                     id: data.id,

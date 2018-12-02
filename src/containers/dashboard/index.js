@@ -24,33 +24,15 @@ class Dashboard extends React.Component {
         let { user } = this.props;
         let template = (<DashboardMain />);
 
-        console.log('USER', user);
-
-        if (user.id === null || user.isRevcascade) {
+        if (user.id === null) {
             template = null; //TODO create a loading component to show for this
-
-            if (user.isRevcascade){
-                console.log('is rc');
-                if  (user.brands.length < 1 && user.retailers.length < 1) {
-                    console.log('get here0');
-                    if (!user.isRequesting) {
-                        this.props.getMyBrands();
-                        this.props.getMyRetailers();
-                    }
-                } else {
-                    console.log('got here1');
-                    template = (<ContextSelector brands={user.brands} retailers={user.retailers} />);
-                }
-            }
         } else {
             let combined = user.retailers.concat(user.brands);
-
-            console.log('combined', combined);
-
             if (combined.length > 1) {
                 template = (<ContextSelector brands={user.brands} retailers={user.retailers} />);
             }
         }
+
         return template;
     }
 
