@@ -51,7 +51,7 @@ export default {
         });
 
         return res;
-    },
+    }, 
     isValidCookie: () => {
         Auth.accessToken = Cookie.get('at');
         Auth.tokenType = Cookie.get('tt');

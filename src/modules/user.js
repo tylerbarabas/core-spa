@@ -10,7 +10,9 @@ const initialState = {
     lastName: null,
     email: null,
     isRevcascade: null,
-    isError: false
+    isError: false,
+    retailers: [],
+    brands: []
 }
 
 export default (state = initialState, action) => {
@@ -29,6 +31,8 @@ export default (state = initialState, action) => {
                 lastName: action.lastName,
                 email: action.email,
                 isRevcascade: action.isRevcascade,
+                brands: action.brands,
+                retailers: action.retailers,
             }
 
         case USER_FAIL:
@@ -51,6 +55,7 @@ export const getMyUser = () => {
         return Service.getMyUser().then(async res => {
             if (res.ok) {
                 let data = await res.json();
+                console.log('data', data); 
                 dispatch({
                     type: USER_SUCCESS,
                     id: data.id,
@@ -58,6 +63,8 @@ export const getMyUser = () => {
                     lastName: data.last_name,
                     email: data.email,
                     isRevcascade: data.is_revcascade,
+                    brands: data.brands || [],
+                    retailers: data.retailers || [],
                 })
             } else {
                 dispatch({

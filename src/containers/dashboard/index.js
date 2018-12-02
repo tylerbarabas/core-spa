@@ -24,14 +24,19 @@ class Dashboard extends React.Component {
         let { user } = this.props;
         let template = (<DashboardMain />);
 
-        console.log('user', user);
         if (user.id === null) {
-            template = null;
+            template = null; //TODO create a loading component to show for this
         } else if (user.isRevcascade) {
-            template = (<ContextSelector brands={'all'} retailers={'all'} />);
+            let brands = [];
+            let retailers = [];
+            template = (<ContextSelector brands={brands} retailers={retailers} />);
         } else {
-            //fetch contexts, if more than one, feed them to the context selector, else leave template unmodified
-            template = (<ContextSelector brands={['mybrand']} retailers={['myretailer']} />);
+            let combined = user.retailers.concat(user.brands);
+            let brands = user.brands || [];
+            let retailers = user.retailers || [];
+            if (combined.length > 1) {
+                template = (<ContextSelector brands={brands} retailers={retailers} />);
+            }
         }
         return template;
     }
