@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logout } from '../../modules/auth'
-import { getMyUser, getMyBrands, getMyRetailers } from '../../modules/user'
+import { getMyUser } from '../../modules/user'
 import ContextSelector from '../../components/context-selector'
 import DashboardMain from '../../components/dashboard-main'
 import TopBar from '../../components/top-bar'
@@ -55,8 +55,6 @@ const mapDispatchToProps = dispatch =>
     {
         logout,
         getMyUser,
-        getMyBrands,
-        getMyRetailers,
     },
     dispatch
   )
