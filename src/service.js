@@ -11,6 +11,8 @@ const fullPath = path => `${Config.HOST}${path}`;
 
 const uri_authToken = fullPath('/auth/token/');
 const uri_getMyUser = fullPath('/v1/users/me/');
+const uri_getBrands = fullPath('/v1/brands/');
+const uri_getRetailers = fullPath('/v1/retailers/');
 
 let Auth = {
     accessToken: null,
@@ -49,9 +51,20 @@ export default {
         let res = await fetch(uri_getMyUser, {
             headers: getAuthHeaders()
         });
-
         return res;
-    }, 
+    },
+    getMyRetailers: async () => {
+        let res = await fetch(uri_getRetailers, {
+            headers: getAuthHeaders()
+        });
+        return res;
+    },
+    getMyBrands: async () => {
+        let res = await fetch(uri_getBrands, {
+            headers: getAuthHeaders()
+        });
+        return res;
+    },
     isValidCookie: () => {
         Auth.accessToken = Cookie.get('at');
         Auth.tokenType = Cookie.get('tt');

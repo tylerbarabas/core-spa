@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logout } from '../../modules/auth'
-import { getMyUser } from '../../modules/user'
+import { getMyUser, getMyBrands, getMyRetailers } from '../../modules/user'
 import ContextSelector from '../../components/context-selector'
 import DashboardMain from '../../components/dashboard-main'
 import TopBar from '../../components/top-bar'
@@ -24,18 +24,31 @@ class Dashboard extends React.Component {
         let { user } = this.props;
         let template = (<DashboardMain />);
 
-        if (user.id === null) {
+        console.log('USER', user);
+
+        if (user.id === null || user.isRevcascade) {
             template = null; //TODO create a loading component to show for this
-        } else if (user.isRevcascade) {
-            let brands = [];
-            let retailers = [];
-            template = (<ContextSelector brands={brands} retailers={retailers} />);
+
+            if (user.isRevcascade){
+                console.log('is rc');
+                if  (user.brands.length < 1 && user.retailers.length < 1) {
+                    console.log('get here0');
+                    if (!user.isRequesting) {
+                        this.props.getMyBrands();
+                        this.props.getMyRetailers();
+                    }
+                } else {
+                    console.log('got here1');
+                    template = (<ContextSelector brands={user.brands} retailers={user.retailers} />);
+                }
+            }
         } else {
             let combined = user.retailers.concat(user.brands);
-            let brands = user.brands || [];
-            let retailers = user.retailers || [];
+
+            console.log('combined', combined);
+
             if (combined.length > 1) {
-                template = (<ContextSelector brands={brands} retailers={retailers} />);
+                template = (<ContextSelector brands={user.brands} retailers={user.retailers} />);
             }
         }
         return template;
@@ -59,7 +72,9 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
         logout,
-        getMyUser
+        getMyUser,
+        getMyBrands,
+        getMyRetailers,
     },
     dispatch
   )
