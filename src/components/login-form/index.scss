@@ -7,7 +7,7 @@ div.login-form {
 
     img.logo{
         display: block;
-        margin: 25px auto;
+        margin: 0 auto;
     }
 
     label {
@@ -20,13 +20,15 @@ div.login-form {
         margin-bottom: 20px;
     }
 
-    strong.message{
+    div.message{
+        color: #FFF;
+        font-weight: 300;
         display: block;
         margin-bottom: 10px;
+        background-color: transparent;
 
         &.error-msg {
-            color: red;
-            font-weight: 300;
+            color: #ff8080;
         }
     }
 

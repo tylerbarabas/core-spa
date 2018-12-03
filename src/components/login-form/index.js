@@ -64,7 +64,7 @@ export default class LoginForm extends React.Component {
                 <div className="columns">
                     <div className={this.animateContainer()}>
                         <img className="logo" src="logo.png" alt="RevCascade Logo" />
-                        <strong className={"message "+(errorMsg?'error-msg':'')}>{ this.getMessage() }</strong>
+                        <div className={"message "+(errorMsg?'error-msg':'')}>{ this.getMessage() }</div>
                         <form onSubmit={this.handleSubmit.bind(this)}>
                         <div className="field">                            
                             <label htmlFor="login-email">Email</label>
