@@ -6,6 +6,7 @@ import { getMyUser } from '../../modules/user'
 import ContextSelector from '../../components/context-selector'
 import DashboardMain from '../../components/dashboard-main'
 import TopBar from '../../components/top-bar'
+import BigLoading from '../../components/big-loading'
 
 class Dashboard extends React.Component {
     componentDidMount(){
@@ -16,16 +17,12 @@ class Dashboard extends React.Component {
         if (this.props.user.isError) this.props.logout();
     }
 
-    isUser(){
-        return (this.props.user.id === null) ? {display: 'none'} : {};
-    }
-
     isContext(){
         let { user } = this.props;
         let template = (<DashboardMain />);
 
         if (user.id === null) {
-            template = null; //TODO create a loading component to show for this
+            template = <BigLoading />;
         } else {
             let combined = user.retailers.concat(user.brands);
             if (combined.length > 1) {
@@ -38,7 +35,7 @@ class Dashboard extends React.Component {
 
     render(){
         return (
-            <div style={this.isUser()}>
+            <div>
                 <TopBar logout={this.props.logout} />
                 { this.isContext() }
             </div>

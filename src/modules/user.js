@@ -22,6 +22,7 @@ const initialState = {
     retailers: [],
     brands: [],
     isRequesting: false,
+    isError: false,
 }
 
 export default (state = initialState, action) => {
@@ -30,6 +31,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isRequesting: true,
+                isError: false,
             }
 
         case USER_SUCCESS:
@@ -43,49 +45,14 @@ export default (state = initialState, action) => {
                 brands: action.brands,
                 retailers: action.retailers,
                 isRequesting: false,
+                isError: false,
             }
 
         case USER_FAIL:
             return {
                 ...state,
                 isRequesting: false,
-            }
-
-        case RETAILERS_REQUESTED:
-            return {
-                ...state,
-                isRequesting: true,
-            }
-
-        case RETAILERS_SUCCESS:
-            return {
-                ...state,
-                retailers: action.retailers,
-                isRequesting: false,
-            }
-
-        case BRANDS_FAIL:
-            return {
-                ...state,
-                isRequesting: false,
-            }
-        case BRANDS_REQUESTED:
-            return {
-                ...state,
-                isRequesting: true
-            }
-
-        case BRANDS_SUCCESS:
-            return {
-                ...state,
-                brands: action.brands,
-                isRequesting: false,
-            }
-
-        case RETAILERS_FAIL:
-            return {
-                ...state,
-                isRequesting: false,
+                isError: true,
             }
 
         case LOGOUT:
