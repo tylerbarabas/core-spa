@@ -1,0 +1,13 @@
+div.top-bar {
+    width: 100%;
+    height: 30px;
+    text-align: right;
+    background-color: #FFF;
+    padding-right: 20px;
+    line-height: 30px;
+
+    div.logout {
+        cursor: pointer;
+        display: inline-block;
+    }
+}
