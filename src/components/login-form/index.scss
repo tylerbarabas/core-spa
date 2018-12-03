@@ -1,18 +1,26 @@
 div.login-form {
-    background-color: #ecf0f1;
     font-size: 14px;
-    color: #333;
+    color: #FFF;
     margin-top: 20px;
     animation-duration: 800ms;
     animation-iteration-count: 1;
 
     img.logo{
         display: block;
-        width: 35%;
         margin: 25px auto;
     }
 
-    strong.slogan{
+    label {
+        font-size: 12px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input.login-fields {
+        margin-bottom: 20px;
+    }
+
+    strong.message{
         display: block;
         margin-bottom: 10px;
 
@@ -22,26 +30,9 @@ div.login-form {
         }
     }
 
-    input.login-fields{
-        width: 85%;
-        margin-bottom: 20px;
-
-        height: 42px;
-        padding: 10px 16px;
-        font-size: 15px;
-        line-height: 1.3333333;
-        border-radius: 0;
-
-    }
-
-    input[type="checkbox"]{
-        margin-right: 10px;
-    }
-
     button.login-button {
-        margin-bottom: 30px;
-        width: 85%;
-        height: 42px;
+        margin-top: 15px;
+        width: 100%;
 
         svg.fa-spinner{
             margin-left: 10px;

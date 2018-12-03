@@ -37,7 +37,7 @@ export default class LoginForm extends React.Component {
 
     animateContainer( isFinishedMounting = false ){
         const { errorMsg } = this.props;
-        const staticClasses = 'column box is-one-fifth is-offset-two-fifths is-radiusless has-text-centered animated login-form';
+        const staticClasses = 'column is-one-fifth is-offset-two-fifths is-radiusless animated login-form';
         let animClass = '';
         if ( errorMsg !== null ) animClass = 'pulse';
         if ( this.isInitialLoad ) {
@@ -50,7 +50,7 @@ export default class LoginForm extends React.Component {
 
     getMessage(){
         let { errorMsg, isRequesting } = this.props;
-        let msg = 'Automating eCommerce.';
+        let msg = '';
         if ( errorMsg ) msg = errorMsg;
         if ( isRequesting ) msg = 'Signing in...';
 
@@ -64,10 +64,20 @@ export default class LoginForm extends React.Component {
                 <div className="columns">
                     <div className={this.animateContainer()}>
                         <img className="logo" src="logo.png" alt="RevCascade Logo" />
-                        <strong className={"slogan "+(errorMsg?'error-msg':'')}>{ this.getMessage() }</strong>
+                        <strong className={"message "+(errorMsg?'error-msg':'')}>{ this.getMessage() }</strong>
                         <form onSubmit={this.handleSubmit.bind(this)}>
-                            <input className="is-one-quarter input login-fields" type="text" placeholder="Email Address" id="login-email" />
-                            <input className="is-one-quarter input login-fields" type="password" placeholder="Password" id="login-password" />
+                        <div className="field">                            
+                            <label htmlFor="login-email">Email</label>
+                            <div className="control">
+                                <input className="is-one-quarter input login-fields" type="text" id="login-email" />
+                            </div>
+                        </div>
+                        <div className="field">                            
+                            <label htmlFor="login-password">Password</label>
+                            <div className="control">
+                                <input className="is-one-quarter input login-fields" type="password" id="login-password" />
+                            </div>
+                        </div>
                             <button type="submit" className="button is-primary login-button" disabled={(isRequesting)}>Sign In {this.isSpinner()}</button>
                         </form>
                     </div>
