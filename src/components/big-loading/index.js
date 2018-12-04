@@ -9,7 +9,7 @@ export default class BigLoading extends React.Component {
             <div className="big-loading columns">
                 <div className="column is-one-fifth is-offset-two-fifths animated fadeInDown has-text-centered">
                     <FontAwesomeIcon icon={faSpinner} spin className="loading-spinner" />
-                    <p className="loading-text">Loading...</p>
+                    <p className="loading-text">{this.props.msg || 'Loading...'}</p>
                 </div>
             </div>
         )
