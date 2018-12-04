@@ -4,6 +4,7 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    transition: 300ms background-color;
 }
 
 //Style overwrites, these can be done via
