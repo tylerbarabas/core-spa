@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
         let template = (<DashboardMain />);
 
         if (user.id === null) {
-            template = <BigLoading />;
+            template = <BigLoading msg={'Retrieving user data...'} />;
         } else {
             let combined = user.retailers.concat(user.brands);
             if (combined.length > 1) {

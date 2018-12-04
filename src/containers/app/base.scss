@@ -1,12 +1,13 @@
+@import './variables';
+
 html, body {
     height: 100%;
     width: 100%;
-    background-color: #2E3E50;
     overflow: hidden;
 }
 
 //Style overwrites, these can be done via
 //webpack after we eject from react-scripts
 .is-primary {
-    background-color: #53aed9 !important;
+    background-color: $button-primary !important;
 }
