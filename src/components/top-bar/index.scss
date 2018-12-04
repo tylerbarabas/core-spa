@@ -7,6 +7,8 @@ div.top-bar {
     background-color: $background-darkblue;
     padding-right: 20px;
     line-height: 60px;
+    color: $background-grey;
+    border-bottom: 10px solid $primary;
 
     div.logout {
         cursor: pointer;
