@@ -20,15 +20,17 @@ class Dashboard extends React.Component {
     }
 
     isContext(){
-        let { user } = this.props;
-        let template = (<DashboardMain />);
+        let { user, context } = this.props;
+        let template = (<DashboardMain context={context} />);
 
         if (user.id === null) {
             template = <BigLoading msg={'Retrieving user data...'} />;
-        } else {
+        } else if (context.id === null) {
             let combined = user.retailers.concat(user.brands);
             if (combined.length > 1) {
-                template = (<ContextSelector brands={user.brands} retailers={user.retailers} selectContext={selectContext} />);
+                template = (<ContextSelector brands={user.brands} retailers={user.retailers} selectContext={this.props.selectContext} />);
+            } else if (combined.length === 1) {
+                this.props.selectContext(combined[0])
             }
         }
 
@@ -45,8 +47,9 @@ class Dashboard extends React.Component {
     }
 }
 
-const mapStateToProps = ({ user }) => ({ 
-    user
+const mapStateToProps = ({ user, context }) => ({ 
+    user,
+    context,
 })
 
 const mapDispatchToProps = dispatch =>
