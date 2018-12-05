@@ -1,0 +1,11 @@
+@import '../../containers/app/variables';
+
+div.context-selector {
+  background-color: $background-darkblue;
+  border-radius: 5px;
+
+  h1.title {
+    color: #fff;
+    text-align: center;
+  }
+}
