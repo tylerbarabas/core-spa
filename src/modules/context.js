@@ -1,3 +1,4 @@
+import { LOGOUT } from './auth'
 export const CONTEXT_SELECTED = 'context/CONTEXT_SELECTED'
 
 const initialState = {
@@ -13,6 +14,8 @@ export default (state = initialState, action) => {
                 id: action.id,
                 name: action.name
             }
+        case LOGOUT:
+            return initialState;
         default:
             return state
     }
