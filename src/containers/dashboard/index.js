@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logout } from '../../modules/auth'
 import { getMyUser } from '../../modules/user'
+import { selectContext } from '../../modules/context'
 import ContextSelector from '../../components/context-selector'
 import DashboardMain from '../../components/dashboard-main'
 import TopBar from '../../components/top-bar'
@@ -27,7 +28,7 @@ class Dashboard extends React.Component {
         } else {
             let combined = user.retailers.concat(user.brands);
             if (combined.length > 1) {
-                template = (<ContextSelector brands={user.brands} retailers={user.retailers} />);
+                template = (<ContextSelector brands={user.brands} retailers={user.retailers} selectContext={selectContext} />);
             }
         }
 
@@ -53,6 +54,7 @@ const mapDispatchToProps = dispatch =>
     {
         logout,
         getMyUser,
+        selectContext,
     },
     dispatch
   )

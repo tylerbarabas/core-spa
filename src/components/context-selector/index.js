@@ -19,9 +19,14 @@ export default class ContextSelector extends React.Component {
     };
   }
 
-  handleChange( selected, options ){
+  handleChange( selected ){
     let { stateProp } = selected;
     this.setState({ [stateProp]: selected });
+
+    let combined = this.props.brands.concat(this.props.retailers);
+    let original = combined.filter(a => a.id === selected.value)[0];
+
+    this.props.selectContext( original );
   }
 
   render(){
