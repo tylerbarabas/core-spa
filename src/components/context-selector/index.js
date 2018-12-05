@@ -20,7 +20,7 @@ export default class ContextSelector extends React.Component {
   }
 
   handleChange( selected, options ){
-    let { stateProp, value } = selected;
+    let { stateProp } = selected;
     this.setState({ [stateProp]: selected });
   }
 
