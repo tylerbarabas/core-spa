@@ -1,7 +1,7 @@
 ## Installation
 
 ```bash
-git clone git@github.com:revcascade/orders-spa.git
+git clone git@github.com:revcascade/core-spa.git
 cd orders-spa
 yarn
 ```
