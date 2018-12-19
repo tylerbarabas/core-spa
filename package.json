@@ -1,6 +1,7 @@
 {
+  "name": "core-spa",
+  "version": "0.0.1",
   "private": true,
-  "homepage": "https://create-react-app-redux.now.sh",
   "scripts": {
     "deploy": "now && now alias",
     "start": "PORT=80 react-scripts start",
