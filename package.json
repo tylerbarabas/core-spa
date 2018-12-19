@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "deploy": "now && now alias",
-    "start": "PORT=3000 react-scripts start",
+    "start": "BROWSER=NONE PORT=3000 react-scripts start",
     "now-start": "serve -s ./build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
