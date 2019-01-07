@@ -1,14 +1,3 @@
-## Installation
-
-```bash
-git clone git@github.com:revcascade/core-spa.git
-cd orders-spa
-yarn
-```
-
-## Get started
-```bash
-yarn start
-```
+Must be used with [main-spa](https://github.com/revcascade/main-spa).
 
 This is built using [create-react-app-redux](https://github.com/notrab/create-react-app-redux).
