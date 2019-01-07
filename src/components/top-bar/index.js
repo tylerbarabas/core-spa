@@ -9,7 +9,7 @@ export default class TopBar extends React.Component {
             <div className="top-bar animated fadeInDown">
                 <FontAwesomeIcon icon={faTh} />
                 <img src="rc_circle.png" className ="rc-circle" alt="RevCascade Logo" />
-                { this.props.name || "" }
+                <strong className="app-name">{ this.props.name || "" }</strong>
                 <div className="logout is-pulled-right" onClick={this.props.logout.bind(this)}>Log out</div>
             </div>
         )
