@@ -4,9 +4,19 @@ import { faTh } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 export default class TopBar extends React.Component {
-    getButtons(){
+    getButtons(buttons = []){
+      let template = [];
+      for (let i=0;i<buttons.length;i++){
+        let selected = '';
+        if (i===2) selected = 'selected';
+        let b = buttons[i];
+        template.push(<div key={b.name} className={`nav-button ${selected}`}>{b.name}</div>)
+      }
+
       return(
-        <div className="buttons">Buttons!</div>
+        <div className="nav-buttons">
+          {template}
+        </div>
       );
     }
 

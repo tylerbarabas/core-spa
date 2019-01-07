@@ -25,11 +25,24 @@ div.top-bar {
 
     strong.app-name{
         color: #FFF;
-        font-size: 20px;
+        font-size: 18px;
         margin-right: 20px;
     }
 
-    div.buttons{
+    div.nav-buttons{
         display: inline-block;
+
+        div.nav-button {
+          display: inline-block;
+          margin-left: 10px;
+          font-size: 16px;
+          padding-left: 10px;
+          padding-right: 10px;
+          height: 47px;
+
+          &.selected{
+            background-color: #2a3848;
+          }
+        }
     }
 }
