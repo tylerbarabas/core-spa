@@ -24,8 +24,12 @@ div.top-bar {
     }
 
     strong.app-name{
-        display: inline-block;
         color: #FFF;
         font-size: 20px;
+        margin-right: 20px;
+    }
+
+    div.buttons{
+        display: inline-block;
     }
 }
