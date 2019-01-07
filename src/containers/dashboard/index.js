@@ -6,7 +6,6 @@ import { getMyUser } from '../../modules/user'
 import { selectContext } from '../../modules/context'
 import ContextSelector from '../../components/context-selector'
 import DashboardMain from '../../components/dashboard-main'
-import TopBar from '../../components/top-bar'
 import BigLoading from '../../components/big-loading'
 import colors from '../app/variables.scss'
 
@@ -40,7 +39,6 @@ class Dashboard extends React.Component {
     render(){
         return (
             <div>
-                <TopBar logout={this.props.logout} />
                 { this.isContext() }
             </div>
         ) 
