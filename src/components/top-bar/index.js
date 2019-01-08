@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTh,faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
@@ -36,4 +37,12 @@ export default class TopBar extends React.Component {
       </div>
     )
   }
+}
+
+TopBar.propTypes = {
+  buttons: PropTypes.array,
+  user: PropTypes.object,
+  isAuthenticated: PropTypes.bool,
+  logout: PropTypes.func,
+  name: PropTypes.string,
 }
