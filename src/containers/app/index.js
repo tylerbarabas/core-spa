@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -25,6 +26,10 @@ class App extends React.Component {
       </div>
     )
   }
+}
+
+App.propTypes = {
+  auth: PropTypes.object,
 }
 
 const mapStateToProps = ({ auth }) => ({ 
