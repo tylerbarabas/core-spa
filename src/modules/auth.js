@@ -90,6 +90,18 @@ export const requestToken = (email, password) => {
     }
 }
 
+export const setIsAuthenticated = isAuthenticated => {
+  return dispatch => {
+    if (isAuthenticated) {
+      dispatch({ type: AUTH_SUCCESS });
+    } else {
+      dispatch({
+        type: LOGOUT,
+      })
+    }
+  }
+}
+
 export const logout = () => {
     return dispatch => {
         Service.destroyCookie();
