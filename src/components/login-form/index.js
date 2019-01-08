@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import * as EmailValidator from 'email-validator'
@@ -35,7 +36,7 @@ export default class LoginForm extends React.Component {
     return (this.props.isRequesting) ? (<FontAwesomeIcon icon={faSpinner} spin />) : ''
   }
 
-  animateContainer( isFinishedMounting = false ){
+  animateContainer(){
     const { errorMsg } = this.props
     const staticClasses = 'column is-one-fifth is-offset-two-fifths is-radiusless animated login-form'
     let animClass = ''
@@ -85,4 +86,11 @@ export default class LoginForm extends React.Component {
       </div>
     )
   }
+}
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.function,
+  onError: PropTypes.function,
+  isRequesting: PropTypes.bool,
+  errorMsg: PropTypes.string,
 }
