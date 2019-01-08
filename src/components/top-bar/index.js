@@ -1,10 +1,11 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTh } from '@fortawesome/free-solid-svg-icons'
+import { faTh,faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 export default class TopBar extends React.Component {
-    getButtons(buttons = []){
+    getButtons(){
+      let { buttons } = this.props;
       let template = [];
       for (let i=0;i<buttons.length;i++){
         let selected = '';
@@ -21,7 +22,7 @@ export default class TopBar extends React.Component {
     }
 
     render(){
-        let { firstName } = this.props;
+        let { firstName } = this.props.user;
         return (
             <div className="top-bar animated fadeInDown">
                 <FontAwesomeIcon icon={faTh} />
@@ -29,7 +30,7 @@ export default class TopBar extends React.Component {
                 <strong className="app-name">{ this.props.name || "" }</strong>
                 {this.getButtons()}
                 <div className="logout is-pulled-right" onClick={this.props.logout.bind(this)}>
-                  Hi, {firstName} <FontAwesomeIcon icon={faTh} />
+                  Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
                 </div>
               </div>
         )
