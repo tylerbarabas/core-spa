@@ -11,24 +11,24 @@ import 'animate.css'
 import './base.scss'
 
 class App extends React.Component {
-    render(){
-        let { isAuthenticated } = this.props.auth;
-        return(
-          <div>
-            <main>
-              <Switch>
-                <PrivateRoute exact path="/" component={Dashboard} isAuthenticated={isAuthenticated} />
-                <Route exact path="/public-area" component={PublicArea} />
-                <Route component={NotFound} />
-              </Switch>
-            </main>
-          </div>
-        )
-    }
+  render(){
+    let { isAuthenticated } = this.props.auth
+    return(
+      <div>
+        <main>
+          <Switch>
+            <PrivateRoute exact path="/" component={Dashboard} isAuthenticated={isAuthenticated} />
+            <Route exact path="/public-area" component={PublicArea} />
+            <Route component={NotFound} />
+          </Switch>
+        </main>
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = ({ auth }) => ({ 
-    auth
+  auth
 })
 
 const mapDispatchToProps = dispatch =>

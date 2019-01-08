@@ -3,13 +3,13 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class PublicArea extends React.Component {
-    render(){
-        return (
-            <div>
+  render(){
+    return (
+      <div>
                 This is a public area.
-            </div>
-        ) 
-    }
+      </div>
+    ) 
+  }
 }
 
 const mapStateToProps = () => ({ 

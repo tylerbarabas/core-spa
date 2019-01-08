@@ -4,34 +4,34 @@ import './index.scss'
 
 export default class ContextSelector extends React.Component {
   constructor(props){
-    super(props);
+    super(props)
     this.brands = this.props.brands.map( b => {
-      return { value: b.id, label: b.name, stateProp: 'selectedBrand' };
-    });
+      return { value: b.id, label: b.name, stateProp: 'selectedBrand' }
+    })
 
     this.retailers = this.props.retailers.map( r => {
-      return { value: r.id, label: r.name, stateProp: 'selectedRetailer' };
-    });
+      return { value: r.id, label: r.name, stateProp: 'selectedRetailer' }
+    })
 
     this.state = {
       selectedBrand: null,
       selectedRetailer: null,
-    };
+    }
   }
 
   handleChange( selected ){
-    let { stateProp } = selected;
-    this.setState({ [stateProp]: selected });
+    let { stateProp } = selected
+    this.setState({ [stateProp]: selected })
 
-    let combined = this.props.brands.concat(this.props.retailers);
-    let original = combined.filter(a => a.id === selected.value)[0];
+    let combined = this.props.brands.concat(this.props.retailers)
+    let original = combined.filter(a => a.id === selected.value)[0]
 
-    this.props.selectContext( original );
+    this.props.selectContext( original )
   }
 
   render(){
-    let { brands, retailers } = this;
-    let { selectedBrand, selectedRetailer } = this.state;
+    let { brands, retailers } = this
+    let { selectedBrand, selectedRetailer } = this.state
 
     return (
       <div className="section">
