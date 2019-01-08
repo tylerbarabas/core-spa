@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Select from 'react-select'
 import './index.scss'
 
@@ -65,4 +66,10 @@ export default class ContextSelector extends React.Component {
       </div> 
     )
   }
+}
+
+ContextSelector.propTypes = {
+  brands: PropTypes.object,
+  retailers: PropTypes.object,
+  selectContext: PropTypes.function,
 }
