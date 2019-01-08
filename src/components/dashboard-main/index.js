@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class DashCenter extends React.Component {
   render(){
@@ -13,4 +14,8 @@ export default class DashCenter extends React.Component {
       </div>
     )
   }
+}
+
+DashCenter.propTypes = {
+  context: PropTypes.object
 }
