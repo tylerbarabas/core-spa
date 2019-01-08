@@ -89,8 +89,8 @@ export default class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
-  onSubmit: PropTypes.function,
-  onError: PropTypes.function,
+  onSubmit: PropTypes.func,
+  onError: PropTypes.func,
   isRequesting: PropTypes.bool,
   errorMsg: PropTypes.string,
 }

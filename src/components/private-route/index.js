@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import Login from '../../containers/login'
 import Service from '../../service'
@@ -14,4 +15,10 @@ export default function PrivateRoute ({ component: Component, isAuthenticated, s
       return (<Login />)
     }
   }} /> )
+}
+
+PrivateRoute.propTypes = {
+  component: PropTypes.element,
+  isAuthenticated: PropTypes.bool,
+  setIsAuthenticated: PropTypes.func,
 }

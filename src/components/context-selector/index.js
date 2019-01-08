@@ -71,5 +71,5 @@ export default class ContextSelector extends React.Component {
 ContextSelector.propTypes = {
   brands: PropTypes.object,
   retailers: PropTypes.object,
-  selectContext: PropTypes.function,
+  selectContext: PropTypes.func,
 }
