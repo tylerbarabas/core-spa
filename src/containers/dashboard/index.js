@@ -2,7 +2,6 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logout } from '../../modules/auth'
-import { getMyUser } from '../../modules/user'
 import { selectContext } from '../../modules/context'
 import ContextSelector from '../../components/context-selector'
 import CoreDashboardMain from '../../components/dashboard-main'
@@ -51,7 +50,6 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
         logout,
-        getMyUser,
         selectContext,
     },
     dispatch
