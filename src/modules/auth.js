@@ -95,9 +95,7 @@ export const setIsAuthenticated = isAuthenticated => {
     if (isAuthenticated) {
       dispatch({ type: AUTH_SUCCESS });
     } else {
-      dispatch({
-        type: LOGOUT,
-      })
+      logout();
     }
   }
 }
