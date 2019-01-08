@@ -5,21 +5,18 @@ import { logout } from '../../modules/auth'
 import { getMyUser } from '../../modules/user'
 import { selectContext } from '../../modules/context'
 import ContextSelector from '../../components/context-selector'
-import DashboardMain from '../../components/dashboard-main'
+import CoreDashboardMain from '../../components/dashboard-main'
 import BigLoading from '../../components/big-loading'
 import colors from '../app/variables.scss'
 
 class Dashboard extends React.Component {
-    componentDidMount(){
-        this.props.getMyUser();
-        document.body.style.backgroundColor = colors.backgroundGrey;
-    }
     componentDidUpdate(){
         if (this.props.user.isError) this.props.logout();
     }
 
     isContext(){
         let { user, context } = this.props;
+        let DashboardMain = this.props.dashboard || CoreDashboardMain;
         let template = (<DashboardMain context={context} />);
 
         if (user.id === null) {
