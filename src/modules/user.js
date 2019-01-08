@@ -106,7 +106,7 @@ export const getMyUser = () => {
           type: USER_FAIL,
         })
       }
-    }).catch(res => {
+    }).catch(() => {
       dispatch({
         type: USER_FAIL,
       }) 
