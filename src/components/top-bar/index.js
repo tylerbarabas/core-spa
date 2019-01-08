@@ -23,14 +23,14 @@ export default class TopBar extends React.Component {
 
     render(){
         let { firstName } = this.props.user;
-        let { isAuthenticated } = this.props;
+        let { isAuthenticated, logout } = this.props;
         return (
             <div className={`top-bar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`}>
               <FontAwesomeIcon icon={faTh} />
               <img src="rc_circle.png" className ="rc-circle" alt="RevCascade Logo" />
               <strong className="app-name">{ this.props.name || "" }</strong>
               {this.getButtons()}
-              <div className="logout is-pulled-right" onClick={this.props.logout.bind(this)}>
+              <div className="logout is-pulled-right" onClick={logout.bind(this)}>
                 Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
               </div>
             </div>
