@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import LoginForm from '../../components/login-form'
@@ -20,6 +21,12 @@ class Login extends React.Component {
       />
     </div> )
   }
+}
+
+Login.propTypes = {
+  requestToken: PropTypes.func,
+  errorFound: PropTypes.bool,
+  auth: PropTypes.object,
 }
 
 const mapStateToProps = ({ auth }) => ({ 
