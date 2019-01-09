@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logout } from '../../modules/auth'
@@ -6,7 +7,6 @@ import { selectContext } from '../../modules/context'
 import ContextSelector from '../../components/context-selector'
 import CoreDashboardMain from '../../components/dashboard-main'
 import BigLoading from '../../components/big-loading'
-import colors from '../app/variables.scss'
 
 class Dashboard extends React.Component {
   componentDidUpdate(){
@@ -39,6 +39,14 @@ class Dashboard extends React.Component {
       </div>
     ) 
   }
+}
+
+Dashboard.propTypes = {
+  user: PropTypes.object,
+  logout: PropTypes.func,
+  context: PropTypes.object,
+  dashboard: PropTypes.element,
+  selectContext: PropTypes.func,
 }
 
 const mapStateToProps = ({ user, context }) => ({ 
