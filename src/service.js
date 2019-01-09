@@ -15,6 +15,9 @@ const uri_getMyUser = fullPath('/v1/users/me/')
 const uri_getBrands = fullPath('/v1/brands/')
 const uri_getRetailers = fullPath('/v1/retailers/')
 
+//catalog
+const uri_getVendorImports = fullPath('/v1/retailers/id/feed-queue/?connections=1');
+
 let Auth = {
   accessToken: null,
   tokenType: null
@@ -79,5 +82,11 @@ export default {
   destroyCookie: () => {
     Cookie.erase('at')
     Cookie.erase('tt')
-  }
+  },
+  getVendorImports: async () => {
+    let res = await fetch(uri_getVendorImports, {
+      headers: getAuthHeaders()
+    })
+    return res;
+  },
 }
