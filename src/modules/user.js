@@ -88,6 +88,13 @@ export const getMyUser = () => {
           if (retailersRes.ok) {
             let retailersData = await retailersRes.json()
             data.retailers = retailersData.results
+
+            //console.log('look',data.retailers)
+            for (let i in data.retailers) {
+              let r = data.retailers[i]
+              //console.log(r.id)
+              Service.getVendorImports(r.id)
+            }
           }
         }
 

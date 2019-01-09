@@ -18,7 +18,7 @@ export default function PrivateRoute ({ component: Component, isAuthenticated, s
 }
 
 PrivateRoute.propTypes = {
-  component: PropTypes.element,
+  component: PropTypes.func,
   isAuthenticated: PropTypes.bool,
   setIsAuthenticated: PropTypes.func,
 }
