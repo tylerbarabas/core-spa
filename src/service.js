@@ -16,7 +16,7 @@ const uri_getBrands = fullPath('/v1/brands/')
 const uri_getRetailers = fullPath('/v1/retailers/')
 
 //catalog
-const uri_getVendorImports = fullPath('/v1/retailers/1001/feed-queue/?connections=1');
+const uri_getVendorImports = fullPath('/v1/retailers/1001/feed-queue/?connections=1')
 
 let Auth = {
   accessToken: null,
@@ -87,6 +87,6 @@ export default {
     let res = await fetch(uri_getVendorImports, {
       headers: getAuthHeaders()
     })
-    return res;
+    return res
   },
 }
