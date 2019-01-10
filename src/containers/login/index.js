@@ -25,7 +25,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   requestToken: PropTypes.func,
-  errorFound: PropTypes.bool,
+  errorFound: PropTypes.func,
   auth: PropTypes.object,
 }
 

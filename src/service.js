@@ -16,7 +16,7 @@ const uri_getBrands = fullPath('/v1/brands/')
 const uri_getRetailers = fullPath('/v1/retailers/')
 
 //catalog
-const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
+//const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
 const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections=1');
 
 let Auth = {
