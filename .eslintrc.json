@@ -29,9 +29,12 @@
             "single"
         ],
         "semi": [
-            "error",
+            1,
             "never"
         ],
-        "react/jsx-uses-vars": [2]
+        "no-console": [1],
+        "no-unused-vars": [1],
+        "react/jsx-uses-vars": [2],
+        "react/prop-types": [1]
     }
 }
