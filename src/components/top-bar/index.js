@@ -7,10 +7,9 @@ import './index.scss'
 
 export default class TopBar extends React.Component {
   getButtons(){
-    let { buttons } = this.props
+    let buttons = this.props.buttons || []
     let template = []
     for (let i=0;i<buttons.length;i++){
-      let selected = ''
       let b = buttons[i]
       template.push(<Link key={b.name} className='navbar-item' to={b.href}>{b.name}</Link>)
     }
@@ -24,14 +23,14 @@ export default class TopBar extends React.Component {
 
   render(){
     let { firstName } = this.props.user
-    let { isAuthenticated, logout } = this.props
+    let { isAuthenticated, logout, name } = this.props
     return (
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
             <FontAwesomeIcon icon={faTh} />
-            <img src="rc_circle.png" className="rc-circle" />
-            Catalog
+            <img src="rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
+            { name }
           </Link>
         </div>
         <div className="navbar-menu">
@@ -40,13 +39,13 @@ export default class TopBar extends React.Component {
           </div>
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link is-arrowless">
+              <div className="navbar-link is-arrowless">
                 Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
-              </a>
+              </div>
               <div className="navbar-dropdown">
-                <a className="navbar-item" onClick={logout}>
+                <div className="navbar-item" onClick={logout}>
                   Logout
-                </a>
+                </div>
               </div>
             </div>
           </div>

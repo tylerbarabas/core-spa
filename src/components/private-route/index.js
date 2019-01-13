@@ -9,7 +9,7 @@ import BigLoading from '../../components/big-loading'
 export default class PrivateRoute extends React.Component {
   isContext(Component){
     let { user, context, selectContext, ...rest } = this.props
-    let template = (<Component {...rest} />);
+    let template = (<Component {...rest} />)
 
     if (user.id === null) {
       template = <BigLoading msg={'Retrieving user data...'} />
@@ -26,18 +26,18 @@ export default class PrivateRoute extends React.Component {
   }
 
   render(){
-    let { isAuthenticated, setIsAuthenticated, component, ...rest } = this.props;
+    let { isAuthenticated, setIsAuthenticated, component, ...rest } = this.props
     return ( <Route {...rest} render={() => {
-        if (isAuthenticated === true) {
-          return (<div>{ this.isContext(component) }</div>)
+      if (isAuthenticated === true) {
+        return (<div>{ this.isContext(component) }</div>)
 
-        } else if (Service.isValidCookie() === true){
-          setIsAuthenticated(true)
-          return null
-        } else {
-          return (<Login />)
-        }
-      }} /> )
+      } else if (Service.isValidCookie() === true){
+        setIsAuthenticated(true)
+        return null
+      } else {
+        return (<Login />)
+      }
+    }} /> )
   }
 }
 
