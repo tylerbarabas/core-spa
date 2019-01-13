@@ -42,7 +42,7 @@ export default class LoginForm extends React.Component {
     let animClass = ''
     if ( errorMsg !== null ) animClass = 'pulse'
     if ( this.isInitialLoad ) {
-      animClass = 'fadeInDown'
+      animClass = 'fadeIn'
       this.isInitialLoad = false
     }
 
