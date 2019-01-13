@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import PrivateRoute from '..//private-route'
-import { logout, setIsAuthenticated } from 'core-spa/src/modules/auth'
-import { getMyUser } from 'core-spa/src/modules/user'
-import { selectContext } from 'core-spa/src/modules/context'
+import PrivateRoute from '../private-route'
+import { logout, setIsAuthenticated } from '../../modules/auth'
+import { getMyUser } from '../../modules/user'
+import { selectContext } from '../../modules/context'
+import Breadcrumbs from '../../components/breadcrumbs'
 import TopBar from '../../components/top-bar'
 import Dashboard from '../dashboard'
 import PublicArea from '../public-area'
@@ -49,6 +50,7 @@ class App extends React.Component {
       <div>
         <main>
           <TopBar name={'Platform'} logout={logout} user={user} isAuthenticated={isAuthenticated} />
+          <Breadcrumbs isAuthenticated={isAuthenticated} />
           <Switch>
             <PrivateRoute exact path="/" component={Dashboard} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} user={user} context={context} selectContext={selectContext} />
             <Route exact path="/public-area" component={PublicArea} />

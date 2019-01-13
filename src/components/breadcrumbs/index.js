@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import key from './key.json'
@@ -18,8 +19,9 @@ export default class Breadcrumbs extends React.Component {
   }
 
   render(){
+    let { isAuthenticated } = this.props
     return (
-      <div className="container">
+      <div className={`container animated fadeIn${(!isAuthenticated) ? ' is-hidden':''}`}>
         <nav className="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
           <ul>
             <li className="home-icon"><FontAwesomeIcon icon={faHome} /></li>
@@ -29,4 +31,8 @@ export default class Breadcrumbs extends React.Component {
       </div>
     )
   }
+}
+
+Breadcrumbs.propTypes = {
+  isAuthenticated: PropTypes.bool
 }
