@@ -1,0 +1,16 @@
+nav.breadcrumb{
+  margin-top: 20px;
+  
+  li {
+    margin-right: 10px;
+  }
+
+  li.home-icon {
+    position: relative;
+    top: 3px;
+  }
+
+  li::before{
+    margin-right: 10px;
+  }
+}
