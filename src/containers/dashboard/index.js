@@ -1,21 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { logout } from '../../modules/auth'
-import { selectContext } from '../../modules/context'
 import ContextSelector from '../../components/context-selector'
-import CoreDashboardMain from '../../components/dashboard-main'
 import BigLoading from '../../components/big-loading'
 
-class Dashboard extends React.Component {
+export default class Dashboard extends React.Component {
   componentDidUpdate(){
     if (this.props.user.isError) this.props.logout()
   }
 
   isContext(){
     let { user, context } = this.props
-    let DashboardMain = this.props.dashboard || CoreDashboardMain
+    let DashboardMain = this.props.dashboard
     let template = (<DashboardMain context={context} />)
 
     if (user.id === null) {
@@ -45,25 +40,7 @@ Dashboard.propTypes = {
   user: PropTypes.object,
   logout: PropTypes.func,
   context: PropTypes.object,
-  dashboard: PropTypes.element,
+  dashboard: PropTypes.func,
   selectContext: PropTypes.func,
 }
 
-const mapStateToProps = ({ user, context }) => ({ 
-  user,
-  context,
-})
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      logout,
-      selectContext,
-    },
-    dispatch
-  )
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dashboard)
