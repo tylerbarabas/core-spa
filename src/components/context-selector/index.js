@@ -37,7 +37,7 @@ export default class ContextSelector extends React.Component {
     return (
       <div className="section">
         <div className="columns">
-          <div className="column is-one-third is-offset-one-third context-selector animated fadeIn">
+          <div className="column is-three-fifths is-offset-one-fifth context-selector animated fadeIn">
             <h1 className="title">Choose context.</h1>
             <div className="form-control">
               <label htmlFor="select-brand">Vendor</label>

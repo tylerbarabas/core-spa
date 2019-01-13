@@ -29,7 +29,7 @@ export default class TopBar extends React.Component {
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
             <FontAwesomeIcon icon={faTh} />
-            <img src="rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
+            <img src="/rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
             { name }
           </Link>
         </div>

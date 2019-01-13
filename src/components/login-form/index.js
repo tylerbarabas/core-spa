@@ -38,7 +38,7 @@ export default class LoginForm extends React.Component {
 
   animateContainer(){
     const { errorMsg } = this.props
-    const staticClasses = 'column is-one-fifth is-offset-two-fifths is-radiusless animated login-form'
+    const staticClasses = 'column is-one-third is-offset-one-third is-radiusless animated login-form'
     let animClass = ''
     if ( errorMsg !== null ) animClass = 'pulse'
     if ( this.isInitialLoad ) {
@@ -64,7 +64,7 @@ export default class LoginForm extends React.Component {
       <div className="section">
         <div className="columns">
           <div className={this.animateContainer()}>
-            <img className="logo" src="logo.png" alt="RevCascade Logo" />
+            <img className="logo" src="/logo.png" alt="RevCascade Logo" />
             <div className={'message '+(errorMsg?'error-msg':'')}>{ this.getMessage() }</div>
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="field">                            
