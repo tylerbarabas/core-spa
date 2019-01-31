@@ -102,7 +102,7 @@ export const setIsAuthenticated = isAuthenticated => {
 
 export const logout = () => {
   return dispatch => {
-    Service.destroyCookie()
+    Service.destroyCookies()
     dispatch({
       type: LOGOUT
     })

@@ -15,6 +15,8 @@ const uri_getMyUser = fullPath('/v1/users/me/')
 const uri_getBrands = fullPath('/v1/brands/')
 const uri_getRetailers = fullPath('/v1/retailers/')
 
+const cookieDays = 2
+
 //catalog
 //const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
 const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections=1')
@@ -45,7 +47,6 @@ export default {
     Auth.accessToken = data.access_token
     Auth.tokenType = data.token_type
 
-    const cookieDays = 2
 
     Cookie.set('at', data.access_token, { expires: cookieDays })
     Cookie.set('tt', data.token_type, { expires: cookieDays })
@@ -56,6 +57,7 @@ export default {
     let res = await fetch(uri_getMyUser, {
       headers: getAuthHeaders()
     })
+
     return res
   },
   getMyRetailers: async () => {
@@ -70,19 +72,26 @@ export default {
     })
     return res
   },
-  isValidCookie: () => {
+  isValidAuthCookie: () => {
     Auth.accessToken = Cookie.get('at')
     Auth.tokenType = Cookie.get('tt')
 
     if (Auth.accessToken === null || Auth.tokenType === null) {
       return false
     }
-
     return true 
   },
-  destroyCookie: () => {
+  getContextCookie: () => {
+    return Cookie.get('ctx') 
+  },
+  setContextCookie: ( id ) => {
+    Cookie.set('ctx', `${id}`, { expires: cookieDays })
+    return true
+  },
+  destroyCookies: () => {
     Cookie.erase('at')
     Cookie.erase('tt')
+    Cookie.erase('ctx')
   },
   getVendorImports: async id => {
     let uri = uri_getVendorImports.replace(/:id/,id)

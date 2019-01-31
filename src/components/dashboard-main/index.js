@@ -8,7 +8,7 @@ export default class DashCenter extends React.Component {
         <div className="columns">
           <div className="column is-one-third is-offset-one-third animated fadeIn context-selector">
             <h1 className="title">Dashboard</h1>
-            <div style={{textAlign: 'center'}}>{this.props.context.name}</div>
+            <div style={{textAlign: 'center'}}>{this.props.context.id}</div>
           </div>
         </div>
       </div>

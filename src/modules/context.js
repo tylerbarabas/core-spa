@@ -1,9 +1,9 @@
 import { LOGOUT } from './auth'
+import Service from '../service'
 export const CONTEXT_SELECTED = 'context/CONTEXT_SELECTED'
 
 const initialState = {
   id: null,
-  name: null,
 }
 
 export default (state = initialState, action) => {
@@ -12,7 +12,6 @@ export default (state = initialState, action) => {
     return {
       ...state,
       id: action.id,
-      name: action.name
     }
   case LOGOUT:
     return initialState
@@ -21,12 +20,12 @@ export default (state = initialState, action) => {
   }
 }
 
-export const selectContext = ({ id, name }) => {
+export const selectContext = ({ id }) => {
+  Service.setContextCookie(id)
   return dispatch => {
     dispatch({
       type: CONTEXT_SELECTED,
       id,
-      name
     })
   }
 }

@@ -20,12 +20,21 @@ class PrivateRoute extends React.Component {
     if (user.id === null) {
       template = <BigLoading msg={'Retrieving user data...'} />
     } else if (context.id === null) {
+      let contextCookie = Service.getContextCookie()
       let combined = user.retailers.concat(user.brands)
-      if (combined.length > 1) {
-        template = (<ContextSelector brands={user.brands} retailers={user.retailers} selectContext={selectContext} />)
-      } else if (combined.length === 1) {
+      let f = combined.find( c => {
+        return c.id === parseInt(contextCookie)
+      })
+
+      if (combined.length === 1) {
         selectContext(combined[0])
-      }
+      } else if (contextCookie !== null && typeof f !== 'undefined') {
+        selectContext(f)
+      } else if (combined.length > 1) {
+        template = (<ContextSelector brands={user.brands} retailers={user.retailers} selectContext={selectContext} />)
+      } else {
+        template = 'No contexts available.' //Should never reach this
+      } 
     }
 
     return template
@@ -39,7 +48,7 @@ class PrivateRoute extends React.Component {
       if (isAuthenticated === true) {
         return (<div>{ this.isContext(component) }</div>)
 
-      } else if (Service.isValidCookie() === true){
+      } else if (Service.isValidAuthCookie() === true){
         setIsAuthenticated(true)
         return null
       } else {
