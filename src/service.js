@@ -47,7 +47,6 @@ export default {
     Auth.accessToken = data.access_token
     Auth.tokenType = data.token_type
 
-
     Cookie.set('at', data.access_token, { expires: cookieDays })
     Cookie.set('tt', data.token_type, { expires: cookieDays })
 
@@ -84,9 +83,9 @@ export default {
   getContextCookie: () => {
     return Cookie.get('ctx') 
   },
-  setContextCookie: ( id ) => {
-    Cookie.set('ctx', `${id}`, { expires: cookieDays })
-    return true
+  setContextCookie: ( uuid ) => {
+    Cookie.set('ctx', `${uuid}`, { expires: cookieDays })
+    return uuid
   },
   destroyCookies: () => {
     Cookie.erase('at')

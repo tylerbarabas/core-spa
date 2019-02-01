@@ -28,7 +28,7 @@ export default class TopBar extends React.Component {
     for (let i=0;i<retailers.length;i+=1) {
       let r = retailers[i]
       template.push (
-          <option className="navbar-item" key={x}>
+          <option value={r.uuid} className="navbar-item" key={x}>
             {r.name}
           </option>
       )
@@ -37,7 +37,7 @@ export default class TopBar extends React.Component {
     for (let i=0;i<brands.length;i+=1) {
       let b = brands[i]
       template.push (
-          <option className="navbar-item" key={x}>
+          <option value={b.uuid} className="navbar-item" key={x}>
             {b.name}
           </option>
       )
@@ -46,26 +46,26 @@ export default class TopBar extends React.Component {
     return template
   }
 
-  getContext(id){
+  getContext(uuid){
     let { retailers, brands } = this.props.user
     let findr = retailers.find(r => {
-      return r.id === id
+      return r.uuid === uuid
     })
     let findb = brands.find(b => {
-      return b.id === id
+      return b.uuid === uuid
     })
-    return { name: 'Select context' }
+    return findr || findb || { name: 'Select context' }
   }
 
-  contextChanged(){
-    console.log('context changed')
+  contextChanged(e){
+    this.props.selectContext({ uuid: e.target.value })
   }
 
   render(){
     let { firstName } = this.props.user
     let { isAuthenticated, logout, name } = this.props
-    let { id } = this.props.context
-    let ctx = this.getContext(id)
+    let { uuid } = this.props.context
+    let ctx = this.getContext(uuid)
     return (
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
@@ -87,6 +87,7 @@ export default class TopBar extends React.Component {
               <div className="navbar-dropdown">
                 <div className="navbar-item">
                   <select onChange={this.contextChanged.bind(this)}>
+                    <option value="select_one">Select context</option>
                     {this.getContextItems()}
                   </select>
                 </div>
@@ -113,6 +114,7 @@ TopBar.propTypes = {
   buttons: PropTypes.array,
   user: PropTypes.object,
   context: PropTypes.object,
+  selectContext: PropTypes.func,
   isAuthenticated: PropTypes.bool,
   logout: PropTypes.func,
   name: PropTypes.string,

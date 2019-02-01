@@ -3,7 +3,7 @@ import Service from '../service'
 export const CONTEXT_SELECTED = 'context/CONTEXT_SELECTED'
 
 const initialState = {
-  id: null,
+  uuid: null,
 }
 
 export default (state = initialState, action) => {
@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
   case CONTEXT_SELECTED:
     return {
       ...state,
-      id: action.id,
+      uuid: action.uuid,
     }
   case LOGOUT:
     return initialState
@@ -20,12 +20,12 @@ export default (state = initialState, action) => {
   }
 }
 
-export const selectContext = ({ id }) => {
-  Service.setContextCookie(id)
+export const selectContext = ({ uuid }) => {
+  Service.setContextCookie(uuid)
   return dispatch => {
     dispatch({
       type: CONTEXT_SELECTED,
-      id,
+      uuid,
     })
   }
 }

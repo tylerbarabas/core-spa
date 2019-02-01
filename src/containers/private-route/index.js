@@ -13,24 +13,18 @@ import ContextSelector from '../../components/context-selector'
 import BigLoading from '../../components/big-loading'
 
 class PrivateRoute extends React.Component {
-  isContext(Component){
+  getTemplate(Component){
     let { user, context, selectContext, ...rest } = this.props
     let template = (<Component {...rest} />)
 
     if (user.id === null) {
       template = <BigLoading msg={'Retrieving user data...'} />
-    } else if (context.id === null) {
+    } else if (context.uuid === null) {
       let contextCookie = Service.getContextCookie()
-      let combined = user.retailers.concat(user.brands)
-      let f = combined.find( c => {
-        return c.id === parseInt(contextCookie)
-      })
+      let { brands, retailers } = this.props.user
+      let combinedLength = brands.length + retailers.length
 
-      if (combined.length === 1) {
-        selectContext(combined[0])
-      } else if (contextCookie !== null && typeof f !== 'undefined') {
-        selectContext(f)
-      } else if (combined.length > 1) {
+      if (combinedLength > 1) {
         template = (<ContextSelector brands={user.brands} retailers={user.retailers} selectContext={selectContext} />)
       } else {
         template = 'No contexts available.' //Should never reach this
@@ -40,14 +34,39 @@ class PrivateRoute extends React.Component {
     return template
   }
 
+  checkContext( nextProps = this.props ){
+      let { selectContext, context } = nextProps
+      let contextCookie = Service.getContextCookie()
+      let { brands, retailers } = nextProps.user
+      let combinedLength = brands.length + retailers.length
+      let findb = brands.find(b => {
+        return b.uuid === contextCookie
+      })
+      let findr = retailers.find(r => {
+        return r.uuid === contextCookie
+      })
+      let f = findb || findr || false
+
+      if (combinedLength === 1) {
+        if ( brands.length > 0 && brands[0].uuid !== context.uuid ) selectContext(brands[0])
+        else if (retailers[0].uuid !== context.uuid) selectContext(retailers[0])
+      } else if (contextCookie !== null && f !== false && context.uuid !== contextCookie) {
+        selectContext(f)
+      }
+  }
+
+  shouldComponentUpdate( nextProps ){
+    this.checkContext( nextProps )
+    return true 
+  }
+
   render(){
     let { setIsAuthenticated, component, ...rest } = this.props
     let { isAuthenticated } = this.props.auth
 
     return ( <Route {...rest} render={() => {
       if (isAuthenticated === true) {
-        return (<div>{ this.isContext(component) }</div>)
-
+        return (<div>{ this.getTemplate(component) }</div>)
       } else if (Service.isValidAuthCookie() === true){
         setIsAuthenticated(true)
         return null

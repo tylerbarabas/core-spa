@@ -49,7 +49,7 @@ class App extends React.Component {
     return(
       <div>
         <main>
-          <TopBar name={'Platform'} logout={logout} user={user} context={context} isAuthenticated={isAuthenticated} />
+          <TopBar name={'Platform'} logout={logout} user={user} context={context} isAuthenticated={isAuthenticated} selectContext={selectContext} />
           <Breadcrumbs isAuthenticated={isAuthenticated} />
           <Switch>
             <PrivateRoute exact path="/" component={Dashboard} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} user={user} context={context} selectContext={selectContext} />
