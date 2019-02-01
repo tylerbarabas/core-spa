@@ -21,9 +21,51 @@ export default class TopBar extends React.Component {
     )
   }
 
+  getContextItems(){
+    let { retailers, brands } = this.props.user
+    let template = []
+    let x = 0
+    for (let i=0;i<retailers.length;i+=1) {
+      let r = retailers[i]
+      template.push (
+          <option className="navbar-item" key={x}>
+            {r.name}
+          </option>
+      )
+      x++
+    }
+    for (let i=0;i<brands.length;i+=1) {
+      let b = brands[i]
+      template.push (
+          <option className="navbar-item" key={x}>
+            {b.name}
+          </option>
+      )
+      x++
+    }
+    return template
+  }
+
+  getContext(id){
+    let { retailers, brands } = this.props.user
+    let findr = retailers.find(r => {
+      return r.id === id
+    })
+    let findb = brands.find(b => {
+      return b.id === id
+    })
+    return { name: 'Select context' }
+  }
+
+  contextChanged(){
+    console.log('context changed')
+  }
+
   render(){
     let { firstName } = this.props.user
     let { isAuthenticated, logout, name } = this.props
+    let { id } = this.props.context
+    let ctx = this.getContext(id)
     return (
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
@@ -38,6 +80,18 @@ export default class TopBar extends React.Component {
             {this.getButtons()}
           </div>
           <div className="navbar-end">
+            <div className="navbar-item has-dropdown is-hoverable">
+              <div className="navbar-link is-arrowless">
+                { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
+              </div>
+              <div className="navbar-dropdown">
+                <div className="navbar-item">
+                  <select onChange={this.contextChanged.bind(this)}>
+                    {this.getContextItems()}
+                  </select>
+                </div>
+              </div>
+            </div>
             <div className="navbar-item has-dropdown is-hoverable">
               <div className="navbar-link is-arrowless">
                 Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
@@ -58,6 +112,7 @@ export default class TopBar extends React.Component {
 TopBar.propTypes = {
   buttons: PropTypes.array,
   user: PropTypes.object,
+  context: PropTypes.object,
   isAuthenticated: PropTypes.bool,
   logout: PropTypes.func,
   name: PropTypes.string,
