@@ -20,7 +20,6 @@ class PrivateRoute extends React.Component {
     if (user.id === null) {
       template = <BigLoading msg={'Retrieving user data...'} />
     } else if (context.uuid === null) {
-      let contextCookie = Service.getContextCookie()
       let { brands, retailers } = this.props.user
       let combinedLength = brands.length + retailers.length
 
@@ -35,23 +34,23 @@ class PrivateRoute extends React.Component {
   }
 
   checkContext( nextProps = this.props ){
-      let { selectContext, context } = nextProps
-      let contextCookie = Service.getContextCookie()
-      let { brands, retailers } = nextProps.user
-      let combinedLength = brands.length + retailers.length
-      let findb = brands.find(b => {
-        return b.uuid === contextCookie
-      })
-      let findr = retailers.find(r => {
-        return r.uuid === contextCookie
-      })
-      let f = findb || findr || false
-      if (combinedLength === 1) {
-        if ( brands.length > 0 && brands[0].uuid !== context.uuid ) selectContext(brands[0].uuid)
-        else if (retailers[0].uuid !== context.uuid) selectContext(retailers[0].uuid)
-      } else if (contextCookie !== null && f !== false && context.uuid !== contextCookie) {
-        selectContext(f.uuid)
-      }
+    let { selectContext, context } = nextProps
+    let contextCookie = Service.getContextCookie()
+    let { brands, retailers } = nextProps.user
+    let combinedLength = brands.length + retailers.length
+    let findb = brands.find(b => {
+      return b.uuid === contextCookie
+    })
+    let findr = retailers.find(r => {
+      return r.uuid === contextCookie
+    })
+    let f = findb || findr || false
+    if (combinedLength === 1) {
+      if ( brands.length > 0 && brands[0].uuid !== context.uuid ) selectContext(brands[0].uuid)
+      else if (retailers[0].uuid !== context.uuid) selectContext(retailers[0].uuid)
+    } else if (contextCookie !== null && f !== false && context.uuid !== contextCookie) {
+      selectContext(f.uuid)
+    }
   }
 
   shouldComponentUpdate( nextProps ){

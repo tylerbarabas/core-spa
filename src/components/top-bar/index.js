@@ -28,18 +28,18 @@ export default class TopBar extends React.Component {
     for (let i=0;i<retailers.length;i+=1) {
       let r = retailers[i]
       template.push (
-          <option value={r.uuid} className="navbar-item" key={x}>
-            {r.name}
-          </option>
+        <option value={r.uuid} className="navbar-item" key={x}>
+          {r.name}
+        </option>
       )
       x++
     }
     for (let i=0;i<brands.length;i+=1) {
       let b = brands[i]
       template.push (
-          <option value={b.uuid} className="navbar-item" key={x}>
-            {b.name}
-          </option>
+        <option value={b.uuid} className="navbar-item" key={x}>
+          {b.name}
+        </option>
       )
       x++
     }
