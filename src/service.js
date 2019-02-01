@@ -84,8 +84,10 @@ export default {
     return Cookie.get('ctx') 
   },
   setContextCookie: ( uuid ) => {
-    Cookie.set('ctx', `${uuid}`, { expires: cookieDays })
-    return uuid
+    let current = Cookie.get('ctx')
+    if (current !== uuid) {
+      Cookie.set('ctx', `${uuid}`, { expires: cookieDays })
+    }
   },
   destroyCookies: () => {
     Cookie.erase('at')

@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
   }
 }
 
-export const selectContext = ({ uuid }) => {
+export const selectContext = uuid => {
   Service.setContextCookie(uuid)
   return dispatch => {
     dispatch({

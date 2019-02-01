@@ -27,7 +27,7 @@ export default class ContextSelector extends React.Component {
     let combined = this.props.brands.concat(this.props.retailers)
     let original = combined.filter(a => a.uuid === selected.value)[0]
 
-    this.props.selectContext( original )
+    this.props.selectContext( original.uuid )
   }
 
   render(){

@@ -58,7 +58,7 @@ export default class TopBar extends React.Component {
   }
 
   contextChanged(e){
-    this.props.selectContext({ uuid: e.target.value })
+    this.props.selectContext( e.target.value )
   }
 
   render(){
