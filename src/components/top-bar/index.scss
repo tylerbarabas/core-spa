@@ -53,4 +53,9 @@ nav.navbar {
     top: 2px;
     margin-left: 10px;
   }
+
+  div.ctx-selector {
+    min-width: 180px;
+    justify-content: flex-end;
+  }
 }
