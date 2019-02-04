@@ -8,7 +8,7 @@ import colors from '../app/variables.scss'
 
 class Login extends React.Component {
   componentDidMount(){
-    document.body.style.backgroundColor = colors.backgroundDarkblue
+    document.getElementById('root').style.backgroundColor = colors.backgroundDarkblue
   }
 
   render(){

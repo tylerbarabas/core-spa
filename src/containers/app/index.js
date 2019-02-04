@@ -39,7 +39,7 @@ class App extends React.Component {
 
   setBackgroundColor(){
     let { isAuthenticated } = this.props.auth
-    document.body.style.backgroundColor = (!isAuthenticated) ? colors.backgroundDarkBlue : colors.backgroundGrey
+    document.getElementById('root').style.backgroundColor = (!isAuthenticated) ? colors.backgroundDarkBlue : colors.backgroundGrey
   }
 
 

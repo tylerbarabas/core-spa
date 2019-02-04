@@ -1,12 +1,14 @@
 @import './variables';
 
 html, body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    transition: 400ms background-color;
     font-family: 'proxima-nova', sans-serif;
     color: $text-plain;
+    height: 100%;
+}
+
+div#root{
+    min-height: 100%;
+    transition: 400ms background-color;
 }
 
 //Style overwrites, these can be done via
