@@ -19,7 +19,7 @@ const cookieDays = 2
 
 //catalog
 //const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
-const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections=1')
+const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections=1&count=25')
 const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&short=1&order_by=brand__name')
 
 let Auth = {
@@ -95,8 +95,8 @@ export default {
     Cookie.erase('tt')
     Cookie.erase('ctx')
   },
-  getVendorImports: async id => {
-    let uri = uri_getVendorImports.replace(/:id/,id)
+  getVendorImports: async ( id, filter = '', page = 1 ) => {
+    let uri = `${uri_getVendorImports.replace(/:id/,id)}${filter}&page=${page}`
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
