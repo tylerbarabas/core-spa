@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import './index.scss'
 
 export default class Paginator extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      currentPage: 1
+  shouldComponentUpdate(nextProps){
+    let { action } = nextProps
+    if (nextProps.page !== this.props.page){
+      action(nextProps.page)
     }
+    return true
   }
 
   getTotalPages(){
@@ -16,57 +17,57 @@ export default class Paginator extends React.Component {
   }
 
   getPaginationList(){
-    let { currentPage } = this.state
+    let { action, page } = this.props
     let template = []
     let totalPages = this.getTotalPages()
 
     if ( totalPages > 6 ) {
-      let start = currentPage - 1
-      if ( currentPage === 1 || currentPage === totalPages ) {
+      let start = page - 1
+      if ( page === 1 || page === totalPages ) {
         start = Math.ceil(totalPages/2) - 1
-      } else if ( currentPage === 2 ) {
+      } else if ( page === 2 ) {
         start = 2
-      } else if ( currentPage === totalPages - 1 ) {
-        start = currentPage - 2
+      } else if ( page === totalPages - 1 ) {
+        start = page - 2
       }
 
       template.push(
         <ul className="pagination-list">
           <li>
             <a 
-              className={`pagination-link${(currentPage===1)?' is-current':''}`}
+              className={`pagination-link${(page===1)?' is-current':''}`}
               aria-label="Goto page 1"
-              onClick={()=>{this.setState({currentPage: 1})}}
+              onClick={()=>{action(1)}}
             >1</a>
           </li>
           <li><span className="pagination-ellipsis">&hellip;</span></li>
           <li>
             <a
-              className={`pagination-link${(currentPage===start)?' is-current':''}`}
+              className={`pagination-link${(page===start)?' is-current':''}`}
               aria-label={`Goto page ${start}`}
-              onClick={()=>{this.setState({currentPage: start})}}
+              onClick={()=>{action(start)}}
             >{start}</a>
           </li>
           <li>
             <a
-              className={`pagination-link${(currentPage===start+1)?' is-current':''}`}
+              className={`pagination-link${(page===start+1)?' is-current':''}`}
               aria-label={`Goto page ${start+1}`}
-              onClick={()=>{this.setState({currentPage: start+1})}}
+              onClick={()=>{action(start+1)}}
             >{start+1}</a>
           </li>
           <li>
             <a
-              className={`pagination-link${(currentPage===start+2)?' is-current':''}`}
+              className={`pagination-link${(page===start+2)?' is-current':''}`}
               aria-label={`Goto page ${start+2}`}
-              onClick={()=>{this.setState({currentPage: start+2})}}
+              onClick={()=>{action(start+2)}}
             >{start+2}</a>
           </li>
           <li><span className="pagination-ellipsis">&hellip;</span></li>
           <li>
             <a 
-              className={`pagination-link${(currentPage===totalPages)?' is-current':''}`}
+              className={`pagination-link${(page===totalPages)?' is-current':''}`}
               aria-label={`Goto page ${totalPages}`}
-              onClick={()=>{this.setState({currentPage: totalPages})}}
+              onClick={()=>{action(totalPages)}}
             >{totalPages}</a>
           </li> 
         </ul>
@@ -74,11 +75,11 @@ export default class Paginator extends React.Component {
     } else {
       for ( let i=1; i <= totalPages; i+=1 ){
         template.push(
-          <li>
+          <li key={i}>
             <a 
-              className={`pagination-link${(currentPage===i)?' is-current':''}`} 
+              className={`pagination-link${(page===i)?' is-current':''}`} 
               aria-label={`Goto page ${i}`}
-              onClick={()=>{this.setState({currentPage: i})}}
+              onClick={()=>{action(i)}}
             >{i}</a>
           </li>
         )
@@ -89,14 +90,14 @@ export default class Paginator extends React.Component {
   }
 
   previousClicked(){
-    let { currentPage } = this.state
-    if (currentPage > 1) this.setState({currentPage: currentPage-1})
+    let { page, action } = this.props
+    if (page > 1) action(page-1)
   }
 
   nextClicked(){
-    let { currentPage } = this.state
+    let { page, action } = this.props
     let totalPages = this.getTotalPages()
-    if (currentPage < totalPages) this.setState({currentPage: currentPage+1})
+    if (page < totalPages) action(page+1)
   }
 
   render(){
@@ -117,6 +118,8 @@ export default class Paginator extends React.Component {
 }
 
 Paginator.propTypes = {
-  count: PropTypes.number.required,
-  limit: PropTypes.number.required,
+  count: PropTypes.number,
+  limit: PropTypes.number,
+  page: PropTypes.number,
+  action: PropTypes.func,
 }
