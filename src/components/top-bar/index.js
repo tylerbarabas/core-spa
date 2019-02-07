@@ -79,31 +79,31 @@ export default class TopBar extends React.Component {
           <div className="navbar-start">
             {this.getButtons()}
           </div>
-            <div className="navbar-item has-dropdown is-hoverable">
-              <div className="navbar-link is-arrowless ctx-selector">
-                { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
-              </div>
-              <div className="navbar-dropdown">
-                <div className="navbar-item">
-                  <div className="select is-small">
-                    <select onChange={this.contextChanged.bind(this)}>
-                      <option value="select_one">Select context</option>
-                      {this.getContextItems()}
-                    </select>
-                  </div>
+          <div className="navbar-item has-dropdown is-hoverable">
+            <div className="navbar-link is-arrowless ctx-selector">
+              { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+            <div className="navbar-dropdown">
+              <div className="navbar-item">
+                <div className="select is-small">
+                  <select onChange={this.contextChanged.bind(this)}>
+                    <option value="select_one">Select context</option>
+                    {this.getContextItems()}
+                  </select>
                 </div>
               </div>
             </div>
-            <div className="navbar-item has-dropdown is-hoverable">
-              <div className="navbar-link is-arrowless">
+          </div>
+          <div className="navbar-item has-dropdown is-hoverable">
+            <div className="navbar-link is-arrowless">
                 Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
-              </div>
-              <div className="navbar-dropdown">
-                <div className="navbar-item" onClick={logout}>
+            </div>
+            <div className="navbar-dropdown">
+              <div className="navbar-item" onClick={logout}>
                   Logout
-                </div>
               </div>
             </div>
+          </div>
         </div>
       </nav>
     )

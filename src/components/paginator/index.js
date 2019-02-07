@@ -17,8 +17,6 @@ export default class Paginator extends React.Component {
     let totalPages = Math.ceil(count / l)
     let template = []
 
-    console.log('totalPages', totalPages)
-
     if ( totalPages > 6 ) {
       template.push(
         <span>
@@ -33,7 +31,14 @@ export default class Paginator extends React.Component {
       ) 
     } else {
       for ( let i=1; i <= totalPages; i+=1 ){
-        template.push(<li><a className={`pagination-link${(currentPage===i)?' is-current':''}`} aria-label={`Goto page ${i}`}>{i}</a></li>)
+        template.push(
+          <li>
+            <a 
+              className={`pagination-link${(currentPage===i)?' is-current':''}`} 
+              aria-label={`Goto page ${i}`}
+            >{i}</a>
+          </li>
+        )
       }
     }
 
@@ -44,13 +49,13 @@ export default class Paginator extends React.Component {
     return (
       <div className="paginator-container columns">
         <div className="column">
-        <nav className="pagination is-right" role="navigation" aria-label="pagination">
-          <a className="pagination-previous">Previous</a>
-          <a className="pagination-next">Next page</a>
-          <ul className="pagination-list">
-            {this.getPaginationList()}
-          </ul>
-        </nav>
+          <nav className="pagination is-right" role="navigation" aria-label="pagination">
+            <a className="pagination-previous">Previous</a>
+            <a className="pagination-next">Next page</a>
+            <ul className="pagination-list">
+              {this.getPaginationList()}
+            </ul>
+          </nav>
         </div>
       </div>
     )
