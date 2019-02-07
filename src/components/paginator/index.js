@@ -10,12 +10,15 @@ export default class Paginator extends React.Component {
     }
   }
 
+  getTotalPages(){
+    let { count, limit } = this.props
+    return Math.ceil(count / limit)
+  }
+
   getPaginationList(){
-    const l = 25
-    let { count } = this.props
     let { currentPage } = this.state
-    let totalPages = Math.ceil(count / l)
     let template = []
+    let totalPages = this.getTotalPages()
 
     if ( totalPages > 6 ) {
       let start = currentPage - 1
@@ -85,13 +88,24 @@ export default class Paginator extends React.Component {
     return template
   }
 
+  previousClicked(){
+    let { currentPage } = this.state
+    if (currentPage > 1) this.setState({currentPage: currentPage-1})
+  }
+
+  nextClicked(){
+    let { currentPage } = this.state
+    let totalPages = this.getTotalPages()
+    if (currentPage < totalPages) this.setState({currentPage: currentPage+1})
+  }
+
   render(){
     return (
       <div className="paginator-container columns">
         <div className="column">
           <nav className="pagination is-right" role="navigation" aria-label="pagination">
-            <a className="pagination-previous">Previous</a>
-            <a className="pagination-next">Next page</a>
+            <a className="pagination-previous" onClick={this.previousClicked.bind(this)}>Previous</a>
+            <a className="pagination-next" onClick={this.nextClicked.bind(this)}>Next page</a>
             <ul className="pagination-list">
               {this.getPaginationList()}
             </ul>
@@ -103,5 +117,6 @@ export default class Paginator extends React.Component {
 }
 
 Paginator.propTypes = {
-  count: PropTypes.number
+  count: PropTypes.number.required,
+  limit: PropTypes.number.required,
 }
