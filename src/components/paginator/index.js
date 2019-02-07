@@ -14,7 +14,7 @@ export default class Paginator extends React.Component {
     const l = 25
     let { count } = this.props
     let { currentPage } = this.state
-    let totalPages = Math.ceil(count / l) + 5
+    let totalPages = Math.ceil(count / l)
     let template = []
 
     if ( totalPages > 6 ) {
