@@ -96,6 +96,7 @@ export default {
     Cookie.erase('ctx')
   },
   getVendorImports: async ( id, page = 1, filter = '' ) => {
+    if (filter.length > 0) filter = `&${filter}`
     let uri = `${uri_getVendorImports.replace(/:id/,id)}${filter}&page=${page}`
     let res = await fetch(uri, {
       headers: getAuthHeaders()
