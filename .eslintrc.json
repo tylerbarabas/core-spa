@@ -16,10 +16,6 @@
         "react"
     ],
     "rules": {
-        "indent": [
-            "error",
-            2
-        ],
         "linebreak-style": [
             "error",
             "unix"
@@ -38,5 +34,10 @@
         "quotes": [1],
         "react/jsx-uses-vars": [2],
         "react/prop-types": [1]
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
     }
 }
