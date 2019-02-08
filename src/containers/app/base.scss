@@ -17,6 +17,12 @@ div#root{
     background-color: $primary !important;
 }
 
-.is-secondary {
-    background-color: $secondary !important;
+.is-secondary,
+.is-secondary:hover,
+.is-secondary:active,
+.is-secondary:focus,
+.is-secondary:visited {
+    background-color: $secondary;
+    border-color: transparent;
+    color: #FFF;
 }
