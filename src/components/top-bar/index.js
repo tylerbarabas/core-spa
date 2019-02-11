@@ -83,7 +83,7 @@ export default class TopBar extends React.Component {
             <div className="navbar-link is-arrowless ctx-selector">
               { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
             </div>
-            <div className="navbar-dropdown">
+            <div className="navbar-dropdown is-right">
               <div className="navbar-item">
                 <div className="select is-small">
                   <select onChange={this.contextChanged.bind(this)}>
@@ -98,7 +98,7 @@ export default class TopBar extends React.Component {
             <div className="navbar-link is-arrowless">
                 Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
             </div>
-            <div className="navbar-dropdown">
+            <div className="navbar-dropdown is-right">
               <div className="navbar-item" onClick={logout}>
                   Logout
               </div>
