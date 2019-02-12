@@ -29,6 +29,7 @@
   display: block;
   position: absolute;
   top: 30px;
+  right: 0;
   width: auto;
   min-width: 171px;
   border: 1px solid #aaa;
@@ -56,4 +57,10 @@
 
 .react-autosuggest__suggestion--highlighted {
   background-color: #ddd;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after,
+.select:not(.is-multiple):not(.is-loading)::after,
+.navbar-link:not(.is-arrowless)::after {
+  display: none !important;
 }
