@@ -70,13 +70,13 @@ export default class LoginForm extends React.Component {
               <div className="field">                            
                 <label htmlFor="login-email">Email</label>
                 <div className="control">
-                  <input className="is-one-quarter input login-fields" type="text" id="login-email" />
+                  <input className="is-one-quarter input login-fields is-large" type="text" id="login-email" />
                 </div>
               </div>
               <div className="field">                            
                 <label htmlFor="login-password">Password</label>
                 <div className="control">
-                  <input className="is-one-quarter input login-fields" type="password" id="login-password" />
+                  <input className="is-one-quarter input login-fields is-large" type="password" id="login-password" />
                 </div>
               </div>
               <button type="submit" className="button is-large is-primary login-button" disabled={(isRequesting)}>Sign In {this.isSpinner()}</button>
