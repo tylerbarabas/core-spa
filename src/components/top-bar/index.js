@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTh,faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import AutoSuggestBox from '../auto-suggest-box'
 import './index.scss'
 
 export default class TopBar extends React.Component {
@@ -86,10 +87,7 @@ export default class TopBar extends React.Component {
             <div className="navbar-dropdown is-right">
               <div className="navbar-item">
                 <div className="select is-small">
-                  <select onChange={this.contextChanged.bind(this)}>
-                    <option value="select_one">Select context</option>
-                    {this.getContextItems()}
-                  </select>
+                  <AutoSuggestBox options={[{name: 'one'},{name: 'two'},{name: 'three'},]} />
                 </div>
               </div>
             </div>

@@ -7,7 +7,11 @@ export default class ContextSelector extends React.Component {
   constructor(props){
     super(props)
     this.brands = this.props.brands.map( b => {
-      return { value: b.uuid, label: b.name, stateProp: 'selectedBrand' }
+      return {
+        value: b.uuid,
+        label: b.name,
+        stateProp: 'selectedBrand',
+      }
     })
 
     this.retailers = this.props.retailers.map( r => {
