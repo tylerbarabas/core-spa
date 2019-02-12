@@ -1,4 +1,5 @@
 import Cookie from 'browser-cookies'
+import CacheLayer from './cache-layer'
 
 let Config
 try {
@@ -28,6 +29,8 @@ let Auth = {
 }
 
 const getAuthHeaders = () => ({'Authorization': `${Auth.tokenType} ${Auth.accessToken}`})
+
+const Cache = new CacheLayer()
 
 export default {
   getAuthToken: async (email, password) => {
@@ -98,16 +101,32 @@ export default {
   getVendorImports: async ( id, page = 1, filter = '' ) => {
     if (filter.length > 0) filter = `&${filter}`
     let uri = `${uri_getVendorImports.replace(/:id/,id)}${filter}&page=${page}`
-    let res = await fetch(uri, {
-      headers: getAuthHeaders()
-    })
-    return res
+    let c = Cache.find(uri)
+    let data = null
+    if (c === null) {
+      let res = await fetch(uri, {
+        headers: getAuthHeaders()
+      })
+      data = await res.json()
+      Cache.record(uri, data)
+    } else {
+      data = c.res
+    }
+    return data
   },
   getVendorList: async id => {
     let uri = uri_getVendorList.replace(/:id/,id)
-    let res = await fetch(uri, {
-      headers: getAuthHeaders()
-    })
-    return res
+    let c = Cache.find(uri)
+    let data = null;
+    if (c ===  null) {
+      let res = await fetch(uri, {
+        headers: getAuthHeaders()
+      })
+      data = await res.json()
+      Cache.record(uri, data)
+    } else {
+      data = c.res
+    }
+    return data
   },
 }
