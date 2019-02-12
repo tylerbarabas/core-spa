@@ -24,27 +24,7 @@ export default class TopBar extends React.Component {
 
   getContextItems(){
     let { retailers, brands } = this.props.user
-    let template = []
-    let x = 0
-    for (let i=0;i<retailers.length;i+=1) {
-      let r = retailers[i]
-      template.push (
-        <option value={r.uuid} className="navbar-item" key={x}>
-          {r.name}
-        </option>
-      )
-      x++
-    }
-    for (let i=0;i<brands.length;i+=1) {
-      let b = brands[i]
-      template.push (
-        <option value={b.uuid} className="navbar-item" key={x}>
-          {b.name}
-        </option>
-      )
-      x++
-    }
-    return template
+    return retailers.concat(brands)
   }
 
   getContext(uuid){
@@ -67,6 +47,7 @@ export default class TopBar extends React.Component {
     let { isAuthenticated, logout, name } = this.props
     let { uuid } = this.props.context
     let ctx = this.getContext(uuid)
+    let options = this.getContextItems()
     return (
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
@@ -87,7 +68,7 @@ export default class TopBar extends React.Component {
             <div className="navbar-dropdown is-right">
               <div className="navbar-item">
                 <div className="select is-small">
-                  <AutoSuggestBox options={[{name: 'one'},{name: 'two'},{name: 'three'},]} />
+                  <AutoSuggestBox options={options} />
                 </div>
               </div>
             </div>
