@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import AutoSuggest from 'react-autosuggest'
 import './index.scss'
 
-export default class AutocompleteBox extends React.Component {
+export default class AutoSuggestBox extends React.Component {
   constructor() {
     super()
 
@@ -13,31 +13,31 @@ export default class AutocompleteBox extends React.Component {
     } 
   }
 
-  getSuggestionValue = suggestion => {
+  getSuggestionValue (suggestion) {
     return suggestion.name
   }
 
-  renderSuggestion = suggestion => {
+  renderSuggestion (suggestion) {
     return (
       <span id={suggestion.uuid}>{suggestion.name}</span>
     )
   }
 
-  onKeyDown = (event) => {
+  onKeyDown(e) {
     let { options, action } = this.props
-    if (event.which === 13) {
-      let o = options.filter(o => o.name === event.target.value)
+    if (e.which === 13) {
+      let o = options.filter(o => o.name === e.target.value)
       let uuid = o[0].uuid
       action(uuid)
     }
   }
 
-  onChange = (event, { newValue, method }) => {
+  onChange (e, { newValue, method }) {
     this.setState({
       value: newValue
     })
-    if (event.type === 'click') {
-      let uuid = event.target.id
+    if (method === 'click') {
+      let uuid = e.target.id
       this.props.action(uuid)
     }
   }
@@ -58,13 +58,13 @@ export default class AutocompleteBox extends React.Component {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   }
  
-  onSuggestionsFetchRequested = ({ value }) => {
+  onSuggestionsFetchRequested ({ value }) {
     this.setState({
       suggestions: this.getSuggestions(value)
     })
   }
 
-  onSuggestionsClearRequested = () => {
+  onSuggestionsClearRequested () {
     this.setState({
       suggestions: []
     })
@@ -73,96 +73,25 @@ export default class AutocompleteBox extends React.Component {
   render() {
     const { value, suggestions } = this.state
     const inputProps = {
-      placeholder: "Start typing...",
+      placeholder: 'Start typing...',
       value,
-      onChange: this.onChange,
-      onKeyDown: this.onKeyDown,
+      onChange: this.onChange.bind(this),
+      onKeyDown: this.onKeyDown.bind(this),
     }
 
     return (
       <AutoSuggest 
         suggestions={suggestions}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={this.getSuggestionValue}
-        renderSuggestion={this.renderSuggestion}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+        getSuggestionValue={this.getSuggestionValue.bind(this)}
+        renderSuggestion={this.renderSuggestion.bind(this)}
         inputProps={inputProps} />
     )
   }
 }
 
-
-/*
-
-const languages = [
-  {
-    name: 'C',
-    year: 1972
-  },
-  {
-    name: 'C#',
-    year: 2000
-  },
-  {
-    name: 'C++',
-    year: 1983
-  },
-  {
-    name: 'Clojure',
-    year: 2007
-  },
-  {
-    name: 'Elm',
-    year: 2012
-  },
-  {
-    name: 'Go',
-    year: 2009
-  },
-  {
-    name: 'Haskell',
-    year: 1990
-  },
-  {
-    name: 'Java',
-    year: 1995
-  },
-  {
-    name: 'Javascript',
-    year: 1995
-  },
-  {
-    name: 'Perl',
-    year: 1987
-  },
-  {
-    name: 'PHP',
-    year: 1995
-  },
-  {
-    name: 'Python',
-    year: 1991
-  },
-  {
-    name: 'Ruby',
-    year: 1995
-  },
-  {
-    name: 'Scala',
-    year: 2003
-  }
-]
-
-// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
-
-
-class App extends React.Component {
-
-}
-*/
-
-
-
-AutocompleteBox.propTypes = {
-  data: PropTypes.object,
+AutoSuggestBox.propTypes = {
+  options: PropTypes.array,
+  action: PropTypes.func,
 }
