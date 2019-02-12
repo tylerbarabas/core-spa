@@ -19,14 +19,27 @@ export default class AutocompleteBox extends React.Component {
 
   renderSuggestion = suggestion => {
     return (
-      <span>{suggestion.name}</span>
+      <span id={suggestion.uuid}>{suggestion.name}</span>
     )
+  }
+
+  onKeyDown = (event) => {
+    let { options, action } = this.props
+    if (event.which === 13) {
+      let o = options.filter(o => o.name === event.target.value)
+      let uuid = o[0].uuid
+      action(uuid)
+    }
   }
 
   onChange = (event, { newValue, method }) => {
     this.setState({
       value: newValue
     })
+    if (event.type === 'click') {
+      let uuid = event.target.id
+      this.props.action(uuid)
+    }
   }
 
   getSuggestions(value) {
@@ -62,7 +75,8 @@ export default class AutocompleteBox extends React.Component {
     const inputProps = {
       placeholder: "Start typing...",
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
+      onKeyDown: this.onKeyDown,
     }
 
     return (

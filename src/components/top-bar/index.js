@@ -38,8 +38,8 @@ export default class TopBar extends React.Component {
     return findr || findb || { name: 'Select context' }
   }
 
-  contextChanged(e){
-    this.props.selectContext( e.target.value )
+  contextChanged = uuid => {
+    this.props.selectContext( uuid )
   }
 
   render(){
@@ -68,7 +68,7 @@ export default class TopBar extends React.Component {
             <div className="navbar-dropdown is-right">
               <div className="navbar-item">
                 <div className="select is-small">
-                  <AutoSuggestBox options={options} />
+                  <AutoSuggestBox options={options} action={this.contextChanged}/>
                 </div>
               </div>
             </div>
