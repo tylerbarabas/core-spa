@@ -79,7 +79,7 @@ export default class LoginForm extends React.Component {
                   <input className="is-one-quarter input login-fields" type="password" id="login-password" />
                 </div>
               </div>
-              <button type="submit" className="button is-primary login-button" disabled={(isRequesting)}>Sign In {this.isSpinner()}</button>
+              <button type="submit" className="button is-large is-primary login-button" disabled={(isRequesting)}>Sign In {this.isSpinner()}</button>
             </form>
           </div>
         </div>
