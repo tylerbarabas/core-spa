@@ -1,0 +1,22 @@
+div.io{
+  background-color: #FFF;
+  border-radius: 15px;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .large-button {
+    height: 75px;
+    line-height: 75px;
+    border: 1px solid #84d3c0;
+    color: #84d3c0;
+    padding: 0;
+    font-size: 23px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+  } 
+}
