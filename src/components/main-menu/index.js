@@ -8,7 +8,7 @@ export default class MainMenu extends React.Component {
   render(){
     return (
       <div className="columns animated fadeIn">
-        <div className="column io">
+        <div className="column main-menu">
           <div className="columns">
             <div className="column">
               <h1>Item & Inventory Imports & Exports</h1>
