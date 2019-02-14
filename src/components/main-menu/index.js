@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './index.scss'
 
-class IO extends React.Component {
+export default class MainMenu extends React.Component {
   render(){
     return (
       <div className="columns animated fadeIn">
@@ -30,17 +30,5 @@ class IO extends React.Component {
   }
 }
 
-const mapStateToProps = () => ({ 
-})
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-    },
-    dispatch
-  )
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(IO)
+MainMenu.propTypes = {
+}
