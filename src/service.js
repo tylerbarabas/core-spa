@@ -129,4 +129,8 @@ export default {
     }
     return data
   },
+  getInventory: async ( id, page = 1, filter ='' ) => {
+    let data = {}
+    return data
+  },
 }
