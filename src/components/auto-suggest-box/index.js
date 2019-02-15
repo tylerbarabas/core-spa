@@ -27,8 +27,10 @@ export default class AutoSuggestBox extends React.Component {
     let { options, action } = this.props
     if (e.which === 13) {
       let o = options.filter(o => o.name === e.target.value)
-      let uuid = o[0].uuid
-      action(uuid)
+      if (typeof o[0] !== 'undefined') {
+        let uuid = o[0].uuid
+        action(uuid)
+      }
     }
   }
 
