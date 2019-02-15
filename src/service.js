@@ -117,7 +117,7 @@ export default {
   getVendorList: async id => {
     let uri = uri_getVendorList.replace(/:id/,id)
     let c = Cache.find(uri)
-    let data = null;
+    let data = null
     if (c ===  null) {
       let res = await fetch(uri, {
         headers: getAuthHeaders()
@@ -130,7 +130,7 @@ export default {
     return data
   },
   getInventory: async ( id, page = 1, filter ='' ) => {
-    let data = {}
+    let data = { page, filter, }
     return data
   },
 }
