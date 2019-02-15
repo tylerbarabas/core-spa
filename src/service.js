@@ -9,6 +9,7 @@ catch (e) {
   throw new Error('Client config not found.')
 }
 
+const cookieDays = 2
 const fullPath = path => `${Config.HOST}${path}`
 
 const uri_authToken = fullPath('/auth/token/')
@@ -16,12 +17,12 @@ const uri_getMyUser = fullPath('/v1/users/me/')
 const uri_getBrands = fullPath('/v1/brands/')
 const uri_getRetailers = fullPath('/v1/retailers/')
 
-const cookieDays = 2
 
 //catalog
 //const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
 const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections=1&direction=import&limit=25')
 const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&short=1&order_by=brand__name')
+const uri_getInventory = fullPath('/v1/retailers/:id/inventory-summary/')
 
 let Auth = {
   accessToken: null,
@@ -130,7 +131,12 @@ export default {
     return data
   },
   getInventory: async ( id, page = 1, filter ='' ) => {
-    let data = { page, filter, }
+    let data = null
+    let uri = uri_getInventory.replace(/:id/,'1153')
+    let res = await fetch(uri, {
+      headers: getAuthHeaders()
+    })
+    data = await res.json()
     return data
   },
 }
