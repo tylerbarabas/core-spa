@@ -132,7 +132,7 @@ export default {
   },
   getInventory: async ( id, page = 1, filter ='' ) => {
     let data = null
-    let uri = uri_getInventory.replace(/:id/,'1153')
+    let uri = `${uri_getInventory.replace(/:id/,id)}?${filter}&page=${page}`
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
