@@ -1,5 +1,6 @@
 {
   "io": "Imports & Exports",
+  "vendor-imports": "Vendor Imports",
   "inventory": "Inventory",
-  "vendor-imports": "Vendor Imports"
+  "summary": "Summary"
 }
