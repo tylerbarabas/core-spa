@@ -10,7 +10,7 @@ export default class DataTable extends React.Component {
     for (let i=0;i<columns.length;i+=1) {
       let c = columns[i]
       let style = ( i === 0 ) ? 'first' : ''
-      template.push( <th className={style}>{c.title}</th> )
+      template.push( <th className={style} key={i}>{c.title}</th> )
     }
     return template
   }
@@ -19,7 +19,7 @@ export default class DataTable extends React.Component {
     let { data } = this.props
     let template = []
     for (let i=0;i<data.length;i+=1){
-      template.push(<tr>{this.getTableRow(i)}</tr>)
+      template.push(<tr key={i}>{this.getTableRow(i)}</tr>)
     }
 
     return template
@@ -31,7 +31,7 @@ export default class DataTable extends React.Component {
     for (let i=0;i<columns.length;i+=1){
       let c = columns[i]
       let d = data[index]
-      template.push(<td>{d[c.index]}</td>)
+      template.push(<td key={i}>{d[c.index]}</td>)
     }
     return template
   }
