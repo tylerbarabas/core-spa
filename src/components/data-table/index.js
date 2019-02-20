@@ -14,7 +14,10 @@ export default class DataTable extends React.Component {
       let style = ( i === 0 ) ? 'first' : ''
       template.push(
         <th className={style} key={i}>
-          {c.title} <FontAwesomeIcon icon={faQuestionCircle} />
+          {c.title} 
+          <button className="tooltip" data-tooltip={c.tooltip}>
+            <FontAwesomeIcon icon={faQuestionCircle} />
+          </button>
         </th>
       )
     }

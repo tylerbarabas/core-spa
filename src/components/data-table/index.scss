@@ -2,6 +2,14 @@ table.data-table{
   width: 100%;
 
   tr {
+    button.tooltip{
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      user-select: none;
+      outline: none;
+    }
+
     .first{
       width: 40%;
     }
