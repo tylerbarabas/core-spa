@@ -31,6 +31,7 @@
     "animate.css": "^3.7.0",
     "browser-cookies": "^1.2.0",
     "bulma": "^0.7.2",
+    "bulma-tooltip": "^2.0.2",
     "connected-react-router": "4.5.0",
     "email-validator": "^2.0.4",
     "node-sass": "^4.10.0",
