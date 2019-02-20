@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 export default class DataTable extends React.Component {
@@ -10,7 +12,11 @@ export default class DataTable extends React.Component {
     for (let i=0;i<columns.length;i+=1) {
       let c = columns[i]
       let style = ( i === 0 ) ? 'first' : ''
-      template.push( <th className={style} key={i}>{c.title}</th> )
+      template.push(
+        <th className={style} key={i}>
+          {c.title} <FontAwesomeIcon icon={faQuestionCircle} />
+        </th>
+      )
     }
     return template
   }
