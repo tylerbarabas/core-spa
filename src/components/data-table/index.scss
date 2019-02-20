@@ -1,2 +1,9 @@
-div.main-menu{
+table.data-table{
+  width: 100%;
+
+  tr {
+    .first{
+      width: 40%;
+    }
+  }
 }
