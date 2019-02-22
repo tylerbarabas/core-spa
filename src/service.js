@@ -133,10 +133,17 @@ export default {
   getInventory: async ( id, page = 1, filter ='' ) => {
     let data = null
     let uri = `${uri_getInventory.replace(/:id/,id)}?${filter}&page=${page}`
-    let res = await fetch(uri, {
-      headers: getAuthHeaders()
-    })
-    data = await res.json()
+    let thirtyMinutes = 60000 * 30
+    let c = Cache.find(uri, thirtyMinutes)
+    if (c === null) {
+      let res = await fetch(uri, {
+        headers: getAuthHeaders()
+      })
+      data = await res.json()
+      Cache.record(uri, data)
+    } else {
+      data = c.res
+    }
     return data
   },
 }
