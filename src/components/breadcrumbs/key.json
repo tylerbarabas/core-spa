@@ -2,5 +2,6 @@
   "io": "Imports & Exports",
   "vendor-imports": "Vendor Imports",
   "inventory": "Inventory",
-  "summary": "Summary"
+  "summary": "Summary",
+  "inactive": "Inactive"
 }
