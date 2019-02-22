@@ -47,7 +47,7 @@ export default class DataTable extends React.Component {
 
   render(){
     return (
-      <div className="columns">
+      <div className="columns animated fadeIn">
         <div className="column">
           <table className="table data-table">
             <thead>
