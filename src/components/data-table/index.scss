@@ -15,5 +15,10 @@ table.data-table{
     .first{
       width: 40%;
     }
+
+    th {
+      user-select: none;
+      cursor: pointer;
+    }
   }
 }
