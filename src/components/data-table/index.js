@@ -15,7 +15,7 @@ export default class DataTable extends React.Component {
       template.push(
         <th className={style} key={i}>
           {c.title} 
-          <button className="tooltip" data-tooltip={c.tooltip}>
+          <button className="tooltip is-tooltip-bottom" data-tooltip={c.tooltip}>
             <FontAwesomeIcon icon={faQuestionCircle} />
           </button>
         </th>
