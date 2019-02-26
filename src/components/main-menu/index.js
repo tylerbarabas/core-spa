@@ -10,7 +10,7 @@ export default class MainMenu extends React.Component {
     for (let i=0;i<buttons.length;i+=1) {
       let b = buttons[i]
       template.push(
-        <div className="columns">
+        <div key={i} className="columns">
           <Link to={b.to} className="column is-offset-one-fifth is-three-fifths large-button">{b.title}</Link>
         </div>
       )
@@ -37,5 +37,5 @@ export default class MainMenu extends React.Component {
 
 MainMenu.propTypes = {
   title: PropTypes.string,
-  buttons: PropTypes.string,
+  buttons: PropTypes.array,
 }
