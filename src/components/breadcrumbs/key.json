@@ -4,5 +4,6 @@
   "inventory": "Inventory",
   "summary": "Summary Report",
   "compliance": "Compliance Report",
-  "inactive": "Inactive Report"
+  "inactive": "Inactive Report",
+  "items": "Items"
 }
