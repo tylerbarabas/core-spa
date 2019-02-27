@@ -2,6 +2,7 @@
   "io": "Imports & Exports",
   "vendor-imports": "Vendor Imports",
   "inventory": "Inventory",
-  "summary": "Summary",
-  "inactive": "Inactive"
+  "summary": "Summary Report",
+  "compliance": "Compliance Report",
+  "inactive": "Inactive Report"
 }
