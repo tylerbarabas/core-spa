@@ -22,7 +22,8 @@ const uri_getRetailers = fullPath('/v1/retailers/')
 //const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
 const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections=1&direction=import&limit=25')
 const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&short=1&order_by=brand__name')
-const uri_getInventory = fullPath('/v1/retailers/:id/inventory-summary/')
+const uri_getInventorySummary = fullPath('/v1/retailers/:id/inventory-summary/')
+const uri_getInventoryItems = fullPath('/v1/retailers/:id/inventory/')
 
 let Auth = {
   accessToken: null,
@@ -130,9 +131,25 @@ export default {
     }
     return data
   },
-  getInventory: async ( id, page = 1, filter ='' ) => {
+  getInventorySummary: async ( id, page = 1, filter ='' ) => {
     let data = null
-    let uri = `${uri_getInventory.replace(/:id/,id)}?${filter}&page=${page}`
+    let uri = `${uri_getInventorySummary.replace(/:id/,id)}?${filter}&page=${page}`
+    let thirtyMinutes = 60000 * 30
+    let c = Cache.find(uri, thirtyMinutes)
+    if (c === null) {
+      let res = await fetch(uri, {
+        headers: getAuthHeaders()
+      })
+      data = await res.json()
+      Cache.record(uri, data)
+    } else {
+      data = c.res
+    }
+    return data
+  },
+  getInventoryItems: async ( id, page = 1, filter ='' ) => {
+    let data = null
+    let uri = `${uri_getInventoryItems.replace(/:id/,id)}?${filter}&page=${page}`
     let thirtyMinutes = 60000 * 30
     let c = Cache.find(uri, thirtyMinutes)
     if (c === null) {
