@@ -11,9 +11,8 @@ export default class DataTable extends React.Component {
     let template = []
     for (let i=0;i<columns.length;i+=1) {
       let c = columns[i]
-      let style = ( i === 0 ) ? 'first' : ''
       template.push(
-        <th className={style} key={i} onClick={() => {
+        <th key={i} onClick={() => {
           sortFunc(c.index)
         }}>
           {c.title} 
