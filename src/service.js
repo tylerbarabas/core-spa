@@ -131,25 +131,10 @@ export default {
     }
     return data
   },
-  getInventorySummary: async ( id, page = 1, filter ='' ) => {
+  getInventory: async ( id, isSummary = true, page = 1, filter ='' ) => {
     let data = null
     let uri = `${uri_getInventorySummary.replace(/:id/,id)}?${filter}&page=${page}`
-    let thirtyMinutes = 60000 * 30
-    let c = Cache.find(uri, thirtyMinutes)
-    if (c === null) {
-      let res = await fetch(uri, {
-        headers: getAuthHeaders()
-      })
-      data = await res.json()
-      Cache.record(uri, data)
-    } else {
-      data = c.res
-    }
-    return data
-  },
-  getInventoryItems: async ( id, page = 1, filter ='' ) => {
-    let data = null
-    let uri = `${uri_getInventoryItems.replace(/:id/,id)}?${filter}&page=${page}`
+    if (!isSummary) uri = `${uri_getInventoryItems.replace(/:id/,id)}?${filter}&page=${page}`
     let thirtyMinutes = 60000 * 30
     let c = Cache.find(uri, thirtyMinutes)
     if (c === null) {
