@@ -29,11 +29,11 @@ export default class CheckboxFilter extends React.Component {
       template.push(
         <div key={i} className="filter-option">
           <input type="checkbox"
-              key={i}
-              id={`filter-${filterKey}-${i}`}
-              value={o.value}
-              onChange={this.checkboxSelected.bind(this)}
-              checked={(this.checked.indexOf(o.value) !== -1)}
+            key={i}
+            id={`filter-${filterKey}-${i}`}
+            value={o.value}
+            onChange={this.checkboxSelected.bind(this)}
+            checked={(this.checked.indexOf(o.value) !== -1)}
           /> <label htmlFor={`filter-${filterKey}-${i}`}>{o.display}</label>
         </div>
       )
