@@ -26,14 +26,15 @@ export default class CheckboxFilter extends React.Component {
     let { options, key } = this.props
     let template = []
     for (let i=0;i<options.length;i+=1) {
-    template.push(
-        let o = options[i]
+      let o = options[i]
+      template.push(
         <div className="filter-option">
           <input type="checkbox"
+              key={i}
               id={`filter-${key}-${i}`}
               onChange={this.checkboxSelected.bind(this)}
               checked={(this.checked.indexOf(o.value) !== -1)}
-          /> <label htmlFor=`filter-${key}-${i}`>Inventory</label>
+          /> <label htmlFor={`filter-${key}-${i}`}>Inventory</label>
         </div>
       )
     }
@@ -53,5 +54,5 @@ export default class CheckboxFilter extends React.Component {
 CheckboxFilter.propTypes = {
   key: PropTypes.string,
   options: PropTypes.array,
-  action: PropTypes.string,
+  action: PropTypes.func,
 }
