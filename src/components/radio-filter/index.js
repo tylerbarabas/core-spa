@@ -29,7 +29,7 @@ export default class RadioFilter extends React.Component {
             id={`filter-${filterKey}-${i}`}
             value={o.value}
             onChange={this.radioSelected.bind(this)}
-            checked={(this.checked.indexOf(o.value) !== -1)}
+            checked={(this.checked === o.value)}
           /> <label htmlFor={`filter-${filterKey}-${i}`}>{o.display}</label>
         </div>
       )
