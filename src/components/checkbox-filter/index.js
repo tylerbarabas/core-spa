@@ -7,43 +7,46 @@ export default class CheckboxFilter extends React.Component {
     this.checked = []
   }
 
-  checkboxSelected(){
-    let { key } = this.props
-    if (e.target.checked) this.checked.push(id)
+  checkboxSelected(e){
+    let { action, filterKey } = this.props
+    if (e.target.checked) this.checked.push(e.target.value)
     else {
-      let i = this.checked.indexOf(id)
+      let i = this.checked.indexOf(e.target.value)
       this.checked.splice(i, 1)
     }
-    this.action(this.checked, key) 
+    action(this.checked, filterKey)
   }
 
   resetFilter(){
     this.checked = []
-    this.action(this.checked, key)
   }
 
   getOptions(){
-    let { options, key } = this.props
+    let { options, filterKey } = this.props
     let template = []
     for (let i=0;i<options.length;i+=1) {
       let o = options[i]
       template.push(
-        <div className="filter-option">
+        <div key={i} className="filter-option">
           <input type="checkbox"
               key={i}
-              id={`filter-${key}-${i}`}
+              id={`filter-${filterKey}-${i}`}
+              value={o.value}
               onChange={this.checkboxSelected.bind(this)}
               checked={(this.checked.indexOf(o.value) !== -1)}
-          /> <label htmlFor={`filter-${key}-${i}`}>Inventory</label>
+          /> <label htmlFor={`filter-${filterKey}-${i}`}>{o.display}</label>
         </div>
       )
     }
+
+    return template
   }
 
   render(){
+    let { name } = this.props
     return (
       <div className="filter">
-        <strong>Data Type</strong>
+        <strong>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
         { this.getOptions() }
       </div>
@@ -52,7 +55,8 @@ export default class CheckboxFilter extends React.Component {
 }
 
 CheckboxFilter.propTypes = {
-  key: PropTypes.string,
+  filterKey: PropTypes.string,
+  name: PropTypes.string,
   options: PropTypes.array,
   action: PropTypes.func,
 }
