@@ -1,0 +1,8 @@
+[
+  {"display": "Today", "value": "today"},
+  {"display": "Yesterday", "value": "yesterday"},
+  {"display": "This Week", "value": "this_week"},
+  {"display": "This Month", "value": "this_month"},
+  {"display": "Last Week", "value": "last_week"},
+  {"display": "Last Month", "value": "last_month"}
+]
