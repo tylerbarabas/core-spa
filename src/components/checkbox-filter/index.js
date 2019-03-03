@@ -18,7 +18,9 @@ export default class CheckboxFilter extends React.Component {
   }
 
   resetFilter(){
+    let { action, filterKey } = this.props
     this.checked = []
+    action(this.checked, filterKey)
   }
 
   getOptions(){
