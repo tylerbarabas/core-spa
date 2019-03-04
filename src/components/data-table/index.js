@@ -14,7 +14,7 @@ export default class DataTable extends React.Component {
       template.push(
         <th key={i} onClick={() => {
           sortFunc(c.index)
-        }}>
+        }} style={{width: `${c.width}%`}}>
           {c.title} 
           <button className="tooltip is-tooltip-bottom" data-tooltip={c.tooltip}>
             <FontAwesomeIcon icon={faQuestionCircle} />

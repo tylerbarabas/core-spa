@@ -1,6 +1,7 @@
 table.data-table{
   width: 100%;
   min-width: 880px;
+  font-size: 12px;
 
   tr {
     button.tooltip{
@@ -15,6 +16,7 @@ table.data-table{
     th {
       user-select: none;
       cursor: pointer;
+      font-size: 14px;
     }
   }
 }
