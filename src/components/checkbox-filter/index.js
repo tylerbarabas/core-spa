@@ -7,6 +7,11 @@ export default class CheckboxFilter extends React.Component {
     this.checked = []
   }
 
+  componentDidUpdate(){
+    let { shouldClear } = this.props
+    if (shouldClear) this.resetFilter()
+  }
+
   checkboxSelected(e){
     let { action, filterKey } = this.props
     if (e.target.checked) this.checked.push(e.target.value)

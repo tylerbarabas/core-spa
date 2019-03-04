@@ -10,6 +10,11 @@ export default class DateFilter extends React.Component {
     this.checked = null
   }
 
+  componentDidUpdate(){
+    let { shouldClear } = this.props
+    if (shouldClear) this.resetFilter()
+  }
+
   dateSelected(e){
     let { action, filterKey } = this.props
     this.checked = e.target.value

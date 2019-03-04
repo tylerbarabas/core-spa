@@ -7,6 +7,11 @@ export default class RadioFilter extends React.Component {
     this.checked = null
   }
 
+  componentDidUpdate(){
+    let { shouldClear } = this.props
+    if (shouldClear) this.resetFilter()
+  }
+
   radioSelected(e){
     let { action, filterKey } = this.props
     this.checked = e.target.value
