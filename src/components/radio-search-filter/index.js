@@ -1,15 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class RadioFilter extends React.Component {
+export default class RadioSearchFilter extends React.Component {
   constructor(){
     super()
     this.checked = null
+    this.state = {
+      filterArr: [],
+      searchQuery: ''
+    }
   }
 
   componentDidUpdate(){
     let { shouldClear } = this.props
     if (shouldClear) this.resetFilter()
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    let optionsMatch = nextProps.options === this.props.options
+    let searchMatch = nextState.searchQuery === this.state.searchQuery
+    if (!optionsMatch || !searchMatch) this.makeFilterArr(nextProps, nextState)
+    return true
+  }
+
+  componentDidMount(){
+    this.makeFilterArr()
   }
 
   radioSelected(e){
@@ -18,17 +33,53 @@ export default class RadioFilter extends React.Component {
     action(this.checked, filterKey)
   }
 
+  makeFilterArr(props = this.props, state = this.state){
+    let { options } = props
+    let { searchQuery } = state
+    let arr = []
+
+    if (searchQuery !== '') {
+      for (let i=0;i<options.length;i++){
+        let { display } = options[i]
+        for (let o=searchQuery.length;o>0;o-=1){
+          let substr = searchQuery.slice(0,o)
+          if (display.toUpperCase().indexOf(substr.toUpperCase()) !== -1) {
+            arr.push({o, a: options[i]})
+            break
+          }
+        }
+      }
+
+      arr.sort((a,b)=>{
+        return b.o - a.o
+      })
+
+      arr = arr.slice(0,10)
+
+      arr = arr.map(a=>{
+        return a.a
+      })
+    } else {
+      arr = options.slice(0,10) 
+    }
+
+    this.setState({
+      filterArr: arr
+    })
+  }
+
   resetFilter(){
     let { action, filterKey } = this.props
     this.checked = null
     action(this.checked, filterKey)
   }
 
-  getOptions(){
-    let { options, filterKey } = this.props
+  getDisplayOptions(){
+    let { filterKey, options } = this.props
+    let { filterArr } = this.state
     let template = []
-    for (let i=0;i<options.length;i+=1) {
-      let o = options[i]
+    for (let i=0;i<filterArr.length;i+=1) {
+      let o = filterArr[i]
       template.push(
         <div key={i} className="filter-option">
           <input type="radio"
@@ -51,13 +102,16 @@ export default class RadioFilter extends React.Component {
       <div className="filter">
         <strong>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
-        { this.getOptions() }
+        <input type="text" onChange={e => {
+          this.setState({searchQuery: e.target.value})
+        }} value={this.state.searchQuery} />
+        { this.getDisplayOptions() }
       </div>
     )
   }
 }
 
-RadioFilter.propTypes = {
+RadioSearchFilter.propTypes = {
   filterKey: PropTypes.string,
   name: PropTypes.string,
   options: PropTypes.array,
