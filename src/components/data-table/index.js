@@ -28,7 +28,7 @@ export default class DataTable extends React.Component {
   getTableBody(){
     let { data, rowClicked } = this.props
     let pointer = {cursor: 'pointer'}
-    if (typeof rowClicked === 'undefined') {
+    if (typeof rowClicked === 'undefined' || rowClicked === null) {
       rowClicked = ()=>{}
       pointer = {}
     }
