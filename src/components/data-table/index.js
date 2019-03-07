@@ -26,10 +26,24 @@ export default class DataTable extends React.Component {
   }
 
   getTableBody(){
-    let { data } = this.props
+    let { data, rowClicked } = this.props
+    let pointer = {cursor: 'pointer'}
+    if (typeof rowClicked === 'undefined') {
+      rowClicked = ()=>{}
+      pointer = {}
+    }
     let template = []
     for (let i=0;i<data.length;i+=1){
-      template.push(<tr key={i}>{this.getTableRow(i)}</tr>)
+      let d = data[i]
+      template.push(
+        <tr
+          onClick={() => {
+            rowClicked(d)
+          }}
+          key={i}
+          style={pointer}
+        >{this.getTableRow(i)}</tr>
+      )
     }
 
     return template
@@ -67,4 +81,6 @@ export default class DataTable extends React.Component {
 DataTable.propTypes = {
   data: PropTypes.array,
   columns: PropTypes.array,
+  rowClicked: PropTypes.func,
+  sortFunc: PropTypes.func,
 }
