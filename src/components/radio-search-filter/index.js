@@ -24,6 +24,8 @@ export default class RadioSearchFilter extends React.Component {
   }
 
   componentDidMount(){
+    let initialValue = this.props.initialValue || null
+    if (initialValue !== null) this.checked = initialValue
     this.makeFilterArr()
   }
 
@@ -61,6 +63,13 @@ export default class RadioSearchFilter extends React.Component {
       })
     } else {
       arr = options.slice(0,10) 
+    }
+
+    let selected = options.filter(o=>o.value===this.checked)
+    let selectedIndex = arr.indexOf(selected)
+    if (this.checked !== null && selectedIndex === -1) {
+      arr.unshift(selected[0])
+      arr.pop()
     }
 
     this.setState({
