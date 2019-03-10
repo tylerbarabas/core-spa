@@ -9,8 +9,10 @@ catch (e) {
   throw new Error('Client config not found.')
 }
 
+const { API, ELASTIC } = Config
+
 const cookieDays = 2
-const fullPath = path => `${Config.HOST}${path}`
+const fullPath = path => `${API.HOST}${path}`
 
 const uri_authToken = fullPath('/auth/token/')
 const uri_getMyUser = fullPath('/v1/users/me/')
@@ -38,8 +40,8 @@ export default {
   getAuthToken: async (email, password) => {
 
     let fd = new FormData()
-    fd.append('client_id', Config.CLIENT_ID)
-    fd.append('grant_type', Config.GRANT_TYPE)
+    fd.append('client_id', API.CLIENT_ID)
+    fd.append('grant_type', API.GRANT_TYPE)
     fd.set('username', email)
     fd.set('password', password)
 
