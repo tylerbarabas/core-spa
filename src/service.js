@@ -12,7 +12,7 @@ catch (e) {
 const { API, ELASTIC } = Config
 
 const cookieDays = 2
-const fullPath = path => `${API.HOST}${path}`
+const fullPath = (path, host = API.HOST) => `${host}${path}`
 
 const uri_authToken = fullPath('/auth/token/')
 const uri_getMyUser = fullPath('/v1/users/me/')
@@ -26,6 +26,7 @@ const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections
 const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&short=1&order_by=brand__name')
 const uri_getInventorySummary = fullPath('/v1/retailers/:id/inventory-summary/')
 const uri_getInventoryItems = fullPath('/v1/retailers/:id/inventory/?limit=15&ignore_deleted=1')
+const uri_elasticSearch = fullPath('/v1/[retailers|brands]/<id>/variants/search/', ELASTIC.HOST)
 
 let Auth = {
   accessToken: null,
