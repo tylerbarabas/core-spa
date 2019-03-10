@@ -66,8 +66,8 @@ export default class RadioSearchFilter extends React.Component {
     }
 
     let selected = options.filter(o=>o.value===this.checked)
-    let selectedIndex = arr.indexOf(selected)
-    if (this.checked !== null && selectedIndex === -1) {
+    let sIndex = arr.indexOf(selected[0])
+    if (this.checked !== null && sIndex === -1) {
       arr.unshift(selected[0])
       arr.pop()
     }
