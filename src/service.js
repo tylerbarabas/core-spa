@@ -26,7 +26,7 @@ const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections
 const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&short=1&order_by=brand__name')
 const uri_getInventorySummary = fullPath('/v1/retailers/:id/inventory-summary/')
 const uri_getInventoryItems = fullPath('/v1/retailers/:id/inventory/?limit=15&ignore_deleted=1')
-const uri_elasticSearch = fullPath('/v1/[retailers|brands]/<id>/variants/search/', ELASTIC.HOST)
+const uri_elasticSearch = fullPath('/v1/:rb/:id/variants/search/')
 
 let Auth = {
   accessToken: null,
@@ -149,6 +149,15 @@ export default {
     } else {
       data = c.res
     }
+    return data
+  },
+  searchItems: async ( id, rb = 'brands' ) => {
+    let uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}?search_term=glasses`
+    let res = await fetch(uri, {
+      headers: getAuthHeaders()
+    })
+    let data = await res.json()
+    console.log('data', data)
     return data
   },
 }
