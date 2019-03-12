@@ -16,6 +16,7 @@ const uri_authToken = fullPath('/auth/token/')
 const uri_getMyUser = fullPath('/v1/users/me/')
 const uri_getBrands = fullPath('/v1/brands/')
 const uri_getRetailers = fullPath('/v1/retailers/')
+const uri_inventoryExportByEmail = fullPath('/v1/retailers/:id/inventory/export-email/?ignore_deleted=1')
 
 
 //catalog
@@ -156,6 +157,15 @@ export default {
     })
     let data = await res.json()
     console.log('data', data)
+    return data
+  },
+  exportInventoryByEmail: async id => {
+    let uri = uri_inventoryExportByEmail.replace(':id', id)
+    let res = await fetch(uri, {
+      headers: getAuthHeaders()
+    })
+    let data = res.json()
+    console.log('look here', data)
     return data
   },
 }
