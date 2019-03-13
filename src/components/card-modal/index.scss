@@ -1,0 +1,14 @@
+div.big-loading {
+    width: 100%;
+
+    p.loading-text {
+        font-size: 25px;
+        padding-left: 20px;
+    }
+
+    svg.loading-spinner{
+        margin-top: 33%;
+        margin-bottom: 10px;
+        font-size: 100px;
+    }
+}
