@@ -17,7 +17,7 @@ export default class CardModal extends React.Component {
     } = this.props
 
     return (
-      <div className={`modal ${(isActive)?'is-active':''}`>
+      <div className={`card-modal modal ${(isActive)?'is-active':''}`>
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">
@@ -48,5 +48,13 @@ export default class CardModal extends React.Component {
 }
 
 CardModal.propTypes = {
-  msg: PropTypes.string
+  isActive: PropTypes.bool,
+  modalTitle: PropTypes.string,
+  modalContent: PropTypes.string,
+  primaryText: PropTypes.string,
+  primaryAction:PropTypes.func,
+  isSecondary: PropTypes.bool,
+  secondaryText: PropTypes.string,
+  secondaryAction: PropTypes.func,
+  closeAction: PropTypes.func,
 }
