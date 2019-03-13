@@ -17,9 +17,9 @@ export default class CardModal extends React.Component {
     } = this.props
 
     return (
-      <div className={`card-modal modal ${(isActive)?'is-active':''}`>
-        <div className="modal-background"></div>
-        <div className="modal-card">
+      <div className={`card-modal modal ${(isActive)?'is-active':''}`}>
+        <div className="modal-background" />
+        <div className="modal-card animated fadeInDown">
           <header className="modal-card-head">
             <p className="modal-card-title">{modalTitle}</p>
             <button
@@ -33,11 +33,14 @@ export default class CardModal extends React.Component {
           </section>
           <footer className="modal-card-foot">
             <button
-              className="button is-success"
-              onClick={()=>{primaryAction()}}
+              className="button is-primary"
+              onClick={()=>{
+                primaryAction()
+                closeAction()
+              }}
             >{primaryText}</button>
             <button
-              className="button"
+              className={`button is-secondary ${(isSecondary)?'':'is-hidden'}`}
               onClick={()=>{secondaryAction()}}
             >{secondaryText}</button>
           </footer>
@@ -50,7 +53,7 @@ export default class CardModal extends React.Component {
 CardModal.propTypes = {
   isActive: PropTypes.bool,
   modalTitle: PropTypes.string,
-  modalContent: PropTypes.string,
+  modalContent: PropTypes.element,
   primaryText: PropTypes.string,
   primaryAction:PropTypes.func,
   isSecondary: PropTypes.bool,
