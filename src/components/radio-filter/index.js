@@ -62,4 +62,5 @@ RadioFilter.propTypes = {
   name: PropTypes.string,
   options: PropTypes.array,
   action: PropTypes.func,
+  shouldClear: PropTypes.bool,
 }

@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import OPTIONS from './options.json'
 
-const SECONDSINADAY = 86399
-
 export default class DateFilter extends React.Component {
   constructor(){
     super()
@@ -26,41 +24,41 @@ export default class DateFilter extends React.Component {
     let d = new Date()
     let sunday = 0
     let currentDay = d.getDay()
+    let oneWeek = 7
     let distance
     switch(time){
-      default:
-      case 'today':
-        d.setHours(0,0,0,0)
-      break;
-      case 'yesterday':
-        d.setHours(0,0,0,0)
-        d.setDate(d.getDate() - 1)
-      break;
-      case 'this_week':
-        d = new Date()
-        d.setHours(0,0,0,0)
-        distance = sunday - currentDay
-        d.setDate(d.getDate() + distance)
-      break;
-      case 'this_month':
-        d = new Date()
-        d.setHours(0,0,0,0)
-        d.setDate(1)
-      break;
-      case 'last_week':
-        d = new Date()
-        d.setHours(0,0,0,0)
-        let oneWeek = 7
-        let currentDay = d.getDay()
-        distance = sunday - currentDay - oneWeek
-        d.setDate(d.getDate() + distance)
-      break;
-      case 'last_month':
-        d = new Date()
-        d.setHours(0,0,0,0)
-        d.setDate(1)
-        d.setMonth(d.getMonth()-1)
-      break;
+    default:
+    case 'today':
+      d.setHours(0,0,0,0)
+      break
+    case 'yesterday':
+      d.setHours(0,0,0,0)
+      d.setDate(d.getDate() - 1)
+      break
+    case 'this_week':
+      d = new Date()
+      d.setHours(0,0,0,0)
+      distance = sunday - currentDay
+      d.setDate(d.getDate() + distance)
+      break
+    case 'this_month':
+      d = new Date()
+      d.setHours(0,0,0,0)
+      d.setDate(1)
+      break
+    case 'last_week':
+      d = new Date()
+      d.setHours(0,0,0,0)
+      currentDay = d.getDay()
+      distance = sunday - currentDay - oneWeek
+      d.setDate(d.getDate() + distance)
+      break
+    case 'last_month':
+      d = new Date()
+      d.setHours(0,0,0,0)
+      d.setDate(1)
+      d.setMonth(d.getMonth()-1)
+      break
     }
     let ms = d.getTime()
 
@@ -75,7 +73,7 @@ export default class DateFilter extends React.Component {
 
   getOptions(){
     let { filterKey } = this.props
-    let options = OPTIONS;
+    let options = OPTIONS
     let template = []
     for (let i=0;i<options.length;i+=1) {
       let o = options[i]
@@ -111,4 +109,5 @@ DateFilter.propTypes = {
   filterKey: PropTypes.string,
   name: PropTypes.string,
   action: PropTypes.func,
+  shouldClear: PropTypes.bool,
 }

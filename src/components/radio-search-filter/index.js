@@ -84,7 +84,7 @@ export default class RadioSearchFilter extends React.Component {
   }
 
   getDisplayOptions(){
-    let { filterKey, options } = this.props
+    let { filterKey } = this.props
     let { filterArr } = this.state
     let template = []
     for (let i=0;i<filterArr.length;i+=1) {
@@ -125,4 +125,6 @@ RadioSearchFilter.propTypes = {
   name: PropTypes.string,
   options: PropTypes.array,
   action: PropTypes.func,
+  shouldClear: PropTypes.bool,
+  initialValue: PropTypes.string,
 }
