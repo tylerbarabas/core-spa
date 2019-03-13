@@ -155,17 +155,13 @@ export default {
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
-    let data = await res.json()
-    console.log('data', data)
-    return data
+    return res
   },
   exportInventoryByEmail: async id => {
     let uri = uri_inventoryExportByEmail.replace(':id', id)
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
-    let data = res.json()
-    console.log('look here', data)
-    return data
+    return res
   },
 }
