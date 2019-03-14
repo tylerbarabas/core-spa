@@ -4,12 +4,12 @@ import './index.scss'
 
 export default class Notification extends React.Component {
   render(){
-    let { msg, title, type, isActive } = this.props
+    let { msg, title, nType, isActive, hideNotification } = this.props
     return (
-      <article className={`notification message is-${type} animated ${(isActive)?'fadeInDown':'hidden'}`}>
+      <article className={`notification message is-${nType} animated ${(isActive)?'fadeInDown':'hidden'}`}>
         <div className="message-header">
           <p>{title}</p>
-          <button className="delete" aria-label="delete"></button>
+          <button onClick={()=>{hideNotification()}} className="delete" aria-label="delete"></button>
         </div>
         <div className="message-body">
           { msg }
@@ -20,5 +20,9 @@ export default class Notification extends React.Component {
 }
 
 Notification.propTypes = {
-  msg: PropTypes.string
+  title: PropTypes.string,
+  msg: PropTypes.string,
+  isActive: PropTypes.bool,
+  nType: PropTypes.string,
+  hideNotification: PropTypes.func,
 }

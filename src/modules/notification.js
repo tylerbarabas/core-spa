@@ -5,7 +5,7 @@ const initialState = {
   isActive: false,
   msg: 'This is a notification.',
   title: 'Notification Title',
-  type: 'warning',
+  nType: 'warning',
 }
 
 export default (state = initialState, action) => {
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
       isActive: true,
       title: action.title,
       msg: action.msg,
-      type: action.type,
+      nType: action.nType,
     }
   case NOTIFICATION_HIDE:
     return {
@@ -28,13 +28,13 @@ export default (state = initialState, action) => {
   }
 }
 
-export const showNotification = (msg = '', title = '', type = 'warning')  => {
+export const showNotification = (title = '', msg = '', nType = 'warning')  => {
   return dispatch => {
     dispatch({
       type: NOTIFICATION_SHOW,
       title,
       msg,
-      type,
+      nType,
     })
   }
 }
