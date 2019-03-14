@@ -6,7 +6,7 @@ export default class Notification extends React.Component {
   render(){
     let { msg, title, nType, isActive, hideNotification } = this.props
     return (
-      <article className={`notification message is-${nType} animated ${(isActive)?'fadeInDown':'hidden'}`}>
+      <article className={`notification message is-${nType} animated ${(isActive)?'fadeInRight':'hidden'}`}>
         <div className="message-header">
           <p>{title}</p>
           <button onClick={()=>{hideNotification()}} className="delete" aria-label="delete"></button>
