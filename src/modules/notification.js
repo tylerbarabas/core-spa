@@ -1,5 +1,5 @@
 export const NOTIFICATION_SHOW = 'notification/NOTIFICATION_SHOW'
-export const NOTIFICATION_SHOW = 'notification/NOTIFICATION_HIDE'
+export const NOTIFICATION_HIDE = 'notification/NOTIFICATION_HIDE'
 
 const initialState = {
   isActive: false,

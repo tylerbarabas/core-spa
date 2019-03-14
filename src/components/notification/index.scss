@@ -4,4 +4,8 @@ article.notification {
   right: 50px;
   padding: 0;
   min-width: 200px;
+
+  &.hidden{
+    display: none;
+  }
 }
