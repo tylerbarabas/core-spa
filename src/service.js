@@ -150,8 +150,8 @@ export default {
     }
     return data
   },
-  searchItems: async ( id, rb = 'brands' ) => {
-    let uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}?search_term=glasses`
+  searchItems: async ( id, rb = 'retailers' ) => {
+    let uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}?search_term=g`
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
