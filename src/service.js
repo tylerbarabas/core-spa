@@ -26,6 +26,7 @@ const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&
 const uri_getInventorySummary = fullPath('/v1/retailers/:id/inventory-summary/')
 const uri_getInventoryItems = fullPath('/v1/retailers/:id/inventory/?limit=15&ignore_deleted=1')
 const uri_elasticSearch = fullPath('/v1/:rb/:id/variants/search/')
+const uri_items = fullPath('/v1/:rb/:id/variants/?attributes_facet=1&limit=15&short=1')
 
 let Auth = {
   accessToken: null,
@@ -150,15 +151,15 @@ export default {
     }
     return data
   },
-  searchItems: async ( id, rb = 'retailers' ) => {
-    let uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}?search_term=g`
+  exportInventoryByEmail: async id => {
+    let uri = uri_inventoryExportByEmail.replace(':id', id)
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
     return res
   },
-  exportInventoryByEmail: async id => {
-    let uri = uri_inventoryExportByEmail.replace(':id', id)
+  getItems: async ( id, page, filter, rb = 'retailers' ) => {
+    let uri = `${uri_items.replace(/:rb/, rb).replace(/:id/,id)}?${filter}&page=${page}`
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
