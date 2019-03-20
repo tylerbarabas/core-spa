@@ -162,11 +162,17 @@ export default {
     })
     return res
   },
-  getItems: async ( id, page, filter, rb = 'retailers' ) => {
-    let uri = `${uri_items.replace(/:rb/, rb).replace(/:id/,id)}?${filter}&page=${page}`
+  getItems: async ( id, isElastic, page, filter, rb = 'retailers' ) => {
+    let uri = `${uri_items.replace(/:rb/, rb).replace(/:id/,id)}${filter}&page=${page}`
+    if ( isElastic ) uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}?${filter}`
+
     let thirtyMinutes = 60000 * 30
-    let c = Cache.find(uri, thirtyMinutes)
+    let threshold = thirtyMinutes
+    if ( isElastic ) threshold = 1
+
+    let c = Cache.find(uri, threshold)
     let data = null
+
     if (c === null) {
       let res = await fetch(uri, {
         headers: getAuthHeaders()
