@@ -144,8 +144,12 @@ export default {
       let res = await fetch(uri, {
         headers: getAuthHeaders()
       })
-      data = await res.json()
-      Cache.record(uri, data)
+      if (res.ok) {
+        data = await res.json()
+        Cache.record(uri, data)
+      } else {
+        return false
+      }
     } else {
       data = c.res
     }
@@ -160,9 +164,22 @@ export default {
   },
   getItems: async ( id, page, filter, rb = 'retailers' ) => {
     let uri = `${uri_items.replace(/:rb/, rb).replace(/:id/,id)}?${filter}&page=${page}`
-    let res = await fetch(uri, {
-      headers: getAuthHeaders()
-    })
-    return res
+    let thirtyMinutes = 60000 * 30
+    let c = Cache.find(uri, thirtyMinutes)
+    let data = null
+    if (c === null) {
+      let res = await fetch(uri, {
+        headers: getAuthHeaders()
+      })
+      if (res.ok){
+        data = res.json()
+        Cache.record(uri, data)
+      } else {
+        return false
+      }
+    } else {
+      data = c.res
+    }
+    return data
   },
 }
