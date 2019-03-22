@@ -10,6 +10,11 @@ div.filter{
     cursor: pointer;
   }
 
+  input.search-filter{
+    margin-top: 7px;
+    margin-bottom: 3px;
+  }
+
   div.filter-option {
     font-size: 14px;
     margin-top: 5px;
@@ -20,8 +25,4 @@ div.filter{
       top: -1px;
     }
   }
-}
-
-button.is-primary{
-  margin-bottom: 10px;
 }

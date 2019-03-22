@@ -112,7 +112,7 @@ export default class RadioSearchFilter extends React.Component {
       <div className="filter">
         <strong>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
-        <input type="text" onChange={e => {
+        <input type="text" className="search-filter" onChange={e => {
           this.setState({searchQuery: e.target.value})
         }} value={this.state.searchQuery} />
         { this.getDisplayOptions() }
