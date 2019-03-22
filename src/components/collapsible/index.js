@@ -13,9 +13,9 @@ export default class Collapsible extends React.Component {
   }
 
   clicked(e){
-    console.log(e.target.tagName)
     let { isActive } = this.state
     if (e.target.tagName !== 'DIV'
+      && e.target.tagName !== 'LABEL'
       && e.target.tagName !== 'INPUT') this.setState({isActive: !isActive})
   }
 
