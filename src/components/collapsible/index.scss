@@ -8,4 +8,11 @@ div.collapsible {
   &.is-active {
     max-height: 200px;
   }
+
+  svg.fa-angle-down{
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
