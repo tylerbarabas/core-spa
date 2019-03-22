@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import OPTIONS from './options.json'
+import './index.scss'
 
 export default class DateFilter extends React.Component {
   constructor(){

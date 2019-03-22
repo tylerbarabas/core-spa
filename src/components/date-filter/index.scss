@@ -1,0 +1,28 @@
+div.filter{
+  margin-bottom: 20px;
+  background-color: #FFF;
+  padding: 10px 15px;
+  color: #000;
+
+  div.reset-all{
+    float: right;
+    font-size: 14px;
+    color: #6cc4ca;
+    cursor: pointer;
+  }
+
+  div.filter-option {
+    font-size: 14px;
+    margin-top: 5px;
+
+    input {
+      margin-top: 1px;
+      position: relative;
+      top: -1px;
+    }
+  }
+}
+
+button.is-primary{
+  margin-bottom: 10px;
+}

@@ -4,14 +4,15 @@ import './index.scss'
 
 export default class Collapsible extends React.Component {
   render(){
+    let { innerTemplate } = this.props
     return (
-      <div className="collapsible columns">
-        This is collapsible
+      <div className="collapsible">
+        { innerTemplate() }
       </div>
     )
   }
 }
 
 Collapsible.propTypes = {
-  msg: PropTypes.string
+  innerTemplate: PropTypes.func
 }
