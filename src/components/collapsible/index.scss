@@ -1,2 +1,11 @@
 div.collapsible {
+  overflow: hidden;
+  height: auto;
+  max-height: 40px;
+  background-color:  #fff;
+  transition: all 500ms;
+
+  &.is-active {
+    max-height: 200px;
+  }
 }
