@@ -13,19 +13,24 @@ export default class Collapsible extends React.Component {
   }
 
   clicked(e){
-    console.log('clicked', e)
     let { isActive } = this.state
-    this.setState({isActive: !isActive})
+    if (e.target.className !== 'reset-all') this.setState({isActive: !isActive})
   }
 
   render(){
     let { innerTemplate } = this.props
     let { isActive } = this.state
-    let ac = ( isActive ) ? 'is-active' : ''
+
+    let ac = ''
+    let angle = '0deg'
+    if ( isActive ) {
+      ac = 'is-active'
+      angle = '180deg'
+    }
 
     return (
       <div onClick={this.clicked.bind(this)} className={`collapsible ${ac}`}>
-        <FontAwesomeIcon icon={faAngleDown} />
+        <FontAwesomeIcon icon={faAngleDown} style={{transform: `rotate(${angle})`}}/>
        { innerTemplate() }
       </div>
     )

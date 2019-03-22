@@ -3,7 +3,7 @@ div.collapsible {
   height: auto;
   max-height: 40px;
   background-color:  #fff;
-  transition: all 500ms;
+  transition: max-height 500ms;
 
   &.is-active {
     max-height: 200px;
@@ -11,8 +11,9 @@ div.collapsible {
 
   svg.fa-angle-down{
     float: left;
-    margin-top: 15px;
+    margin-top: 13px;
     margin-left: 10px;
     margin-right: 10px;
+    transition: transform 500ms;
   }
 }
