@@ -5,5 +5,7 @@
   "summary": "Summary Report",
   "compliance": "Compliance Report",
   "inactive": "Inactive Report",
-  "items": "Items"
+  "items": "Items",
+  "detail": "Detail",
+  "search": "Review"
 }
