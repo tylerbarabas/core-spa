@@ -164,28 +164,14 @@ export default {
   },
   getItems: async ( id, isElastic, page, filter, rb = 'retailers' ) => {
     let uri = `${uri_items.replace(/:rb/, rb).replace(/:id/,id)}${filter}&page=${page}`
-    if ( isElastic ) uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}?${filter}`
-
-    let thirtyMinutes = 60000 * 30
-    let threshold = thirtyMinutes
-    if ( isElastic ) threshold = 1
-
-    let c = Cache.find(uri, threshold)
-    let data = null
-
-    if (c === null) {
-      let res = await fetch(uri, {
-        headers: getAuthHeaders()
-      })
-      if (res.ok){
-        data = res.json()
-        Cache.record(uri, data)
-      } else {
-        return false
-      }
-    } else {
-      data = c.res
+    let res = await fetch(uri, {
+      headers: getAuthHeaders()
+    })
+    let data = false
+    if (res.ok){
+      data = await res.json()
     }
+
     return data
   },
 }
