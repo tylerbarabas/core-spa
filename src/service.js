@@ -173,8 +173,8 @@ export default {
     }
     return data
   },
-  getItemsOptions: async ( id, page, filter, rb = 'retailers' ) => {
-    let uri = `${uri_items.replace(/:rb/, rb).replace(/:id/,id)}${filter}&page=${page}`
+  getItemsOptions: async ( id, rb = 'retailers' ) => {
+    let uri = `${uri_items.replace(/:rb/, rb).replace(/:id/,id)}`
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
