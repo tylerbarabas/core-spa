@@ -4,6 +4,7 @@ div.collapsible {
   max-height: 40px;
   background-color:  #fff;
   margin-bottom: 2px;
+  cursor: pointer;
 
   &.is-active {
     max-height: none;
