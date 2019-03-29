@@ -175,12 +175,19 @@ export default {
   },
   getItemsOptions: async ( id, rb = 'retailers' ) => {
     let uri = `${uri_items.replace(/:rb/, rb).replace(/:id/,id)}`
-    let res = await fetch(uri, {
-      headers: getAuthHeaders()
-    })
+    let thirtyMinutes = 60000 * 30
+    let c = Cache.find(uri, thirtyMinutes)
     let data = false
-    if (res.ok){
-      data = await res.json()
+    if (c === null) { 
+      let res = await fetch(uri, {
+        headers: getAuthHeaders()
+      })
+      if (res.ok){
+        data = await res.json()
+        Cache.record(uri, data)
+      }
+    } else {
+      data = c.res 
     }
     return data
   },
