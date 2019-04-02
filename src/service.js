@@ -17,7 +17,7 @@ const uri_getMyUser = fullPath('/v1/users/me/')
 const uri_getBrands = fullPath('/v1/brands/')
 const uri_getRetailers = fullPath('/v1/retailers/')
 const uri_inventoryExportByEmail = fullPath('/v1/retailers/:id/inventory/export-email/?ignore_deleted=1')
-
+const uri_itemDetail = fullPath('/v1/:rb/:id/products/:vid/')
 
 //catalog
 //const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
@@ -188,6 +188,17 @@ export default {
       }
     } else {
       data = c.res 
+    }
+    return data
+  },
+  getItemDetail: async ( id, vid, rb = 'retailers' ) => {
+    let uri = `${uri_itemDetail.replace(/:rb/, rb).replace(/:id/,id).replace(/:vid/,vid)}`
+    let res = await fetch(uri, {
+      headers: getAuthHeaders()
+    })
+    let data = false
+    if (res.ok){
+      data = await res.json()
     }
     return data
   },
