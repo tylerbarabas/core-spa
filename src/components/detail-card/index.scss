@@ -13,8 +13,16 @@ div.detail-card-data{
   .card{
     height: 100%;
     
-    .data-list{
+    ul.data-list{
       list-style: none;
+
+      div.key{
+        display: inline-block;
+        font-weight: bold;
+      }
+      div.value{
+        display: inline-block;
+      }
     }
   } 
 }  

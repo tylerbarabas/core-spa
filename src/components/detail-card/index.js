@@ -6,9 +6,15 @@ export default class DetailCard extends React.Component {
   getCardList(){
     let template = []
     let { list } = this.props
+    let { labelWidth } = this.props
     for (let k in list) {
       let v = list[k]
-      template.push(<li key={k}><strong>{k}</strong> {v}</li>)
+      template.push(
+        <li key={k}>
+          <div className="key" style={{width: labelWidth}}>{k}</div>
+          <div className="value">{v}</div>
+        </li>
+      )
     }
     return template 
   }
@@ -39,4 +45,5 @@ DetailCard.propTypes = {
   header: PropTypes.string,
   synopsis: PropTypes.string,
   list: PropTypes.object,
+  labelWidth: PropTypes.string,
 }
