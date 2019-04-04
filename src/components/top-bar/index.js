@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTh,faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import AutoSuggestBox from '../auto-suggest-box'
+import ParentVisualComponent from '../../extendables/parent-visual-component'
 import './index.scss'
 
-export default class TopBar extends React.Component {
+export default class TopBar extends ParentVisualComponent {
   getButtons(){
     let buttons = this.props.buttons || []
     let template = []
@@ -27,17 +28,6 @@ export default class TopBar extends React.Component {
     return retailers.concat(brands)
   }
 
-  getContext(uuid){
-    let { retailers, brands } = this.props.user
-    let findr = retailers.find(r => {
-      return r.uuid === uuid
-    })
-    let findb = brands.find(b => {
-      return b.uuid === uuid
-    })
-    return findr || findb || { name: 'Select context' }
-  }
-
   contextChanged ( uuid ) {
     this.props.selectContext( uuid )
   }
@@ -46,7 +36,7 @@ export default class TopBar extends React.Component {
     let { firstName } = this.props.user
     let { isAuthenticated, logout, name } = this.props
     let { uuid } = this.props.context
-    let ctx = this.getContext(uuid)
+    let ctx = this.getContext()
     let options = this.getContextItems()
     return (
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
