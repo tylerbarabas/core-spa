@@ -18,6 +18,22 @@ export default class DetailCard extends React.Component {
     }
     return template 
   }
+
+  getContent(){
+    let { template, list } = this.props
+    if ( typeof template !== 'undefined'){
+      return template()
+    } else if ( typeof list !== 'undefined') {
+      return (
+        <ul className="data-list">
+          {this.getCardList()}
+        </ul>
+      )
+    }
+
+    return (`Either a template or a list is required!`)
+  }
+
   render(){
     let { header, synopsis } = this.props
     return [(
@@ -30,9 +46,7 @@ export default class DetailCard extends React.Component {
           <div className="card">
             <div className="card-content">
               <div className="content">
-                <ul className="data-list">
-                  {this.getCardList()}
-                </ul>
+                {this.getContent()}
               </div>
             </div>
           </div>
@@ -45,5 +59,6 @@ DetailCard.propTypes = {
   header: PropTypes.string,
   synopsis: PropTypes.string,
   list: PropTypes.object,
+  template: PropTypes.func,
   labelWidth: PropTypes.string,
 }
