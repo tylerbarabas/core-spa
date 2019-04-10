@@ -33,7 +33,7 @@ export default class Collapsible extends React.Component {
     return (
       <div onClick={this.clicked.bind(this)} className={`collapsible ${ac}`}>
         <FontAwesomeIcon icon={faAngleDown} style={{transform: `rotate(${angle})`}}/>
-       { innerTemplate() }
+        { innerTemplate() }
       </div>
     )
   }

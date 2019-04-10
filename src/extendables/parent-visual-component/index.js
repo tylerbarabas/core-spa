@@ -42,3 +42,9 @@ export default class ParentVisualComponent extends React.Component {
     return obj
   }
 }
+
+ParentVisualComponent.propTypes = {
+  user: PropTypes.object,
+  context: PropTypes.object,
+  location: PropTypes.object,
+}

@@ -35,7 +35,6 @@ export default class TopBar extends ParentVisualComponent {
   render(){
     let { firstName } = this.props.user
     let { isAuthenticated, logout, name } = this.props
-    let { uuid } = this.props.context
     let ctx = this.getContext()
     let options = this.getContextItems()
     return (

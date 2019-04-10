@@ -31,27 +31,27 @@ export default class DetailCard extends React.Component {
       )
     }
 
-    return (`Either a template or a list is required!`)
+    return ('Either a template or a list is required!')
   }
 
   render(){
     let { header, synopsis } = this.props
     return [(
-        <div className="column is-one-third detail-card-info" key="0">
-          <div className="header">{header}</div>
-          <div className="synopsis">{synopsis}</div>
-        </div>
-        ),( 
-        <div className="column is-two-thirds detail-card-data" key="1">
-          <div className="card">
-            <div className="card-content">
-              <div className="content">
-                {this.getContent()}
-              </div>
+      <div className="column is-one-third detail-card-info" key="0">
+        <div className="header">{header}</div>
+        <div className="synopsis">{synopsis}</div>
+      </div>
+    ),( 
+      <div className="column is-two-thirds detail-card-data" key="1">
+        <div className="card">
+          <div className="card-content">
+            <div className="content">
+              {this.getContent()}
             </div>
           </div>
         </div>
-      )]
+      </div>
+    )]
   }
 }
 
