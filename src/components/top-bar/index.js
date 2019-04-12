@@ -23,7 +23,7 @@ export default class TopBar extends ParentVisualComponent {
     )
   }
 
-  getContextItems(){
+  getContextProducts(){
     let { retailers, brands } = this.props.user
     return retailers.concat(brands)
   }
@@ -36,7 +36,7 @@ export default class TopBar extends ParentVisualComponent {
     let { firstName } = this.props.user
     let { isAuthenticated, logout, name } = this.props
     let ctx = this.getContext()
-    let options = this.getContextItems()
+    let options = this.getContextProducts()
     return (
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
