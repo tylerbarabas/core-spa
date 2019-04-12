@@ -1,9 +1,11 @@
 import Cookie from 'browser-cookies'
 import CacheLayer from './cache-layer'
 
+const API = process.env.REACT_APP_API
+
 let Config
 try {
-  Config = require('./client_config').default
+  Config = require('./client_config').default[API]
 } 
 catch (e) {
   throw new Error('Client config not found.')
