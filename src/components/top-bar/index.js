@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTh,faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import AutoSuggestBox from '../auto-suggest-box'
 import ParentVisualComponent from '../../extendables/parent-visual-component'
@@ -41,7 +41,6 @@ export default class TopBar extends ParentVisualComponent {
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
-            <FontAwesomeIcon icon={faTh} />
             <img src="/rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
             { name }
           </Link>
