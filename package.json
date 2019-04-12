@@ -8,9 +8,9 @@
     "deploy-production": "aws s3 sync ./build/ s3://catalog.revcascade.com",
     "start": "REACT_APP_API=staging BROWSER=NONE PORT=3002 node scripts/start.js",
     "now-start": "serve -s ./build",
-    "build-staging": "REACT_APP_API=staging node scripts/build.js",
-    "build-sandbox": "REACT_APP_API=sandbox node scripts/build.js",
-    "build-production": "REACT_APP_API=production node scripts/build.js",
+    "build-sandbox": "REACT_APP_API=sandbox react-scripts build",
+    "build-staging": "REACT_APP_API=staging react-scripts build",
+    "build-production": "REACT_APP_API=production react-scripts build",
     "test": "node scripts/test.js --env=jsdom",
     "precommit": "pretty-quick --staged",
     "lint": "./node_modules/.bin/eslint ."
