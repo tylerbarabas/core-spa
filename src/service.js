@@ -16,8 +16,8 @@ const fullPath = (path, host = Config.HOST) => `${host}${path}`
 
 const uri_authToken = fullPath('/auth/token/')
 const uri_getMyUser = fullPath('/v1/users/me/')
-const uri_getBrands = fullPath('/v1/brands/')
-const uri_getRetailers = fullPath('/v1/retailers/')
+const uri_getBrands = fullPath('/v1/brands/?pagination=0')
+const uri_getRetailers = fullPath('/v1/retailers/?limit=250')
 const uri_inventoryExportByEmail = fullPath('/v1/retailers/:id/inventory/export-email/?ignore_deleted=1')
 const uri_itemDetail = fullPath('/v1/:rb/:id/products/:vid/')
 
