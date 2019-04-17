@@ -28,8 +28,7 @@ const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&
 const uri_getInventorySummary = fullPath('/v1/retailers/:id/inventory-summary/')
 const uri_getInventoryProducts = fullPath('/v1/retailers/:id/inventory/?limit=15&ignore_deleted=1')
 const uri_elasticSearch = fullPath('/v1/:rb/:id/variants/search/?limit=15')
-const uri_itemsOptions = fullPath('/v1/attributes/?filterable_attributes_only=1')
-const uri_products = fullPath('/v1/:rb/:id/variants/?attributes_facet=1&limit=15&short=1')
+const uri_productsOptions = fullPath('/v1/attributes/?filterable_attributes_only=1')
 
 let Auth = {
   accessToken: null,
@@ -176,8 +175,8 @@ export default {
     }
     return data
   },
-  getProductsOptions: async ( id, rb = 'retailers' ) => {
-    let uri = `${uri_products.replace(/:rb/, rb).replace(/:id/,id)}`
+  getProductsOptions: async () => {
+    let uri = uri_productsOptions
     let thirtyMinutes = 60000 * 30
     let c = Cache.find(uri, thirtyMinutes)
     let data = false
@@ -192,7 +191,6 @@ export default {
     } else {
       data = c.res 
     }
-    console.log('options', data)
     return data
   },
   getProductDetail: async ( id, vid, rb = 'retailers' ) => {
