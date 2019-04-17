@@ -56,11 +56,11 @@ export default class TopBar extends ParentVisualComponent {
             <img src="/rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
             { name }
           </Link>
-          <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" onClick={this.burgerClick.bind(this)}>
+          <div role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" onClick={this.burgerClick.bind(this)}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-          </a>
+          </div>
         </div>
         <div className="navbar-menu" id="rc-navbar">
           <div className="navbar-start">
