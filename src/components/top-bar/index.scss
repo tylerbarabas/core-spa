@@ -54,6 +54,10 @@ nav.navbar {
     }
   }
 
+  div.navbar-menu{
+    background-color: $background-darkblue;
+  }
+
   svg.fa-chevron-down {
     position: relative;
     top: 2px;
