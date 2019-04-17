@@ -41,10 +41,16 @@ nav.navbar {
     }
   }
 
+
   div.navbar-brand {
     a.navbar-item {
       font-size: 22px;
       font-weight: bold;
+    }
+
+
+    a.navbar-burger{
+      color: #FFF;
     }
   }
 

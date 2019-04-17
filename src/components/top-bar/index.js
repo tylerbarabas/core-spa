@@ -32,6 +32,18 @@ export default class TopBar extends ParentVisualComponent {
     this.props.selectContext( uuid )
   }
 
+  burgerClick(e){
+    let burger = e.target
+    let navbar = document.getElementById('rc-navbar')
+    if (burger.className.indexOf('is-active') === -1) {
+      burger.className += ' is-active'
+      navbar.className += ' is-active'
+    } else {
+      burger.classList.remove('is-active')
+      navbar.classList.remove('is-active')
+    }
+  }
+
   render(){
     let { firstName } = this.props.user
     let { isAuthenticated, logout, name } = this.props
@@ -44,7 +56,7 @@ export default class TopBar extends ParentVisualComponent {
             <img src="/rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
             { name }
           </Link>
-          <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="rc-navbar">
+          <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" onClick={this.burgerClick.bind(this)}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
