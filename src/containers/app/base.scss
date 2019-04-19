@@ -22,7 +22,7 @@ div#root{
 .is-secondary:active,
 .is-secondary:focus,
 .is-secondary:visited {
-    background-color: $secondary;
+    background-color: $secondary !important;
     border-color: transparent;
-    color: #FFF;
+    color: #FFF !important;
 }
