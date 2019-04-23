@@ -34,7 +34,7 @@ export default class CheckboxFilter extends React.Component {
     let template = []
     if ( options === null || options.length < 1 ) {
       template.push(
-        <div className="filter-options" key={"none"}>
+        <div className="filter-options" key={'none'}>
           -No results-
         </div>
       )

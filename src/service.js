@@ -164,8 +164,13 @@ export default {
     })
     return res
   },
-  getProducts: async ( id, page, filter, rb = 'retailers' ) => {
-    let uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}${filter}&page=${page}`
+  getProducts: async ( id, page, filter, search, rb = 'retailers' ) => {
+    if (typeof search === 'string' && search.length > 0) {
+      search = `&search_term=${search}`
+    } else {
+      search = ''
+    }
+    let uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}${filter}${search}&page=${page}`
     let res = await fetch(uri, {
       headers: getAuthHeaders()
     })
