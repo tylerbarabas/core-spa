@@ -95,14 +95,15 @@ export const setIsAuthenticated = isAuthenticated => {
     if (isAuthenticated) {
       dispatch({ type: AUTH_SUCCESS })
     } else {
-      logout()
+      logout(false)
     }
   }
 }
 
-export const logout = () => {
+export const logout = (wipeCtx = true) => {
   return dispatch => {
-    Service.destroyCookies()
+    Service.eraseAuthCookies()
+    if (wipeCtx) Service.eraseContextCookies()
     dispatch({
       type: LOGOUT
     })

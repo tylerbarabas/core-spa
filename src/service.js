@@ -100,9 +100,11 @@ export default {
       Cookie.set('ctx', `${uuid}`, { expires: cookieDays })
     }
   },
-  destroyCookies: () => {
+  eraseAuthCookies: () => {
     Cookie.erase('at')
     Cookie.erase('tt')
+  },
+  eraseContextCookies: () => {
     Cookie.erase('ctx')
   },
   getVendorImports: async ( id, page = 1, filter = '' ) => {

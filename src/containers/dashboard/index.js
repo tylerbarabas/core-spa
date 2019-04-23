@@ -8,7 +8,7 @@ import DashboardMain from '../../components/dashboard-main'
 
 class Dashboard extends React.Component {
   componentDidUpdate(){
-    if (this.props.user.isError) this.props.logout()
+    if (this.props.user.isError) this.props.logout(false)
   }
 
   render(){
