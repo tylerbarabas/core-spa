@@ -19,7 +19,7 @@ class PrivateRoute extends React.Component {
 
     if (user.id === null) {
       template = <BigLoading msg={'Retrieving user data...'} />
-    } else if (context.uuid === null) {
+    } else if (context.id === null) {
       let { brands, retailers } = this.props.user
       let combinedLength = brands.length + retailers.length
 
@@ -34,22 +34,23 @@ class PrivateRoute extends React.Component {
   }
 
   checkContext( nextProps = this.props ){
-    let { selectContext, context } = nextProps
+    let { selectContext, context, user } = nextProps
+    let combinedLength = user.brands.length + user.retailers.length
     let contextCookie = Service.getContextCookie()
-    let { brands, retailers } = nextProps.user
-    let combinedLength = brands.length + retailers.length
-    let findb = brands.find(b => {
-      return b.uuid === contextCookie
-    })
-    let findr = retailers.find(r => {
-      return r.uuid === contextCookie
-    })
-    let f = findb || findr || false
+    let cookieArr = [null, null]
+    let f = null
+    if (contextCookie !== null) {
+      cookieArr = contextCookie.split('-')
+      f = user[`${cookieArr[0]}s`].find(u => {
+        return u.id === parseInt(cookieArr[1])
+      })
+    }
+
     if (combinedLength === 1) {
-      if ( brands.length > 0 && brands[0].uuid !== context.uuid ) selectContext(brands[0].uuid)
-      else if (retailers[0].uuid !== context.uuid) selectContext(retailers[0].uuid)
-    } else if (contextCookie !== null && f !== false && context.uuid !== contextCookie) {
-      selectContext(f.uuid)
+      if (user.brands.length < 1) selectContext('retailer', user.retailers[0].id)
+      else selectContext('brand', user.brands[0].id)
+    } else if (contextCookie !== null && typeof f === 'object' && context.id !== parseInt(cookieArr[1])) {
+      selectContext(cookieArr[0], f.id)
     }
   }
 

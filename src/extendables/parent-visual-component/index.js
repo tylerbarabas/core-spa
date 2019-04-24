@@ -14,7 +14,9 @@ export default class ParentVisualComponent extends React.Component {
 
     let { brands, retailers } = props.user
     let { id, role } = props.context
-    
+
+    if (role === null) return false
+
     let arr = props.user[`${role}s`]
     let ctx = arr.find(a=>a.id===id)
 

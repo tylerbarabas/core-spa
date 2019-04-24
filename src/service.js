@@ -12,6 +12,7 @@ catch (e) {
 }
 
 const cookieDays = 2
+const oneYear = 365
 const fullPath = (path, host = Config.HOST) => `${host}${path}`
 
 const uri_authToken = fullPath('/auth/token/')
@@ -94,11 +95,8 @@ export default {
   getContextCookie: () => {
     return Cookie.get('ctx') 
   },
-  setContextCookie: ( uuid ) => {
-    let current = Cookie.get('ctx')
-    if (current !== uuid) {
-      Cookie.set('ctx', `${uuid}`, { expires: cookieDays })
-    }
+  setContextCookie: ( role, id ) => {
+    Cookie.set('ctx', `${role}-${id}`, { expires: oneYear })
   },
   eraseAuthCookies: () => {
     Cookie.erase('at')

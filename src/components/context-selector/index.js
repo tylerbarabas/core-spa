@@ -8,14 +8,20 @@ export default class ContextSelector extends React.Component {
     super(props)
     this.brands = this.props.brands.map( b => {
       return {
-        value: b.uuid,
+        role: 'brand',
+        value: b.id,
         label: b.name,
         stateProp: 'selectedBrand',
       }
     })
 
     this.retailers = this.props.retailers.map( r => {
-      return { value: r.uuid, label: r.name, stateProp: 'selectedRetailer' }
+      return {
+        role: 'retailer',
+        value: r.id,
+        label: r.name,
+        stateProp: 'selectedRetailer'
+      }
     })
 
     this.state = {
@@ -25,13 +31,13 @@ export default class ContextSelector extends React.Component {
   }
 
   handleChange( selected ){
-    let { stateProp } = selected
+    let { stateProp, role } = selected
     this.setState({ [stateProp]: selected })
 
-    let combined = this.props.brands.concat(this.props.retailers)
-    let original = combined.filter(a => a.uuid === selected.value)[0]
+    let arr = this.props[`${role}s`]
+    let f = arr.find(a => a.id === selected.value)
 
-    this.props.selectContext( original.uuid )
+    this.props.selectContext( role, f.id )
   }
 
   render(){

@@ -25,11 +25,19 @@ export default class TopBar extends ParentVisualComponent {
 
   getContextProducts(){
     let { retailers, brands } = this.props.user
-    return retailers.concat(brands)
+    let editr = retailers.map(r=>{
+      r.role = 'retailer'
+      return r
+    })
+    let editb = brands.map(b=>{
+      b.role = 'brand'
+      return b
+    })
+    return editr.concat(editb)
   }
 
-  contextChanged ( uuid ) {
-    this.props.selectContext( uuid )
+  contextChanged ( selected ) {
+    this.props.selectContext( selected.role, selected.id )
   }
 
   burgerClick(e){

@@ -19,7 +19,7 @@ export default class AutoSuggestBox extends React.Component {
 
   renderSuggestion (suggestion) {
     return (
-      <span id={suggestion.uuid}>{suggestion.name}</span>
+      <span id={suggestion.id}>{suggestion.name}</span>
     )
   }
 
@@ -28,8 +28,7 @@ export default class AutoSuggestBox extends React.Component {
     if (e.which === 13) {
       let o = options.filter(o => o.name === e.target.value)
       if (typeof o[0] !== 'undefined') {
-        let uuid = o[0].uuid
-        action(uuid)
+        action(o[0])
       }
     }
   }
@@ -39,8 +38,8 @@ export default class AutoSuggestBox extends React.Component {
       value: newValue
     })
     if (method === 'click') {
-      let uuid = e.target.id
-      this.props.action(uuid)
+      let id = e.target.id
+      this.props.action(id)
     }
   }
 
