@@ -12,7 +12,6 @@ export default class ParentVisualComponent extends React.Component {
   getContext( props = this.props ){
     if (typeof props.user === 'undefined') return false
 
-    let { brands, retailers } = props.user
     let { id, role } = props.context
 
     if (role === null) return false
