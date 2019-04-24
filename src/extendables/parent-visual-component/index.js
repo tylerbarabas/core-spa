@@ -13,15 +13,12 @@ export default class ParentVisualComponent extends React.Component {
     if (typeof props.user === 'undefined') return false
 
     let { brands, retailers } = props.user
-    let { uuid } = props.context
-    let findb = brands.find(b => {
-      return b.uuid === uuid
-    })
-    let findr = retailers.find(r => {
-      return r.uuid === uuid
-    })
+    let { id, role } = props.context
+    
+    let arr = props.user[`${role}s`]
+    let ctx = arr.find(a=>a.id===id)
 
-    return findb || findr || false
+    return ctx || false
   }
 
   /**
