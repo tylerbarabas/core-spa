@@ -74,7 +74,7 @@ export const getMyUser = () => {
       if (res.ok) {
         let data = await res.json()
 
-        if (!data.isRevcascade) {
+        if (data.is_revcascade) {
           data.brands = []
           data.retailers = []
 
