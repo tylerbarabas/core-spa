@@ -47,8 +47,11 @@ class PrivateRoute extends React.Component {
     }
 
     if (combinedLength === 1) {
-      if (user.brands.length < 1) selectContext('retailer', user.retailers[0].id)
-      else selectContext('brand', user.brands[0].id)
+      if (user.brands.length < 1) {
+        if (context.id !== user.retailers[0].id) selectContext('retailer', user.retailers[0].id)
+      } else {
+        if (context.id !== user.brands[0].id) selectContext('brand', user.brands[0].id)
+      }
     } else if (contextCookie !== null && typeof f === 'object' && context.id !== parseInt(cookieArr[1])) {
       selectContext(cookieArr[0], f.id)
     }
