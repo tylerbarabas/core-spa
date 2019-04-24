@@ -78,7 +78,7 @@ export default class TopBar extends ParentVisualComponent {
           <div className="navbar-start">
             {this.getButtons()}
           </div>
-          <div className={`navbar-item has-dropdown is-hoverable${ctxHidden}`}>
+          <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${ctxHidden}`}>
             <div className="navbar-link is-arrowless ctx-selector">
               { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
             </div>
@@ -90,7 +90,7 @@ export default class TopBar extends ParentVisualComponent {
               </div>
             </div>
           </div>
-          <div className={`navbar-item has-dropdown is-hoverable${userHidden}`}>
+          <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${userHidden}`}>
             <div className="navbar-link is-arrowless">
                 Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
             </div>
@@ -100,6 +100,17 @@ export default class TopBar extends ParentVisualComponent {
               </div>
             </div>
           </div>
+          <div className={`navbar-item has-dropdown is-hoverable is-hidden-desktop${ctxHidden}`}>
+            <div className="navbar-link is-arrowless ctx-selector">
+              <AutoSuggestBox options={options} action={this.contextChanged.bind(this)}/>
+            </div>
+          </div>
+          <div className={`navbar-item has-dropdown is-hoverable is-hidden-desktop${userHidden}`}>
+            <div className="navbar-item" onClick={logout}>
+                Logout
+            </div>
+          </div>
+
         </div>
       </nav>
     )
