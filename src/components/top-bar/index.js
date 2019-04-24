@@ -54,9 +54,11 @@ export default class TopBar extends ParentVisualComponent {
 
   render(){
     let { firstName } = this.props.user
-    let { isAuthenticated, logout, name } = this.props
+    let { isAuthenticated, logout, name, context } = this.props
     let ctx = this.getContext()
     let options = this.getContextProducts()
+    let ctxHidden = ' is-invisible'
+    if (options.length > 1 && context.id !== null) ctxHidden  = ''
     return (
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
@@ -74,11 +76,11 @@ export default class TopBar extends ParentVisualComponent {
           <div className="navbar-start">
             {this.getButtons()}
           </div>
-          <div className="navbar-item has-dropdown is-hoverable">
+          <div className={`navbar-item has-dropdown is-hoverable${ctxHidden}`}>
             <div className="navbar-link is-arrowless ctx-selector">
               { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
             </div>
-            <div className="navbar-dropdown is-right">
+            <div className='navbar-dropdown is-right'>
               <div className="navbar-item">
                 <div className="select is-small">
                   <AutoSuggestBox options={options} action={this.contextChanged.bind(this)}/>
