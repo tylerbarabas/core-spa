@@ -10,7 +10,7 @@ export default class AutoSuggestBox extends React.Component {
     this.state = {
       value: '',
       suggestions: []
-    } 
+    }
   }
 
   getSuggestionValue (suggestion) {
@@ -73,8 +73,12 @@ export default class AutoSuggestBox extends React.Component {
 
   render() {
     const { value, suggestions } = this.state
+    let { placeholder } = this.props
+
+    if (typeof placeholder === 'undefined') placeholder = 'Start typing...'
+
     const inputProps = {
-      placeholder: 'Start typing...',
+      placeholder,
       value,
       onChange: this.onChange.bind(this),
       onKeyDown: this.onKeyDown.bind(this),
@@ -95,4 +99,5 @@ export default class AutoSuggestBox extends React.Component {
 AutoSuggestBox.propTypes = {
   options: PropTypes.array,
   action: PropTypes.func,
+  placeholder: PropTypes.string,
 }

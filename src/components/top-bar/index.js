@@ -85,7 +85,7 @@ export default class TopBar extends ParentVisualComponent {
             <div className='navbar-dropdown is-right'>
               <div className="navbar-item">
                 <div className="select is-small">
-                  <AutoSuggestBox options={options} action={this.contextChanged.bind(this)}/>
+                  <AutoSuggestBox placeholder={'Find a context...'} options={options} action={this.contextChanged.bind(this)}/>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default class TopBar extends ParentVisualComponent {
           </div>
           <div className={`navbar-item has-dropdown is-hoverable is-hidden-desktop${ctxHidden}`}>
             <div className="navbar-link is-arrowless ctx-selector">
-              <AutoSuggestBox options={options} action={this.contextChanged.bind(this)}/>
+              <AutoSuggestBox placeholder={'Find a context...'} options={options} action={this.contextChanged.bind(this)}/>
             </div>
           </div>
           <div className={`navbar-item has-dropdown is-hoverable is-hidden-desktop${userHidden}`}>
