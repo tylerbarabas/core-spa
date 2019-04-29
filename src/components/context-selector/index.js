@@ -8,7 +8,7 @@ export default class ContextSelector extends React.Component {
     super(props)
     this.brands = this.props.brands.map( b => {
       return {
-        role: 'brand',
+        role: 'brands',
         value: b.id,
         label: b.name,
         stateProp: 'selectedBrand',
@@ -17,7 +17,7 @@ export default class ContextSelector extends React.Component {
 
     this.retailers = this.props.retailers.map( r => {
       return {
-        role: 'retailer',
+        role: 'retailers',
         value: r.id,
         label: r.name,
         stateProp: 'selectedRetailer'
@@ -34,7 +34,7 @@ export default class ContextSelector extends React.Component {
     let { stateProp, role } = selected
     this.setState({ [stateProp]: selected })
 
-    let arr = this.props[`${role}s`]
+    let arr = this.props[role]
     let f = arr.find(a => a.id === selected.value)
 
     this.props.selectContext( role, f.id )

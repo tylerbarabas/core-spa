@@ -16,7 +16,7 @@ export default class ParentVisualComponent extends React.Component {
 
     if (role === null) return false
 
-    let arr = props.user[`${role}s`]
+    let arr = props.user[role]
     let ctx = arr.find(a=>a.id===id)
 
     return ctx || false

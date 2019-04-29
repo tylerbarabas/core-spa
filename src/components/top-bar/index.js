@@ -26,11 +26,11 @@ export default class TopBar extends ParentVisualComponent {
   getContextProducts(){
     let { retailers, brands } = this.props.user
     let editr = retailers.map(r=>{
-      r.role = 'retailer'
+      r.role = 'retailers'
       return r
     })
     let editb = brands.map(b=>{
-      b.role = 'brand'
+      b.role = 'brands'
       return b
     })
     return editr.concat(editb)
