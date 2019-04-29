@@ -37,7 +37,7 @@ export default class TopBar extends ParentVisualComponent {
   }
 
   contextChanged ( selected ) {
-    this.props.selectContext( selected.role, selected.id )
+    this.props.selectContext(selected.role, selected.id)
   }
 
   burgerClick(e){

@@ -41,7 +41,7 @@ class PrivateRoute extends React.Component {
     let f = null
     if (contextCookie !== null) {
       cookieArr = contextCookie.split('-')
-      f = user[`${cookieArr[0]}s`].find(u => {
+      f = user[cookieArr[0]].find(u => {
         return u.id === parseInt(cookieArr[1])
       })
     }

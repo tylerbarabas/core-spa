@@ -19,7 +19,7 @@ export default class AutoSuggestBox extends React.Component {
 
   renderSuggestion (suggestion) {
     return (
-      <span id={suggestion.id}>{suggestion.name}</span>
+      <span id={`${suggestion.role}-${suggestion.id}`}>{suggestion.name}</span>
     )
   }
 
@@ -34,12 +34,14 @@ export default class AutoSuggestBox extends React.Component {
   }
 
   onChange (e, { newValue, method }) {
+    let { options } = this.props
+    let o = options.find(s => s.name === newValue)
+
     this.setState({
       value: newValue
     })
     if (method === 'click') {
-      let id = e.target.id
-      this.props.action(id)
+      this.props.action(o)
     }
   }
 
