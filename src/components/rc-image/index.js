@@ -5,8 +5,8 @@ const DEFAULT_IMG = '/notfound.png'
 
 export default class RcImage extends React.Component {
   render(){
-    let { src } = this.props
-    return (<img src={src} onError={(e)=>{e.target.onerror = null; e.target.src=DEFAULT_IMG }} />)
+    let { src, className } = this.props
+    return (<img src={src} className={className} onError={(e)=>{e.target.onerror = null; e.target.src=DEFAULT_IMG }} />)
   }
 }
 
