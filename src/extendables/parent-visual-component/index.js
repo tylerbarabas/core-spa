@@ -29,15 +29,32 @@ export default class ParentVisualComponent extends React.Component {
   **/
   getParams(props = this.props){
     if (typeof props.location === 'undefined') return false
+
     let { search } = props.location
     let s = search.substr(1,search.length-1)
     let arr = s.split('&')
     let obj = {}
+
     for (let i=0;i<arr.length;i+=1){
       let split = arr[i].split('=')
       obj[split[0]] = split[1]
     }
+
     return obj
+  }
+
+  makeQueryString(obj){
+    let str = ''
+    let i = 0
+
+    for (let key in obj){
+      let piece = `${key}=${obj[key]}`
+      if (i > 0) piece = `&${piece}`
+      i += 1
+      str += piece
+    }
+
+    return str
   }
 }
 
