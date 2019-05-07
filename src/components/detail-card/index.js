@@ -12,7 +12,7 @@ export default class DetailCard extends React.Component {
       template.push(
         <li key={k}>
           <div className="key" style={{width: labelWidth}}>{k}</div>
-          <div className="value">{v}</div>
+          <div className="value" style={{maxWidth: `calc(100% - ${labelWidth})`}}>{v}</div>
         </li>
       )
     }

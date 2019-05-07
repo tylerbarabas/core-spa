@@ -19,9 +19,11 @@ div.detail-card-data{
       div.key{
         display: inline-block;
         font-weight: bold;
+        vertical-align: top;
       }
       div.value{
         display: inline-block;
+        max-width: 85%
       }
     }
   } 
