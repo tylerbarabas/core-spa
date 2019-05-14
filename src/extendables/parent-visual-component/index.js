@@ -43,6 +43,10 @@ export default class ParentVisualComponent extends React.Component {
     return obj
   }
 
+  /**
+    Convert an object in to a query string..
+    @param obj - Some object.  
+  **/
   makeQueryString(obj){
     let str = ''
     let i = 0
