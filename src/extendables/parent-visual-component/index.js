@@ -44,7 +44,7 @@ export default class ParentVisualComponent extends React.Component {
   }
 
   /**
-    Convert an object in to a query string..
+    Convert an object in to a query string.
     @param obj - Some object.  
   **/
   makeQueryString(obj){
@@ -59,6 +59,16 @@ export default class ParentVisualComponent extends React.Component {
     }
 
     return str
+  }
+
+  /**
+    Form a CDN url.
+    @param url - Image url that has already been synced to CDN
+  **/
+  makeCdnUrl(url){
+    const prefixPos = url.search('://')
+    if (prefixPos !== -1) url = url.substr(prefixPos+3)
+    return `https://res.cloudinary.com/revcascade/${url}`
   }
 }
 
