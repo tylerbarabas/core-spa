@@ -65,10 +65,34 @@ export default class ParentVisualComponent extends React.Component {
     Form a CDN url.
     @param url - Image url that has already been synced to CDN
   **/
-  makeCdnUrl(url){
+  makeCdnUrl(url, mods){
     const prefixPos = url.search('://')
     if (prefixPos !== -1) url = url.substr(prefixPos+3)
-    return `https://res.cloudinary.com/revcascade/${url}`
+
+    let modStr = ''
+    if (typeof mods === 'object'){
+      let arr = []
+      for (let key in mods){
+        let value = mods[key]
+        switch (key){
+          case 'height':
+          case 'h':
+            arr.push(`h_${value}`)
+          break;
+          case 'width':
+          case 'w':
+            arr.push(`w_${value}`)
+          break;
+          default:
+          break;
+        }
+      }
+      modStr = arr.join(',')
+    }
+
+    if (modStr.length > 0) modStr += '/'
+
+    return `https://res.cloudinary.com/revcascade/${modStr}${url}`
   }
 }
 
