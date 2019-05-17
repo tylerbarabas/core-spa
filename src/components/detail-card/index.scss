@@ -1,19 +1,38 @@
-div.detail-card-data{
-  .card{
-    height: 100%;
-    
-    ul.data-list{
-      list-style: none;
+@import '../../../../core-spa/src/containers/app/variables';
 
-      div.key{
-        display: inline-block;
-        font-weight: bold;
-        vertical-align: top;
-      }
-      div.value{
-        display: inline-block;
-        max-width: 85%
-      }
+div.detail-card.card{
+  height: 100%;
+  box-shadow: none;
+  
+  div.card-header{
+    box-shadow: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+
+    div.blue-bottom{
+      height: 100%;
+      width: 100%;
+      border-bottom: 1px solid $primary;
+      font-weight: bold;
     }
-  } 
+  }
+
+  ul.data-list{
+    list-style: none;
+    margin: 0;
+
+    div.key{
+      display: inline-block;
+      font-weight: bold;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    div.value{
+      display: inline-block;
+      max-width: 85%;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
 }  

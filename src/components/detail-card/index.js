@@ -6,13 +6,12 @@ export default class DetailCard extends React.Component {
   getCardList(){
     let template = []
     let { list } = this.props
-    let { labelWidth } = this.props
     for (let k in list) {
       let v = list[k]
       template.push(
-        <li key={k}>
-          <div className="key" style={{width: labelWidth}}>{k}</div>
-          <div className="value" style={{maxWidth: `calc(100% - ${labelWidth})`}}>{v}</div>
+        <li key={k} className="columns">
+            <div className="key column is-one-quarter">{k}</div>
+            <div className="value column is-three-quarter">{v}</div>
         </li>
       )
     }
@@ -37,13 +36,15 @@ export default class DetailCard extends React.Component {
   render(){
     let { header } = this.props
     return (
-      <div className="column detail-card-data">
-        <div className="card">
-          {header}
-          <div className="card-content">
-            <div className="content">
-              {this.getContent()}
-            </div>
+      <div className="detail-card card">
+        <div className="card-header">
+          <div className="blue-bottom">
+            {header}
+          </div>
+        </div>
+        <div className="card-content">
+          <div className="content">
+            {this.getContent()}
           </div>
         </div>
       </div>
