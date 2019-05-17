@@ -75,16 +75,16 @@ export default class ParentVisualComponent extends React.Component {
       for (let key in mods){
         let value = mods[key]
         switch (key){
-          case 'height':
-          case 'h':
-            arr.push(`h_${value}`)
-          break;
-          case 'width':
-          case 'w':
-            arr.push(`w_${value}`)
-          break;
-          default:
-          break;
+        case 'height':
+        case 'h':
+          arr.push(`h_${value}`)
+          break
+        case 'width':
+        case 'w':
+          arr.push(`w_${value}`)
+          break
+        default:
+          break
         }
       }
       modStr = arr.join(',')

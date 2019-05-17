@@ -11,5 +11,6 @@ export default class RcImage extends React.Component {
 }
 
 RcImage.propTypes = {
-  src: PropTypes.string
+  src: PropTypes.string,
+  className: PropTypes.string,
 }
