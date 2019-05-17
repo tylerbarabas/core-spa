@@ -10,8 +10,8 @@ export default class DetailCard extends React.Component {
       let v = list[k]
       template.push(
         <li key={k} className="columns">
-            <div className="key column is-one-quarter">{k}</div>
-            <div className="value column is-three-quarter">{v}</div>
+            <div className="key column is-two-fifths">{k}</div>
+            <div className="value column is-three-fifths">{v}</div>
         </li>
       )
     }

@@ -1,7 +1,6 @@
 @import '../../../../core-spa/src/containers/app/variables';
 
 div.detail-card.card{
-  height: 100%;
   box-shadow: none;
   
   div.card-header{
@@ -24,15 +23,16 @@ div.detail-card.card{
 
     div.key{
       display: inline-block;
-      font-weight: bold;
       padding-top: 0;
       padding-bottom: 0;
+      font-size: 14px;
     }
     div.value{
       display: inline-block;
       max-width: 85%;
       padding-top: 0;
       padding-bottom: 0;
+      font-size: 14px;
     }
   }
 }  
