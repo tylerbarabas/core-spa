@@ -35,15 +35,11 @@ export default class DetailCard extends React.Component {
   }
 
   render(){
-    let { header, synopsis } = this.props
-    return [(
-      <div className="column is-one-third detail-card-info" key="0">
-        <div className="header">{header}</div>
-        <div className="synopsis">{synopsis}</div>
-      </div>
-    ),( 
-      <div className="column is-two-thirds detail-card-data" key="1">
+    let { header } = this.props
+    return (
+      <div className="column detail-card-data">
         <div className="card">
+          {header}
           <div className="card-content">
             <div className="content">
               {this.getContent()}
@@ -51,13 +47,12 @@ export default class DetailCard extends React.Component {
           </div>
         </div>
       </div>
-    )]
+    )
   }
 }
 
 DetailCard.propTypes = {
   header: PropTypes.string,
-  synopsis: PropTypes.string,
   list: PropTypes.object,
   template: PropTypes.func,
   labelWidth: PropTypes.string,
