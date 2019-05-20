@@ -8,12 +8,18 @@ export default class DetailCard extends React.Component {
     let { list } = this.props
     for (let k in list) {
       let v = list[k]
-      template.push(
-        <li key={k} className="columns">
-          <div className="key column is-two-fifths">{k}</div>
-          <div className="value column is-three-fifths">{v}</div>
-        </li>
-      )
+      if (v === 'line'){
+        template.push(
+          <hr key={k} />
+        )
+      } else {
+        template.push(
+          <li key={k} className="columns">
+            <div className="key column is-two-fifths">{k}</div>
+            <div className="value column is-three-fifths">{v}</div>
+          </li>
+        )
+      }
     }
     return template 
   }
