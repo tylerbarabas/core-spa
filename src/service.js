@@ -65,22 +65,16 @@ export default {
     return data
   },
   getMyUser: async () => {
-    let res = await fetch(uri_getMyUser, {
-      headers: getAuthHeaders()
-    })
+    let res = await superFetch(uri_getMyUser)
 
     return res
   },
   getMyRetailers: async () => {
-    let res = await fetch(uri_getRetailers, {
-      headers: getAuthHeaders()
-    })
+    let res = await superFetch(uri_getRetailers)
     return res
   },
   getMyBrands: async () => {
-    let res = await fetch(uri_getBrands, {
-      headers: getAuthHeaders()
-    })
+    let res = await superFetch(uri_getBrands)
     return res
   },
   isValidAuthCookie: () => {
@@ -111,9 +105,7 @@ export default {
     let c = Cache.find(uri)
     let data = null
     if (c === null) {
-      let res = await fetch(uri, {
-        headers: getAuthHeaders()
-      })
+      let res = await superFetch(uri)
       data = await res.json()
       Cache.record(uri, data)
     } else {
@@ -126,9 +118,7 @@ export default {
     let c = Cache.find(uri)
     let data = null
     if (c ===  null) {
-      let res = await fetch(uri, {
-        headers: getAuthHeaders()
-      })
+      let res = await superFetch(uri)
       data = await res.json()
       Cache.record(uri, data)
     } else {
@@ -143,9 +133,7 @@ export default {
     let thirtyMinutes = 60000 * 30
     let c = Cache.find(uri, thirtyMinutes)
     if (c === null) {
-      let res = await fetch(uri, {
-        headers: getAuthHeaders()
-      })
+      let res = await superFetch(uri)
       if (res.ok) {
         data = await res.json()
         Cache.record(uri, data)
@@ -159,9 +147,7 @@ export default {
   },
   exportInventoryByEmail: async id => {
     let uri = uri_inventoryExportByEmail.replace(':id', id)
-    let res = await fetch(uri, {
-      headers: getAuthHeaders()
-    })
+    let res = await superFetch(uri)
     return res
   },
   getProducts: async ( id, page, filter, search, rb = 'retailers' ) => {
@@ -171,9 +157,7 @@ export default {
       search = ''
     }
     let uri = `${uri_elasticSearch.replace(/:rb/, rb).replace(/:id/,id)}${filter}${search}&page=${page}`
-    let res = await fetch(uri, {
-      headers: getAuthHeaders()
-    })
+    let res = await superFetch(uri)
     let data = false
     if (res.ok){
       data = await res.json()
@@ -186,9 +170,7 @@ export default {
     let c = Cache.find(uri, thirtyMinutes)
     let data = false
     if (c === null) { 
-      let res = await fetch(uri, {
-        headers: getAuthHeaders()
-      })
+      let res = await superFetch(uri)
       if (res.ok){
         data = await res.json()
         Cache.record(uri, data)
@@ -200,13 +182,25 @@ export default {
   },
   getProductDetail: async ( id, vid, rb = 'retailers' ) => {
     let uri = `${uri_productDetail.replace(/:rb/, rb).replace(/:id/,id).replace(/:vid/,vid)}`
-    let res = await fetch(uri, {
-      headers: getAuthHeaders()
-    })
+    let res = await superFetch(uri)
     let data = false
     if (res.ok){
       data = await res.json()
     }
     return data
   },
+}
+
+const superFetch = async (uri, params = {}) => {
+  const res = await fetch(uri, {
+    headers:  getAuthHeaders()
+  })
+  switch (res.status){
+    case '403':
+    case '401':
+      window.location.reload()
+    default:
+    break;
+  }
+  return res
 }
