@@ -191,16 +191,17 @@ export default {
   },
 }
 
-const superFetch = async (uri, params = {}) => {
+const superFetch = async (uri) => {
   const res = await fetch(uri, {
     headers:  getAuthHeaders()
   })
   switch (res.status){
-    case '403':
-    case '401':
-      window.location.reload()
-    default:
-    break;
+  case '403':
+  case '401':
+    window.location.reload()
+    break
+  default:
+    break
   }
   return res
 }
