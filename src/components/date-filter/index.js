@@ -97,7 +97,7 @@ export default class DateFilter extends React.Component {
   render(){
     let { name } = this.props
     return (
-      <div className="filter">
+      <div className="date-filter">
         <strong>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
         { this.getOptions() }

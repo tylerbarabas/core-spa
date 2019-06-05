@@ -61,7 +61,7 @@ export default class CheckboxFilter extends React.Component {
   render(){
     let { name } = this.props
     return (
-      <div className="filter">
+      <div className="checkbox-filter">
         <strong>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
         { this.getOptions() }

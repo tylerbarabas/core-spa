@@ -1,8 +1,7 @@
-div.filter{
+div.radio-search-filter{
   background-color: #FFF;
   padding: 10px 15px;
   color: #000;
-  font-size: 14px;
 
   div.reset-all{
     float: right;
@@ -14,6 +13,7 @@ div.filter{
   input.search-filter{
     margin-top: 7px;
     margin-bottom: 3px;
+    font-size: 14px;
   }
 
   div.filter-option {

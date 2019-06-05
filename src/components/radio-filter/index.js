@@ -49,7 +49,7 @@ export default class RadioFilter extends React.Component {
   render(){
     let { name } = this.props
     return (
-      <div className="filter">
+      <div className="radio-filter">
         <strong>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset</div>
         { this.getOptions() }

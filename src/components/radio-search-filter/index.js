@@ -110,7 +110,7 @@ export default class RadioSearchFilter extends React.Component {
     let { name } = this.props
     let placeholder = this.props.placeholder || ''
     return (
-      <div className="filter">
+      <div className="radio-search-filter">
         <strong>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
         <input type="text" placeholder={placeholder} className="search-filter" onChange={e => {
