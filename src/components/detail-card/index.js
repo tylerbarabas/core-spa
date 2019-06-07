@@ -14,7 +14,7 @@ export default class DetailCard extends React.Component {
         )
       } else {
         template.push(
-          <li key={k} className="columns">
+          <li key={k} className="columns is-mobile">
             <div className="key column is-two-fifths">{k}</div>
             <div className="value column is-three-fifths">{v}</div>
           </li>
