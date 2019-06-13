@@ -3,11 +3,10 @@
 div.detail-card{
   box-shadow: none;
   
-  div.card-content{
+  header.card-header{
     box-shadow: none;
 
-    div.blue-bottom{
-      font-weight: bold;
+    p.blue-bottom{
       border-bottom: 1px solid $primary;
     }
   }

@@ -43,9 +43,11 @@ export default class DetailCard extends React.Component {
     let { header } = this.props
     return (
       <div className="card detail-card">
-        <div className="card-content">
-          <div className="blue-bottom">{header}</div>
-        </div>
+        <header className="card-header">
+          <p className="card-header-title blue-bottom">
+            {header}
+          </p>
+        </header>
         <div className="card-content">
           <div className="content">
             {this.getContent()}
