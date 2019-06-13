@@ -1,19 +1,14 @@
 @import '../../../../core-spa/src/containers/app/variables';
 
-div.detail-card.card{
+div.detail-card{
   box-shadow: none;
   
-  div.card-header{
+  div.card-content{
     box-shadow: none;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
 
     div.blue-bottom{
-      height: 100%;
-      width: 100%;
-      border-bottom: 1px solid $primary;
       font-weight: bold;
+      border-bottom: 1px solid $primary;
     }
   }
 

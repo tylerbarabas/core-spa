@@ -42,11 +42,9 @@ export default class DetailCard extends React.Component {
   render(){
     let { header } = this.props
     return (
-      <div className="detail-card card">
-        <div className="card-header">
-          <div className="blue-bottom">
-            {header}
-          </div>
+      <div className="card detail-card">
+        <div className="card-content">
+          <div className="blue-bottom">{header}</div>
         </div>
         <div className="card-content">
           <div className="content">
