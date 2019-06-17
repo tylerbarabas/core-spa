@@ -1,8 +1,8 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import ParentContainerComponent from '../../extendables/parent-container-component'
 import PrivateRoute from '../private-route'
 import { logout, setIsAuthenticated } from '../../modules/auth'
 import { getMyUser } from '../../modules/user'
@@ -12,12 +12,11 @@ import TopBar from '../../components/top-bar'
 import Dashboard from '../dashboard'
 import PublicArea from '../public-area'
 import NotFound from '../not-found'
-import colors from 'core-spa/src/containers/app/variables.scss'
 import 'bulma'
 import 'animate.css'
 import './base.scss'
 
-class App extends React.Component {
+class App extends ParentContainerComponent {
   componentDidMount(){
     this.setBackgroundColor()
     this.checkIsUser()
@@ -27,21 +26,6 @@ class App extends React.Component {
     this.setBackgroundColor()
     this.checkIsUser()
   }
-
-  checkIsUser(){
-    let { id } = this.props.user
-    let { isAuthenticated } = this.props.auth
-    let { isRequesting } = this.props.user
-    if ( id === null && isAuthenticated && !isRequesting ){
-      this.props.getMyUser()
-    }
-  }
-
-  setBackgroundColor(){
-    let { isAuthenticated } = this.props.auth
-    document.getElementById('root').style.backgroundColor = (!isAuthenticated) ? colors.backgroundDarkBlue : colors.backgroundGrey
-  }
-
 
   render(){
     let { isAuthenticated } = this.props.auth

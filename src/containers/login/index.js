@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import LoginForm from '../../components/login-form'
 import { requestToken, errorFound } from '../../modules/auth'
-import colors from '../app/variables.scss'
+import colors from '../../extendables/parent-container-component/variables.scss'
 
 class Login extends React.Component {
   componentDidMount(){
