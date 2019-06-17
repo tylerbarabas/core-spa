@@ -21,6 +21,7 @@ const uri_getBrands = fullPath('/v1/brands/?pagination=0&short=1&order_by=name')
 const uri_getRetailers = fullPath('/v1/retailers/?limit=250&short=1&order_by=name')
 const uri_inventoryExportByEmail = fullPath('/v1/retailers/:id/inventory/export-email/?ignore_deleted=1')
 const uri_productDetail = fullPath('/v1/:rb/:id/products/:vid/')
+const uri_variantDetail = fullPath('/v1/:rb/:id/variant/:vid/')
 
 //catalog
 //const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
@@ -189,6 +190,15 @@ export default {
     }
     return data
   },
+  getVariantDetail: async ( id, vid, rb = 'retailers' ) => {
+    let uri = `${uri_variantDetail.replace(/:rb/, rb).replace(/:id/, id).replace(/:vid/, vid)}`
+    let res = await superFetch(uri)
+    let data = false
+    if (res.ok){
+      data = await res.json()
+    }
+    return data
+  }
 }
 
 const superFetch = async (uri) => {
