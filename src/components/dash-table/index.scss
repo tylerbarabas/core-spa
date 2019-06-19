@@ -1,0 +1,22 @@
+@import '../../extendables/parent-container-component/variables';
+
+div.dash-table {
+  margin-bottom: 40px;
+
+  div.dash-table-header{
+    background-color: #FFF;
+    font-weight: bold;
+    border-bottom: 1px solid $background-grey;
+  }
+  div.dash-table-row{
+    background-color: #FFF;
+  }
+  a.title{
+    font-size: 16px;
+    color: $primary;
+  }
+  p.description{
+    font-size: 14px;
+    color: $text-plain;
+  }
+}
