@@ -13,7 +13,21 @@ export default class TopBar extends ParentVisualComponent {
     let template = []
     for (let i=0;i<buttons.length;i++){
       let b = buttons[i]
-      template.push(<Link key={b.name} className='navbar-item' to={b.href}>{b.name}</Link>)
+      if (typeof b.submenu === 'undefined') {
+        template.push(<Link key={b.name} className='navbar-item' to={b.href}>{b.name}</Link>)
+      } else {
+        template.push(
+          <div key={b.name} className='navbar-item has-dropdown is-hoverable'>
+            <Link className='navbar-link is-arrowless' to={b.href}>
+              {b.name}
+              <FontAwesomeIcon icon={faChevronDown} />
+            </Link>
+            <div className="navbar-dropdown">
+              {this.getSubmenu(b.submenu)}
+            </div>
+          </div>
+        )
+      }
     }
 
     return(
@@ -21,6 +35,14 @@ export default class TopBar extends ParentVisualComponent {
         {template}
       </div>
     )
+  }
+
+  getSubmenu(s){
+    let template = []
+    for (let i=0;i<s.length;i+=1){
+      template.push(<Link className="navbar-item" to={s[i].href}>{s[i].name}</Link>)
+    }
+    return template
   }
 
   getContextProducts(){
