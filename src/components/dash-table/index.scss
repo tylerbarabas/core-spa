@@ -6,10 +6,11 @@ div.dash-table {
   div.dash-table-header{
     background-color: #FFF;
     font-weight: bold;
-    border-bottom: 1px solid $background-grey;
+    border-bottom: 2px solid $background-grey;
   }
   div.dash-table-row{
     background-color: #FFF;
+    border-bottom: 2px solid $background-grey;
   }
   a.title{
     font-size: 16px;
@@ -18,5 +19,11 @@ div.dash-table {
   p.description{
     font-size: 14px;
     color: $text-plain;
+  }
+  p.count{
+    font-size: 16px;
+    color: $text-plain;
+    float: right;
+    font-weight: bold;
   }
 }

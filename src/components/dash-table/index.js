@@ -14,12 +14,21 @@ export default class DashTable extends React.Component {
       template.push(
         <div className="columns">
           <div className="column is-full dash-table-row">
-            <Link to={r.href} className="title">
-              {r.title}
-            </Link>
-            <p className="description">
-              {r.description}
-            </p>
+            <div className="columns is-mobile is-desktop">
+              <div className="column is-four-fifths">
+                <Link to={r.href} className="title">
+                  {r.title}
+                </Link>
+                <p className="description">
+                  {r.description}
+                </p>
+              </div>
+              <div className="column is-one-fifth">
+                <p className="count">
+                  {r.count}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )
