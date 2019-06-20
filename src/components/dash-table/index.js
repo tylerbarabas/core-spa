@@ -36,16 +36,38 @@ export default class DashTable extends React.Component {
     return template
   }
 
+  getHeader(){
+    let { data } = this.props
+    let template = (
+      <div className="columns dash-table-header">
+        <div className="column is-full">
+          {data.header}
+        </div>
+      </div>
+    )
+    if (typeof data.viewAll !== 'undefined' && data.viewAll === true){
+      template = (
+        <div className="columns dash-table-header">
+          <div className="column is-four-fifths">
+            {data.header}
+          </div>
+          <div className="column is-one-fifth is-paddingless">
+            <button className="button view-all">
+              View All
+            </button>
+          </div>
+        </div>
+      )
+    }
+    return template
+  }
+
   render(){
     let { data } = this.props
     return (
       <div className="dash-table">
-        <div className="columns">
-          <div className="column is-full dash-table-header">
-            {data.header}
-          </div>
-        </div>
-        { this.getRows() }
+        {this.getHeader()}
+        {this.getRows()}
       </div>
     )
   }
