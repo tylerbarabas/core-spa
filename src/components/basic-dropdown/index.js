@@ -39,12 +39,11 @@ export default class BasicDropdown extends React.Component {
   }
 
   selectItem(value){
-    this.setState({value})
+    this.setState({value, isActive: false})
   }
 
   toggleDropdown(){
     let { isActive } = this.state
-    console.log('look', isActive)
     this.setState({isActive: !isActive})
   }
 

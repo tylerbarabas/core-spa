@@ -11,7 +11,7 @@ div.basic-dropdown{
     height: 50px;
     font-size: 22px;
     background-color: #FFF;
-
+    
     span.icon{
       transition: transform 300ms;
 
@@ -24,9 +24,18 @@ div.basic-dropdown{
   div.dropdown-menu {
     width: 100%;
     background-color: #FFF;
+    padding-top: 0;
   }
 
   div.dropdown-content{
     background-color: #FFF;
+    padding-top: 0;
+
+    a.dropdown-item{
+      height: 50px;
+      line-height: 36px;
+      font-size: 21px;
+      border: 1px solid #e0e0e0;
+    }
   }
 }
