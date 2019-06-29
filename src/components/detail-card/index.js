@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import './index.scss'
 
 export default class DetailCard extends React.Component {
-  getCardList(){
+  parseList(list){
     let template = []
-    let { list } = this.props
     for (let k in list) {
       let v = list[k]
       if (v === 'line'){
@@ -14,12 +13,27 @@ export default class DetailCard extends React.Component {
         )
       } else {
         template.push(
-          <li key={k} className="columns is-mobile">
+          <li key={`${k}-${Date.now()}`} className="columns is-mobile">
             <div className="key column is-two-fifths">{k}</div>
             <div className="value column is-three-fifths">{v}</div>
           </li>
         )
       }
+    }
+    return template
+  }
+
+  getCardList(){
+    let template = []
+    let { list } = this.props
+    if (Array.isArray(list)) {
+      for (let i=0;i<list.length;i+=1){
+        let l = list[i]
+        if (i !== list.length - 1) l.line = 'line'
+        template = template.concat(this.parseList(l))
+      }
+    } else {
+      template = this.parseList(list)
     }
     return template 
   }
@@ -60,7 +74,7 @@ export default class DetailCard extends React.Component {
 
 DetailCard.propTypes = {
   header: PropTypes.string,
-  list: PropTypes.object,
+  list: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   template: PropTypes.func,
   labelWidth: PropTypes.string,
 }
