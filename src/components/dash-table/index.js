@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 export default class DashTable extends React.Component {
@@ -63,7 +61,6 @@ export default class DashTable extends React.Component {
   }
 
   render(){
-    let { data } = this.props
     return (
       <div className="dash-table">
         {this.getHeader()}
@@ -74,4 +71,5 @@ export default class DashTable extends React.Component {
 }
 
 DashTable.propTypes = {
+  data: PropTypes.object,
 }

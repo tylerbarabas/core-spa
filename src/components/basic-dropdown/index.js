@@ -25,7 +25,7 @@ export default class BasicDropdown extends React.Component {
 
   getItems(){
     let { items } = this.props
-    let { value, isActive } = this.state
+    let { value } = this.state
     let template = []
     for(let i=0;i<items.length;i+=1) {
       let it = items[i]
