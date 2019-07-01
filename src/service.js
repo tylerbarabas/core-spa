@@ -210,8 +210,8 @@ const superFetch = async (uri) => {
     headers:  getAuthHeaders()
   })
   switch (res.status){
-  case '403':
-  case '401':
+  case 403:
+  case 401:
     window.location.reload()
     break
   default:
