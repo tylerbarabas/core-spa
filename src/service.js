@@ -198,7 +198,11 @@ export default {
       data = await res.json()
     }
     return data
-  }
+  },
+  getDashboard: async ( id, rb = 'retailers' ) => {
+    let data = false
+    return data
+  },
 }
 
 const superFetch = async (uri) => {
