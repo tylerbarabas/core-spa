@@ -40,7 +40,7 @@ export default class TopBar extends ParentVisualComponent {
   getSubmenu(s){
     let template = []
     for (let i=0;i<s.length;i+=1){
-      template.push(<Link className="navbar-item" to={s[i].href}>{s[i].name}</Link>)
+      template.push(<Link className="navbar-item" key={`nav-submenu-${i}`} to={s[i].href}>{s[i].name}</Link>)
     }
     return template
   }

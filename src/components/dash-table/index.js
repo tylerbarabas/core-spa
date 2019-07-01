@@ -10,7 +10,7 @@ export default class DashTable extends React.Component {
     for (let i=0;i<rows.length;i+=1){
       let r = rows[i]
       template.push(
-        <div className="columns">
+        <div className="columns" key={`dash-table-row-${i}`}>
           <div className="column is-full dash-table-row">
             <div className="columns is-mobile is-desktop">
               <div className="column is-four-fifths">

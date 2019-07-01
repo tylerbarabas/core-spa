@@ -30,7 +30,7 @@ export default class BasicDropdown extends React.Component {
     for(let i=0;i<items.length;i+=1) {
       let it = items[i]
       template.push(
-        <a className={`dropdown-item is-pulled-left${(it === value)?' is-active':''}`} onClick={this.selectItem.bind(this, it)}>
+        <a className={`dropdown-item is-pulled-left${(it === value)?' is-active':''}`} onClick={this.selectItem.bind(this, it)} key={`dd-item-${i}`}>
           {it}
         </a>
       )
