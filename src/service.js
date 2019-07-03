@@ -31,6 +31,7 @@ const uri_getInventorySummary = fullPath('/v1/retailers/:id/inventory-summary/')
 const uri_getInventoryProducts = fullPath('/v1/retailers/:id/inventory/?limit=15&ignore_deleted=1')
 const uri_elasticSearch = fullPath('/v1/:rb/:id/variants/search/?limit=15')
 const uri_productsOptions = fullPath('/v1/:rb/:id/attributes/?filterable_attributes_only=1')
+const uri_ordersSummary = fullPath('/v1/:rb/:id/orders-summary/')
 
 let Auth = {
   accessToken: null,
@@ -199,8 +200,14 @@ export default {
     }
     return data
   },
-  getDashboard: async ( id, rb = 'retailers' ) => {
+  getOrdersSummary: async ( id, rb = 'retailers' ) => {
+    let uri = `${uri_ordersSummary.replace(/:rb/, rb).replace(/:id/, id)}`
+    let res = await superFetch(uri)
     let data = false
+    if (res.ok){
+      data = await res.json()
+    }
+
     return data
   },
 }
