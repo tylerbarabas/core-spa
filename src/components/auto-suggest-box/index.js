@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AutoSuggest from 'react-autosuggest'
 import './index.scss'
 
+const DISPLAY_PROP = 'name'
 export default class AutoSuggestBox extends React.Component {
   constructor() {
     super()
@@ -11,22 +12,32 @@ export default class AutoSuggestBox extends React.Component {
       value: '',
       suggestions: []
     }
+
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.options !== this.props.options) {
+      this.setState({suggestions: this.props.options})
+    }
   }
 
   getSuggestionValue (suggestion) {
-    return suggestion.name
+    let dp = this.props.displayProp || DISPLAY_PROP
+    return suggestion[dp]
   }
 
   renderSuggestion (suggestion) {
+    let dp = this.props.displayProp || DISPLAY_PROP
     return (
-      <span id={`${suggestion.role}-${suggestion.id}`}>{suggestion.name}</span>
+      <span id={suggestion.id}>{suggestion[dp]}</span>
     )
   }
 
   onKeyDown(e) {
+    let dp = this.props.displayProp || DISPLAY_PROP
     let { options, action } = this.props
     if (e.which === 13) {
-      let o = options.filter(o => o.name === e.target.value)
+      let o = options.filter(o => o[dp] === e.target.value)
       if (typeof o[0] !== 'undefined') {
         action(o[0])
       }
@@ -36,7 +47,8 @@ export default class AutoSuggestBox extends React.Component {
 
   onChange (e, { newValue, method }) {
     let { options } = this.props
-    let o = options.find(s => s.name === newValue)
+    let dp = this.props.displayProp || DISPLAY_PROP
+    let o = options.find(s => s[dp] === newValue)
 
     this.setState({
       value: newValue
@@ -44,18 +56,21 @@ export default class AutoSuggestBox extends React.Component {
     if (method === 'click') {
       this.props.action(o)
     }
+
+    if (typeof this.props.onChange === 'function') this.props.onChange(e)
   }
 
   getSuggestions(value) {
     const escapedValue = this.escapeRegexCharacters(value.trim())
     let { options } = this.props
+    let dp = this.props.displayProp || DISPLAY_PROP
     if (escapedValue === '') {
       return []
     }
 
     const regex = new RegExp('^' + escapedValue, 'i')
 
-    return options.filter(o => regex.test(o.name))
+    return options.filter(o => regex.test(o[dp]))
   }
 
   escapeRegexCharacters(str) {
@@ -103,4 +118,5 @@ AutoSuggestBox.propTypes = {
   options: PropTypes.array,
   action: PropTypes.func,
   placeholder: PropTypes.string,
+  displayProp: PropTypes.string,
 }
