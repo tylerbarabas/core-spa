@@ -31,6 +31,7 @@ export default class AutoSuggestBox extends React.Component {
         action(o[0])
       }
     }
+    if (typeof this.props.onKeyDown === 'function') this.props.onKeyDown(e)
   }
 
   onChange (e, { newValue, method }) {
