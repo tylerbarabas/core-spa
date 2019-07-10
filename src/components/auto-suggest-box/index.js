@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AutoSuggest from 'react-autosuggest'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 const DISPLAY_PROP = 'name'
+const IS_LOADING = false
 export default class AutoSuggestBox extends React.Component {
   constructor() {
     super()
@@ -12,7 +15,6 @@ export default class AutoSuggestBox extends React.Component {
       value: '',
       suggestions: []
     }
-
   }
 
   componentDidUpdate(prevProps){
@@ -91,7 +93,7 @@ export default class AutoSuggestBox extends React.Component {
 
   render() {
     const { value, suggestions } = this.state
-    let { placeholder } = this.props
+    let { placeholder, isLoading } = this.props
 
     if (typeof placeholder === 'undefined') placeholder = 'Start typing...'
 
@@ -102,15 +104,36 @@ export default class AutoSuggestBox extends React.Component {
       onKeyDown: this.onKeyDown.bind(this),
     }
 
-    return (
+    let il = isLoading || IS_LOADING
+
+    let template = (
       <AutoSuggest 
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
         getSuggestionValue={this.getSuggestionValue.bind(this)}
         renderSuggestion={this.renderSuggestion.bind(this)}
-        inputProps={inputProps} />
+        inputProps={inputProps}
+       />
     )
+
+    if (il) template = (
+      <AutoSuggest 
+        suggestions={suggestions}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+        getSuggestionValue={this.getSuggestionValue.bind(this)}
+        renderSuggestion={this.renderSuggestion.bind(this)}
+        inputProps={inputProps}
+        renderSuggestionsContainer={()=>{
+          return (
+            <FontAwesomeIcon className="loading" icon={faSpinner} spin />
+          )
+        }}
+       />
+    )
+
+    return template
   }
 }
 
@@ -119,4 +142,5 @@ AutoSuggestBox.propTypes = {
   action: PropTypes.func,
   placeholder: PropTypes.string,
   displayProp: PropTypes.string,
+  isLoading: PropTypes.bool,
 }
