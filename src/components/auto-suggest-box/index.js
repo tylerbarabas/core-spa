@@ -130,7 +130,7 @@ export default class AutoSuggestBox extends React.Component {
         getSuggestionValue={this.getSuggestionValue.bind(this)}
         renderSuggestion={this.renderSuggestion.bind(this)}
         inputProps={inputProps}
-       />
+      />
     )
 
     if (il) template = (
@@ -141,12 +141,8 @@ export default class AutoSuggestBox extends React.Component {
         getSuggestionValue={this.getSuggestionValue.bind(this)}
         renderSuggestion={this.renderSuggestion.bind(this)}
         inputProps={inputProps}
-        renderSuggestionsContainer={()=>{
-          return (
-            <FontAwesomeIcon className="loading" icon={faSpinner} spin />
-          )
-        }}
-       />
+        renderSuggestionsContainer={lt}
+      />
     )
 
     return template
@@ -160,4 +156,6 @@ AutoSuggestBox.propTypes = {
   displayProp: PropTypes.string,
   isLoading: PropTypes.bool,
   loadingTemplate: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onChange: PropTypes.func,
 }
