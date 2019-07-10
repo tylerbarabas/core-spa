@@ -7,6 +7,9 @@ import './index.scss'
 
 const DISPLAY_PROP = 'name'
 const IS_LOADING = false
+const LOADING_TEMPLATE = () => (
+  <FontAwesomeIcon className="loading" icon={faSpinner} spin />
+)
 export default class AutoSuggestBox extends React.Component {
   constructor() {
     super()
@@ -92,8 +95,20 @@ export default class AutoSuggestBox extends React.Component {
   }
 
   render() {
+    return (
+      <div className="auto-suggest-box">
+        {this.getTemplate()}
+      </div>
+    )
+  }
+
+  getTemplate() {
     const { value, suggestions } = this.state
-    let { placeholder, isLoading } = this.props
+    let {
+      placeholder,
+      isLoading,
+      loadingTemplate,
+    } = this.props
 
     if (typeof placeholder === 'undefined') placeholder = 'Start typing...'
 
@@ -105,6 +120,7 @@ export default class AutoSuggestBox extends React.Component {
     }
 
     let il = isLoading || IS_LOADING
+    let lt = loadingTemplate || LOADING_TEMPLATE
 
     let template = (
       <AutoSuggest 
@@ -143,4 +159,5 @@ AutoSuggestBox.propTypes = {
   placeholder: PropTypes.string,
   displayProp: PropTypes.string,
   isLoading: PropTypes.bool,
+  loadingTemplate: PropTypes.func,
 }
