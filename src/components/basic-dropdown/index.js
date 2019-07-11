@@ -9,7 +9,7 @@ export default class BasicDropdown extends React.Component {
   constructor(){
     super()
     this.state = {
-      value: null,
+      selectedItem: '',
       isActive: false,
     }
   }
@@ -19,27 +19,35 @@ export default class BasicDropdown extends React.Component {
     if (
       !Array.isArray(items)
       && items.length < 1
-    ) items[0] = null
-    this.setState({value: items[0]})
+    ) items[0] = {
+      display: 'Loading...',
+      value: null
+    }
+    this.selectItem(items[0])
   }
 
   getItems(){
     let { items } = this.props
-    let { value } = this.state
+    let { selectedItem } = this.state
     let template = []
     for(let i=0;i<items.length;i+=1) {
       let it = items[i]
+      let display = it
+      if (typeof it === 'object') display = it.display
       template.push(
-        <a className={`dropdown-item is-pulled-left${(it === value)?' is-active':''}`} onClick={this.selectItem.bind(this, it)} key={`dd-item-${i}`}>
-          {it}
+        <a className={`dropdown-item is-pulled-left${(it === selectedItem)?' is-active':''}`} onClick={this.selectItem.bind(this, it)} key={`dd-item-${i}`}>
+          {display}
         </a>
       )
     }
     return template
   }
 
-  selectItem(value){
-    this.setState({value, isActive: false})
+  selectItem(item){
+    this.setState({
+      selectedItem: item,
+      isActive: false,
+    })
   }
 
   toggleDropdown(){
@@ -48,12 +56,16 @@ export default class BasicDropdown extends React.Component {
   }
 
   render(){
-    let { value, isActive } = this.state
+    let { selectedItem, isActive } = this.state
+    let display = selectedItem
+
+    if  (typeof selectedItem === 'object') display = selectedItem.display
+
     return (
       <div className={`basic-dropdown dropdown${(isActive)?' is-active':''}`}>
         <div className="dropdown-trigger" onClick={this.toggleDropdown.bind(this)}>
           <button className="button is-pulled-left" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>{value}</span>
+            <span>{display}</span>
             <span className={`icon is-small${(isActive)?' active':''}`}>
               <FontAwesomeIcon icon={faAngleDown} />
             </span>
@@ -70,6 +82,9 @@ export default class BasicDropdown extends React.Component {
 }
 
 BasicDropdown.propTypes = {
-  value: PropTypes.string,
+  selectedItem: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
   items: PropTypes.array,
 }
