@@ -26,6 +26,14 @@ export default class BasicDropdown extends React.Component {
     this.selectItem(items[0])
   }
 
+  componentDidUpdate(prevProps, prevState){
+    let { selectedItem } = this.state
+    let { onChange } = this.props
+    if ( selectedItem !== prevState.selectedItem )
+      if (typeof onChange === 'function')
+        onChange( selectedItem, prevState.selectedItem )
+  }
+
   getItems(){
     let { items } = this.props
     let { selectedItem } = this.state
@@ -87,4 +95,5 @@ BasicDropdown.propTypes = {
     PropTypes.object,
   ]),
   items: PropTypes.array,
+  onChange: PropTypes.func,
 }
