@@ -20,7 +20,7 @@ export default class Collapsible extends React.Component {
   }
 
   render(){
-    let { innerTemplate } = this.props
+    let { innerTemplate, className } = this.props
     let { isActive } = this.state
 
     let ac = ''
@@ -31,7 +31,7 @@ export default class Collapsible extends React.Component {
     }
 
     return (
-      <div onClick={this.clicked.bind(this)} className={`collapsible ${ac}`}>
+      <div onClick={this.clicked.bind(this)} className={`collapsible ${ac} ${className}`}>
         <FontAwesomeIcon icon={faAngleDown} style={{transform: `rotate(${angle})`}}/>
         { innerTemplate() }
       </div>
@@ -40,5 +40,6 @@ export default class Collapsible extends React.Component {
 }
 
 Collapsible.propTypes = {
-  innerTemplate: PropTypes.func
+  innerTemplate: PropTypes.func,
+  className: PropTypes.string,
 }
