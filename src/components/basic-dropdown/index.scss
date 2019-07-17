@@ -13,10 +13,13 @@ div.basic-dropdown{
     background-color: #FFF;
     
     span.icon{
+      position: absolute;
+      right: 15px;
       transition: transform 300ms;
 
       &.active{
         transform: rotate(180deg);
+        transform-origin: center;
       }
     }
   }
@@ -38,4 +41,5 @@ div.basic-dropdown{
       border: 1px solid #e0e0e0;
     }
   }
+
 }
