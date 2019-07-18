@@ -13,11 +13,8 @@ div.expandy-card {
   }
 
   div.top-area, div.bottom-area {
-    padding: 20px;
+    padding-bottom: 20px;
     padding-top: 12px;
-  }
-
-  div.top-area {
     padding-left: 0;
     padding-right: 0;
   }
@@ -26,6 +23,7 @@ div.expandy-card {
     background-color: $background-grey;
     border-radius: 15px;
     display:  none;
+    padding-left: 20px;
 
     &.is-expanded{
       display: block;
