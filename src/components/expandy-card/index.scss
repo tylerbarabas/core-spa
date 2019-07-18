@@ -3,17 +3,22 @@
 div.expandy-card {
   border-radius: 15px;
   background-color: #FFF;
-  padding-top: 10px;
-  padding-bottom: 20px;
   padding-left: 80px;
   padding-right: 40px;
+  padding-bottom: 0;
+  user-select: none;
+  
+  &.is-expanded{
+    padding-bottom: 20px;
+  }
 
   div.top-area, div.bottom-area {
     padding: 20px;
+    padding-bottom: 20px;
   }
 
   div.bottom-area {
-    background-color: $background-grey;;
+    background-color: $background-grey;
     border-radius: 15px;
     display:  none;
 
@@ -25,7 +30,7 @@ div.expandy-card {
   .card-plus, .card-minus {
     position: absolute;
     left: 35px;
-    margin-top: 20px;
+    margin-top: 22px;
     cursor: pointer;
   }
 

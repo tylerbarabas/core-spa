@@ -22,7 +22,7 @@ export default class ExpandyCard extends React.Component {
     let { isExpanded } = this.state
 
     return (
-      <div className="expandy-card">
+      <div className={`expandy-card${(isExpanded)?' is-expanded':''}`}>
         <FontAwesomeIcon
           icon={faPlus}
           className={`card-plus${(isExpanded)?' is-expanded':''}`}
