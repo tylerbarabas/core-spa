@@ -1,0 +1,34 @@
+@import '../../extendables/parent-container-component/variables';
+
+div.expandy-card {
+  border-radius: 15px;
+  background-color: #FFF;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 80px;
+  padding-right: 40px;
+
+  div.top-area, div.bottom-area {
+    padding: 20px;
+  }
+
+  div.bottom-area {
+    background-color: $background-grey;;
+    border-radius: 15px;
+  }
+
+  .card-plus, .card-minus {
+    position: absolute;
+    left: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .card-plus.is-expanded{
+    display: none;
+  }
+
+  .card-minus.is-expanded{
+    display:block;
+  }
+}
