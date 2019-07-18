@@ -5,18 +5,38 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 export default class ExpandyCard extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      isExpanded: false,
+    }
+  }
+
+  toggleExpanded(){
+    let { isExpanded } = this.state
+    this.setState({ isExpanded: !isExpanded })
+  }
+
   render(){
     let { topArea, bottomArea } = this.props
-    let isExpanded = false
+    let { isExpanded } = this.state
 
     return (
       <div className="expandy-card">
-        <FontAwesomeIcon icon={faPlus} className={`card-plus${(isExpanded)?' is-expanded':''}`} />
-        <FontAwesomeIcon icon={faMinus} className={`card-minus${(isExpanded)?' is-expanded':''}`} />
+        <FontAwesomeIcon
+          icon={faPlus}
+          className={`card-plus${(isExpanded)?' is-expanded':''}`}
+          onClick={this.toggleExpanded.bind(this)}
+        />
+        <FontAwesomeIcon
+          icon={faMinus}
+          className={`card-minus${(isExpanded)?' is-expanded':''}`}
+          onClick={this.toggleExpanded.bind(this)}
+        />
         <div className="top-area">
           {topArea()}
         </div>
-        <div className="bottom-area">
+        <div className={`bottom-area${(isExpanded)?' is-expanded':''}`}>
           {bottomArea()}
         </div>
       </div>

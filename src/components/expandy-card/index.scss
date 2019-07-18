@@ -15,6 +15,10 @@ div.expandy-card {
   div.bottom-area {
     background-color: $background-grey;;
     border-radius: 15px;
+
+    &.is-expanded{
+      display: none;
+    }
   }
 
   .card-plus, .card-minus {
