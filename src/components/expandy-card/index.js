@@ -33,6 +33,12 @@ export default class ExpandyCard extends React.Component {
           className={`card-minus${(isExpanded)?' is-expanded':''}`}
           onClick={this.toggleExpanded.bind(this)}
         />
+        <div className={`expand${(isExpanded)?' is-expanded':''}`}>
+          Expand
+        </div>
+        <div className={`collapse${(isExpanded)?' is-expanded':''}`}>
+          Collapse
+        </div>
         <div className="top-area">
           {topArea()}
         </div>

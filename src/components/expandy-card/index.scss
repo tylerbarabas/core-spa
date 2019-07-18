@@ -27,6 +27,24 @@ div.expandy-card {
     }
   }
 
+  div.expand, div.collapse{
+    position: absolute;
+    left: 24px;
+    margin-top: 36px;
+    font-size: 10px;
+  }
+
+  div.expand.is-expanded{
+    display: none;
+  }
+
+  div.collapse{
+    display: none;
+    &.is-expanded {
+      display: block;
+    }
+  }
+
   .card-plus, .card-minus {
     position: absolute;
     left: 35px;
