@@ -1,10 +1,14 @@
 @import '../../../../core-spa/src/extendables/parent-container-component/variables';
-div.filter-modal{
-  button.delete{
+div.filter-modal {
+  header.modal-card-head {
+    height: 50px;
+  }
+
+  button.update {
     position: absolute;
     right: 20px;
-  }  
-
+  }
+ 
   p.text-muted {
     color: $text-muted; 
   }

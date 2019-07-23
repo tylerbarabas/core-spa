@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import './index.scss' 
 
 export default class FilterModal extends React.Component {
+  
+
   render(){
     let {
       isActive,
@@ -20,27 +22,30 @@ export default class FilterModal extends React.Component {
         <div className="modal-card animated flipInX">
           <header className="modal-card-head">
             <p className="text-muted">Explore the filters below to target specific results.</p>
-            <button
-              className="delete"
-              aria-label="close"
-              onClick={()=>{closeAction()}}
-            />
           </header>
           <section className="modal-card-body">
             {modalContent}
           </section>
           <footer className="modal-card-foot">
             <button
-              className="button is-primary"
+              className="button close"
               onClick={()=>{
-                primaryAction()
                 closeAction()
               }}
-            >{primaryText}</button>
+            >Close</button>
             <button
-              className={`button is-secondary`}
-              onClick={()=>{secondaryAction()}}
-            >{secondaryText}</button>
+              className={`button clear-all`}
+              onClick={()=>{
+                console.log('Clear all')
+              }}
+            >Clear All</button>
+            <button
+              className={`button is-primary update`}
+              onClick={()=>{
+                console.log('Update')
+              }}
+              disabled
+            >Update</button>
           </footer>
         </div>
       </div>
