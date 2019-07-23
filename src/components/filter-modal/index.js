@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './index.scss' 
 
 export default class FilterModal extends React.Component {
   render(){
@@ -8,7 +9,6 @@ export default class FilterModal extends React.Component {
       modalContent,
       primaryText,
       primaryAction,
-      isSecondary,
       secondaryText,
       secondaryAction,
       closeAction,
@@ -19,7 +19,7 @@ export default class FilterModal extends React.Component {
         <div className="modal-background" />
         <div className="modal-card animated flipInX">
           <header className="modal-card-head">
-            <p className="modal-card-title">Explore the filters below to target specific results.</p>
+            <p className="text-muted">Explore the filters below to target specific results.</p>
             <button
               className="delete"
               aria-label="close"
@@ -38,7 +38,7 @@ export default class FilterModal extends React.Component {
               }}
             >{primaryText}</button>
             <button
-              className={`button is-secondary ${(isSecondary)?'':'is-hidden'}`}
+              className={`button is-secondary`}
               onClick={()=>{secondaryAction()}}
             >{secondaryText}</button>
           </footer>
@@ -53,7 +53,6 @@ FilterModal.propTypes = {
   modalContent: PropTypes.element,
   primaryText: PropTypes.string,
   primaryAction:PropTypes.func,
-  isSecondary: PropTypes.bool,
   secondaryText: PropTypes.string,
   secondaryAction: PropTypes.func,
   closeAction: PropTypes.func,
