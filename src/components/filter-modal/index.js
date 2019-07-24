@@ -9,10 +9,8 @@ export default class FilterModal extends React.Component {
     let {
       isActive,
       modalContent,
-      primaryText,
-      primaryAction,
-      secondaryText,
-      secondaryAction,
+      updateAction,
+      clearAction,
       closeAction,
     } = this.props
 
@@ -36,13 +34,13 @@ export default class FilterModal extends React.Component {
             <button
               className={`button clear-all`}
               onClick={()=>{
-                console.log('Clear all')
+                clearAction()
               }}
             >Clear All</button>
             <button
               className={`button is-primary update`}
               onClick={()=>{
-                console.log('Update')
+                updateAction()
               }}
               disabled
             >Update</button>
