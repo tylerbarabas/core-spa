@@ -32,13 +32,13 @@ export default class FilterModal extends React.Component {
               }}
             >Close</button>
             <button
-              className={`button clear-all`}
+              className={'button clear-all'}
               onClick={()=>{
                 clearAction()
               }}
             >Clear All</button>
             <button
-              className={`button is-primary update`}
+              className={'button is-primary update'}
               onClick={()=>{
                 updateAction()
               }}
@@ -54,9 +54,7 @@ export default class FilterModal extends React.Component {
 FilterModal.propTypes = {
   isActive: PropTypes.bool,
   modalContent: PropTypes.element,
-  primaryText: PropTypes.string,
-  primaryAction:PropTypes.func,
-  secondaryText: PropTypes.string,
-  secondaryAction: PropTypes.func,
   closeAction: PropTypes.func,
+  clearAction: PropTypes.func,
+  updateAction: PropTypes.func,
 }
