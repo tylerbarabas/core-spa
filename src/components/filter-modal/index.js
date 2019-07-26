@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import './index.scss' 
 
 export default class FilterModal extends React.Component {
-  
-
   render(){
     let {
       isActive,
@@ -22,7 +20,7 @@ export default class FilterModal extends React.Component {
             <p className="text-muted">Explore the filters below to target specific results.</p>
           </header>
           <section className="modal-card-body">
-            {modalContent}
+            {modalContent()}
           </section>
           <footer className="modal-card-foot">
             <button
@@ -53,7 +51,7 @@ export default class FilterModal extends React.Component {
 
 FilterModal.propTypes = {
   isActive: PropTypes.bool,
-  modalContent: PropTypes.element,
+  modalContent: PropTypes.func,
   closeAction: PropTypes.func,
   clearAction: PropTypes.func,
   updateAction: PropTypes.func,
