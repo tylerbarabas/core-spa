@@ -32,7 +32,7 @@ const uri_getInventoryProducts = fullPath('/v1/retailers/:id/inventory/?limit=15
 const uri_elasticSearch = fullPath('/v1/:rb/:id/variants/search/?limit=15')
 const uri_productsOptions = fullPath('/v1/:rb/:id/attributes/?filterable_attributes_only=1')
 const uri_ordersSummary = fullPath('/v1/:rb/:id/orders-summary/')
-const uri_orders = fullPath('/v1/:rb/:id/orders/?short=1&page=1&:sb=:st&limit=15')
+const uri_orders = fullPath('/v1/:rb/:id/orders/?mini=1&page=1&:sb=:st&limit=15')
 
 let Auth = {
   accessToken: null,
