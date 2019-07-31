@@ -5,7 +5,9 @@ import './index.scss'
 export default class CheckboxFilter extends React.Component {
   constructor(){
     super()
-    this.checked = []
+    this.state = {
+      checked: []
+    }
   }
 
   componentDidUpdate(){
@@ -15,18 +17,22 @@ export default class CheckboxFilter extends React.Component {
 
   checkboxSelected(e){
     let { action, filterKey } = this.props
-    if (e.target.checked) this.checked.push(e.target.value)
-    else {
-      let i = this.checked.indexOf(e.target.value)
-      this.checked.splice(i, 1)
+    let checked = this.state.checked.concat()
+    if (e.target.checked) {
+      checked.push(e.target.value)
+      this.setState({ checked })
+    } else {
+      let i = checked.indexOf(e.target.value)
+      checked.splice(i, 1)
+      this.setState({ checked })
     }
-    action(this.checked, filterKey)
+    action(checked, filterKey)
   }
 
   resetFilter(){
     let { action, filterKey } = this.props
-    this.checked = []
-    action(this.checked, filterKey)
+    this.state.checked = []
+    action(this.state.checked, filterKey)
   }
 
   getOptions(){
@@ -48,7 +54,7 @@ export default class CheckboxFilter extends React.Component {
               id={`filter-${filterKey}-${i}`}
               value={o.value}
               onChange={this.checkboxSelected.bind(this)}
-              checked={(this.checked.indexOf(o.value) !== -1)}
+              checked={(this.state.checked.indexOf(o.value) !== -1)}
             /> <label htmlFor={`filter-${filterKey}-${i}`}>{o.display}</label>
           </div>
         )

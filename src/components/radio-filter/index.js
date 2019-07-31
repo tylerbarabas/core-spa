@@ -5,7 +5,9 @@ import './index.scss'
 export default class RadioFilter extends React.Component {
   constructor(){
     super()
-    this.checked = null
+    this.state = {
+      checked: null
+    }
   }
 
   componentDidUpdate(){
@@ -15,14 +17,14 @@ export default class RadioFilter extends React.Component {
 
   radioSelected(e){
     let { action, filterKey } = this.props
-    this.checked = e.target.value
-    action(this.checked, filterKey)
+    this.setState({checked: e.target.value})
+    action(e.target.value, filterKey)
   }
 
   resetFilter(){
     let { action, filterKey } = this.props
-    this.checked = null
-    action(this.checked, filterKey)
+    this.setState({checked: null})
+    action(this.state.checked, filterKey)
   }
 
   getOptions(){
@@ -37,7 +39,7 @@ export default class RadioFilter extends React.Component {
             id={`filter-${filterKey}-${i}`}
             value={o.value}
             onChange={this.radioSelected.bind(this)}
-            checked={(this.checked === o.value)}
+            checked={(this.state.checked === o.value)}
           /> <label htmlFor={`filter-${filterKey}-${i}`}>{o.display}</label>
         </div>
       )
