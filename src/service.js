@@ -26,7 +26,7 @@ const uri_variantDetail = fullPath('/v1/:rb/:id/variant/:vid/')
 //catalog
 //const uri_getBrandConnections = fullPath('/v1/brands/:id/connections/')
 const uri_getVendorImports = fullPath('/v1/retailers/:id/feed-queue/?connections=1&direction=import&limit=25')
-const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&short=1&order_by=brand__name')
+const uri_getVendorList = fullPath('/v1/retailers/:id/connections/?pagination=0&order_by=brand__name')
 const uri_getInventorySummary = fullPath('/v1/retailers/:id/inventory-summary/')
 const uri_getInventoryProducts = fullPath('/v1/retailers/:id/inventory/?limit=15&ignore_deleted=1')
 const uri_elasticSearch = fullPath('/v1/:rb/:id/variants/search/?limit=15')
