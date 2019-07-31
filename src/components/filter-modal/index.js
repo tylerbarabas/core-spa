@@ -6,6 +6,7 @@ export default class FilterModal extends React.Component {
   render(){
     let {
       isActive,
+      isDisabled,
       modalContent,
       updateAction,
       clearAction,
@@ -40,7 +41,7 @@ export default class FilterModal extends React.Component {
               onClick={()=>{
                 updateAction()
               }}
-              disabled
+              disabled={isDisabled}
             >Update</button>
           </footer>
         </div>
@@ -51,6 +52,7 @@ export default class FilterModal extends React.Component {
 
 FilterModal.propTypes = {
   isActive: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   modalContent: PropTypes.func,
   closeAction: PropTypes.func,
   clearAction: PropTypes.func,
