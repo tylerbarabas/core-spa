@@ -211,8 +211,9 @@ export default {
 
     return data
   },
-  getOrders: async ( id, rb = 'retailers', searchTerm = '', searchBy = '' ) => {
-    let uri = `${uri_orders.replace(/:rb/, rb).replace(/:id/, id).replace(/:sb/,searchBy).replace(/:st/, searchTerm)}`
+  getOrders: async ( id, rb = 'retailers', searchTerm = '', searchBy = '', filterStr = '' ) => {
+    if ( filterStr.length > 0 ) filterStr = `&${filterStr}`
+    let uri = `${uri_orders.replace(/:rb/, rb).replace(/:id/, id).replace(/:sb/,searchBy).replace(/:st/, searchTerm)}${filterStr}`
     let res = await superFetch(uri)
     let data = false
     if (res.ok){
