@@ -78,6 +78,59 @@ export default class UtilityComponent extends React.Component {
     // Remove temporary element
     document.body.removeChild(el)
   }
+
+  getSeconds(time){
+    let t = time
+    if (this.isDateString(time)) t = 'custom'
+
+    let d = new Date()
+    let sunday = 0
+    let currentDay = d.getDay()
+    let oneWeek = 7
+    let distance
+    switch(t){
+    default:
+    case 'today':
+      d.setHours(0,0,0,0)
+      break
+    case 'yesterday':
+      d.setHours(0,0,0,0)
+      d.setDate(d.getDate() - 1)
+      break
+    case 'this_week':
+      d.setHours(0,0,0,0)
+      distance = sunday - currentDay
+      d.setDate(d.getDate() + distance)
+      break
+    case 'this_month':
+      d.setHours(0,0,0,0)
+      d.setDate(1)
+      break
+    case 'last_week':
+      d.setHours(0,0,0,0)
+      currentDay = d.getDay()
+      distance = sunday - currentDay - oneWeek
+      d.setDate(d.getDate() + distance)
+      break
+    case 'last_month':
+      d.setHours(0,0,0,0)
+      d.setDate(1)
+      d.setMonth(d.getMonth()-1)
+      break
+    case 'custom':
+      d = new Date(time)
+      break
+    }
+
+    let ms = d.getTime()
+
+    return ms / 1000
+  }
+
+  isDateString(str){
+    const regex = new RegExp(/^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$/g)
+    return regex.test(str)
+  }
 }
 
 UtilityComponent.propTypes = {
