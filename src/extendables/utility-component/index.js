@@ -79,7 +79,14 @@ export default class UtilityComponent extends React.Component {
     document.body.removeChild(el)
   }
 
-  getSeconds(time){
+  /**
+    Convert a simplified time code in to seconds that are usable
+    with the API.  TODO Deprecate this for getGteLte.
+
+    @param time - can be 'today', 'yesterday', 'this_week', 'this_month',
+    'last_week', 'last_month', or an ISO date (ex: 2011-10-05T14:48:00.000Z).
+  **/
+  getSeconds(time) {
     let t = time
     if (this.isDateString(time)) t = 'custom'
 
@@ -125,6 +132,75 @@ export default class UtilityComponent extends React.Component {
     let ms = d.getTime()
 
     return ms / 1000
+  }
+
+  /**
+    Convert a simplified string in to an object with gte/lte timestamps 
+    that are usable with the API.
+
+    @param time - can be 'today', 'yesterday', 'this_week', 'this_month',
+    'last_week', 'last_month', or an ISO date (ex: 2011-10-05T14:48:00.000Z).
+  **/
+  getGteLte(time) {
+    let t = time
+    if (this.isDateString(time)) t = 'custom'
+
+    let g = l = new Date()
+    let sunday = 0
+    let currentDay = g.getDay()
+    let oneWeek = 7
+    let distance
+    switch(t){
+    default:
+    case 'today':
+      l.setHours(0,0,0,0)
+      g = null
+      break
+    case 'yesterday':
+      l.setHours(0,0,0,0)
+      l.setDate(d.getDate() - 1)
+
+      g.setHours(23,59,59,0)
+      g.setDate(d.getDate() - 1)
+      break
+    case 'this_week':
+      l.setHours(0,0,0,0)
+      distance = sunday - currentDay
+      l.setDate(l.getDate() + distance)
+
+      g = null
+      break
+    case 'this_month':
+      l.setHours(0,0,0,0)
+      l.setDate(1)
+
+      g = null
+      break
+    case 'last_week':
+      l.setHours(0,0,0,0)
+      currentDay = l.getDay()
+      distance = sunday - currentDay - oneWeek
+      l.setDate(l.getDate() + distance)
+
+      g.setHours(12,59,59,0)
+      distance = sunday - currentDay
+      g.setDate(g.getDate() + distance)
+      break
+    case 'last_month':
+      l.setHours(0,0,0,0)
+      l.setDate(1)
+      l.setMonth(d.getMonth()-1)
+
+      g.setHours(0,0,-1,0)
+      g.setDate(1)
+      break
+    case 'custom':
+      l = new Date(time)
+      g = null
+      break
+    }
+
+    return { lte: l.getTime()/1000, gte: (g !== null) ? g.getTime()/1000 : g }
   }
 
   isDateString(str){
