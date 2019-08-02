@@ -1,5 +1,7 @@
 import React from 'react'
 
+const DISPLAY_NONE = {display: 'none'}
+const DISPLAY_BLOCK = {display: 'block'}
 /**
   This class is for utility functions that do not require redux state.  Functions that
 require Redux state should be defined in class ParentVisualComponent or ParentContainerComponent.
@@ -206,5 +208,14 @@ export default class UtilityComponent extends React.Component {
   isDateString(str){
     const regex = new RegExp(/^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$/g)
     return regex.test(str)
+  }
+
+  /**
+    Converts a boolean value to {display: 'block'} or {display: 'none'} for easy use in the style attr's of React components
+
+    @param shouldUse - boolean
+  **/
+  getDisplay(shouldUse){
+    return (shouldUse) ? DISPLAY_BLOCK : DISPLAY_NONE
   }
 }

@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import UtilityComponent from '../../extendables/utility-component'
 import './index.scss'
 
-const DISPLAY_NONE = {display: 'none'}
-const DISPLAY_BLOCK = {display: 'block'}
-export default class RadioFilter extends React.Component {
+export default class RadioFilter extends UtilityComponent {
   constructor(){
     super()
     this.state = {
@@ -51,13 +50,17 @@ export default class RadioFilter extends React.Component {
   }
 
   render(){
-    let { name, shouldUseLabel } = this.props
-    console.log('sul', shouldUseLabel)
-    let sul = shouldUseLabel || true
+    let {
+      name,
+      shouldUseLabel,
+      shouldUseReset,
+    } = this.props
+    let sul = (shouldUseLabel === false) ? false : true
+    let sur = (shouldUseReset === false) ? false : true
     return (
       <div className="radio-filter">
-        <strong style={DISPLAY_NONE}>{name}</strong>
-        <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset</div>
+        <strong style={this.getDisplay(sul)}>{name}</strong>
+        <div className="reset-all" onClick={this.resetFilter.bind(this)} style={this.getDisplay(sur)}>Reset</div>
         { this.getOptions() }
       </div>
     )
@@ -71,4 +74,5 @@ RadioFilter.propTypes = {
   action: PropTypes.func,
   shouldClear: PropTypes.bool,
   shouldUseLabel: PropTypes.bool,
+  shouldUseReset: PropTypes.bool,
 }
