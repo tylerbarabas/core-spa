@@ -65,10 +65,12 @@ export default class CheckboxFilter extends React.Component {
   }
 
   render(){
-    let { name } = this.props
+    let { name, shouldUseLabel } = this.props
+    console.log('sul', shouldUseLabel)
+    let sul = shouldUseLabel || true
     return (
       <div className="checkbox-filter">
-        <strong>{name}</strong>
+        <strong style={(sul) ? {display: ''} : {display: 'none'}}>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
         { this.getOptions() }
       </div>
@@ -82,4 +84,5 @@ CheckboxFilter.propTypes = {
   options: PropTypes.array,
   action: PropTypes.func,
   shouldClear: PropTypes.bool,
+  shouldUseLabel: PropTypes.bool,
 }

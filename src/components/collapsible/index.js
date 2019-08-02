@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
@@ -20,20 +19,26 @@ export default class Collapsible extends React.Component {
   }
 
   render(){
-    let { innerTemplate, className } = this.props
+    let {
+      topTemplate,
+      innerTemplate,
+      className,
+    } = this.props
     let { isActive } = this.state
 
     let ac = ''
-    let angle = '0deg'
     if ( isActive ) {
       ac = 'is-active'
-      angle = '180deg'
     }
 
     return (
       <div onClick={this.clicked.bind(this)} className={`collapsible ${ac} ${className}`}>
-        <FontAwesomeIcon icon={faAngleDown} style={{transform: `rotate(${angle})`}}/>
-        { innerTemplate() }
+        <div className="top-area">
+          { topTemplate() }
+        </div>
+        <div className="inner-area">
+          { innerTemplate() }
+        </div>
       </div>
     )
   }
@@ -42,4 +47,5 @@ export default class Collapsible extends React.Component {
 Collapsible.propTypes = {
   innerTemplate: PropTypes.func,
   className: PropTypes.string,
+  topTemplate: PropTypes.func,
 }

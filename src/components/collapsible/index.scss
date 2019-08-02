@@ -1,21 +1,20 @@
 div.collapsible {
-  overflow: hidden;
-  height: auto;
-  max-height: 40px;
   background-color:  #fff;
   margin-bottom: 2px;
-  cursor: pointer;
   padding-left: 5px;
 
-  &.is-active {
-    max-height: none;
+  div.top-area {
+    cursor: pointer;
   }
 
-  svg.fa-angle-down{
-    float: left;
-    margin-top: 13px;
-    margin-left: 10px;
-    margin-right: 10px;
-    transition: transform 500ms;
+  div.inner-area {
+    overflow: hidden;
+    height: 0;
+  }
+
+  &.is-active {
+    div.inner-area {
+      height: auto;
+    } 
   }
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './index.scss'
 
+const DISPLAY_NONE = {displaY: 'none'}
+const DISPLAY_BLOCK = {displaY: 'block'}
 export default class RadioFilter extends React.Component {
   constructor(){
     super()
@@ -49,10 +51,12 @@ export default class RadioFilter extends React.Component {
   }
 
   render(){
-    let { name } = this.props
+    let { name, shouldUseLabel } = this.props
+    console.log('sul', shouldUseLabel)
+    let sul = shouldUseLabel || true
     return (
       <div className="radio-filter">
-        <strong>{name}</strong>
+        <strong style={DISPLAY_NONE}>{name}</strong>
         <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset</div>
         { this.getOptions() }
       </div>
@@ -66,4 +70,5 @@ RadioFilter.propTypes = {
   options: PropTypes.array,
   action: PropTypes.func,
   shouldClear: PropTypes.bool,
+  shouldUseLabel: PropTypes.bool,
 }
