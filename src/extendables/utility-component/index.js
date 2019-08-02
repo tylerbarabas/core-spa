@@ -145,7 +145,8 @@ export default class UtilityComponent extends React.Component {
     let t = time
     if (this.isDateString(time)) t = 'custom'
 
-    let g = l = new Date()
+    let g = new Date()
+    let l = new Date()
     let sunday = 0
     let currentDay = g.getDay()
     let oneWeek = 7
@@ -153,54 +154,54 @@ export default class UtilityComponent extends React.Component {
     switch(t){
     default:
     case 'today':
-      l.setHours(0,0,0,0)
-      g = null
+      g.setHours(0,0,0,0)
+      l = null
       break
     case 'yesterday':
-      l.setHours(0,0,0,0)
-      l.setDate(d.getDate() - 1)
+      g.setHours(0,0,0,0)
+      g.setDate(g.getDate() - 1)
 
-      g.setHours(23,59,59,0)
-      g.setDate(d.getDate() - 1)
+      l.setHours(23,59,59,0)
+      l.setDate(l.getDate() - 1)
       break
     case 'this_week':
-      l.setHours(0,0,0,0)
-      distance = sunday - currentDay
-      l.setDate(l.getDate() + distance)
-
-      g = null
-      break
-    case 'this_month':
-      l.setHours(0,0,0,0)
-      l.setDate(1)
-
-      g = null
-      break
-    case 'last_week':
-      l.setHours(0,0,0,0)
-      currentDay = l.getDay()
-      distance = sunday - currentDay - oneWeek
-      l.setDate(l.getDate() + distance)
-
-      g.setHours(12,59,59,0)
+      g.setHours(0,0,0,0)
       distance = sunday - currentDay
       g.setDate(g.getDate() + distance)
+
+      l = null
+      break
+    case 'this_month':
+      g.setHours(0,0,0,0)
+      g.setDate(1)
+
+      l = null
+      break
+    case 'last_week':
+      g.setHours(0,0,0,0)
+      currentDay = g.getDay()
+      distance = sunday - currentDay - oneWeek
+      g.setDate(g.getDate() + distance)
+
+      l.setHours(12,59,59,0)
+      distance = sunday - currentDay
+      l.setDate(l.getDate() + distance)
       break
     case 'last_month':
-      l.setHours(0,0,0,0)
-      l.setDate(1)
-      l.setMonth(d.getMonth()-1)
-
-      g.setHours(0,0,-1,0)
+      g.setHours(0,0,0,0)
       g.setDate(1)
+      g.setMonth(g.getMonth()-1)
+
+      l.setHours(0,0,-1,0)
+      l.setDate(1)
       break
     case 'custom':
-      l = new Date(time)
-      g = null
+      g = new Date(time)
+      l = null
       break
     }
 
-    return { lte: l.getTime()/1000, gte: (g !== null) ? g.getTime()/1000 : g }
+    return { gte: g.getTime()/1000, lte: (l !== null) ? l.getTime()/1000 : l }
   }
 
   isDateString(str){
