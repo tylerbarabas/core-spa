@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './index.scss'
 
-const DISPLAY_NONE = {displaY: 'none'}
-const DISPLAY_BLOCK = {displaY: 'block'}
+const DISPLAY_NONE = {display: 'none'}
+const DISPLAY_BLOCK = {display: 'block'}
 export default class RadioFilter extends React.Component {
   constructor(){
     super()
