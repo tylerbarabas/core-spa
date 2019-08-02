@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import './index.scss'
 
 export default class Collapsible extends React.Component {
