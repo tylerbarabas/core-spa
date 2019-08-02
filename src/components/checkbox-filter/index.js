@@ -31,7 +31,7 @@ export default class CheckboxFilter extends React.Component {
 
   resetFilter(){
     let { action, filterKey } = this.props
-    this.state.checked = []
+    this.setState({ checked: [] })
     action(this.state.checked, filterKey)
   }
 
