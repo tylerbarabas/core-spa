@@ -105,7 +105,7 @@ export default class Paginator extends React.Component {
     let limit = this.getTotalPages() - 1
     let display = (limit < 1) ? {display: 'none'} : {display: ''}
     return (
-      <div className="paginator-container column" style={display}>
+      <div className="paginator-container" style={display}>
         <nav className="pagination is-right" role="navigation" aria-label="pagination">
           <a className="pagination-previous" onClick={this.previousClicked.bind(this)} disabled={(page<2)}>Previous</a>
           <a className="pagination-next" onClick={this.nextClicked.bind(this)} disabled={(page > limit)}>Next page</a>
