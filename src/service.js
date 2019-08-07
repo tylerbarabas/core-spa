@@ -234,12 +234,12 @@ export default {
 
     return data
   },
-  exportProductsByEmail(id, rb = 'retailers', filterStr = ''){
+  exportProductsByEmail: async(id, rb = 'retailers', filterStr = '') => {
     let uri = `${uri_exportOrders.replace(/:id/, id).replace(/:rb/, rb)}&${filterStr}`
     let res = await superFetch(uri)
     let data = false
     if (res.ok) {
-      data = await res.json()
+      data = true
     }
     return data
   },
