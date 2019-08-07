@@ -34,6 +34,7 @@ const uri_productsOptions = fullPath('/v1/:rb/:id/attributes/?filterable_attribu
 const uri_ordersSummary = fullPath('/v1/:rb/:id/orders-summary/')
 const uri_orders = fullPath('/v1/:rb/:id/orders/?mini=1&page=1&page=:page&:sb=:st&limit=15')
 const uri_orderDetail = fullPath('/v1/:rb/:id/orders/:oid/?show_shipments=1')
+const uri_exportOrders = fullPath('/v1/:rb/:id/orders/email-export/?order_by=-is_priority%2C-created_at')
 
 let Auth = {
   accessToken: null,
@@ -231,6 +232,15 @@ export default {
       data = await res.json()
     }
 
+    return data
+  },
+  exportProductsByEmail(id, rb = 'retailers', filterStr = ''){
+    let uri = `${uri_exportOrders.replace(/:id/, id).replace(/:rb/, rb)}&${filterStr}`
+    let res = await superFetch(uri)
+    let data = false
+    if (res.ok) {
+      data = await res.json()
+    }
     return data
   },
 }
