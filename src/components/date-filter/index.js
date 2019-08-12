@@ -7,7 +7,9 @@ import './index.scss'
 export default class DateFilter extends UtilityComponent {
   constructor(){
     super()
-    this.checked = null
+    this.state = {
+      checked: null
+    }
   }
 
   componentDidUpdate(){
@@ -17,18 +19,19 @@ export default class DateFilter extends UtilityComponent {
 
   dateSelected(e){
     let { action, filterKey } = this.props
-    this.checked = e.target.value
+    this.setState({ checked: e.target.value })
     let seconds = this.getSeconds(e.target.value)
     action(seconds, filterKey)
   }
 
   resetFilter(){
     let { action, filterKey } = this.props
-    this.checked = null
-    action(this.checked, filterKey)
+    this.setState({ checked: null })
+    action(null, filterKey)
   }
 
   getOptions(){
+    let { checked } = this.state
     let { filterKey } = this.props
     let options = OPTIONS
     let template = []
@@ -41,7 +44,7 @@ export default class DateFilter extends UtilityComponent {
             id={`filter-${filterKey}-${i}`}
             value={o.value}
             onChange={this.dateSelected.bind(this)}
-            checked={(this.checked === o.value)}
+            checked={(checked === o.value)}
           /> <label htmlFor={`filter-${filterKey}-${i}`}>{o.display}</label>
         </div>
       )
