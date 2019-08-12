@@ -101,11 +101,12 @@ export default class Paginator extends React.Component {
   }
 
   render(){
-    let { page } = this.props
+    let { page, className } = this.props
     let limit = this.getTotalPages() - 1
     let display = (limit < 1) ? {display: 'none'} : {display: ''}
+    let cn = className || ''
     return (
-      <div className="paginator-container column" style={display}>
+      <div className={`paginator-container ${cn}`} style={display}>
         <nav className="pagination is-right" role="navigation" aria-label="pagination">
           <a className="pagination-previous" onClick={this.previousClicked.bind(this)} disabled={(page<2)}>Previous</a>
           <a className="pagination-next" onClick={this.nextClicked.bind(this)} disabled={(page > limit)}>Next page</a>
@@ -123,4 +124,5 @@ Paginator.propTypes = {
   limit: PropTypes.number,
   page: PropTypes.number,
   action: PropTypes.func,
+  className: PropTypes.string,
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 
 const DISPLAY_NONE = {display: 'none'}
 const DISPLAY_BLOCK = {display: 'block'}
@@ -217,5 +218,27 @@ export default class UtilityComponent extends React.Component {
   **/
   getDisplay(shouldUse){
     return (shouldUse) ? DISPLAY_BLOCK : DISPLAY_NONE
+  }
+
+  /**
+    Converts an ISO date value in to month and day, like "Aug 23rd"
+
+    @param date - ISO date string
+  **/
+  getShortDate(date){
+    if (!this.isDateString(date)) return false
+    let m = moment(date)
+    return m.format('MMM D')
+  }
+
+  /**
+    Tells the approximate distance between two ISO dates
+    @param to - ISO date string
+    @param from - ISO date string
+  **/
+  getTimeUntil(to, from){
+    let a = (this.isDateString(from)) ? moment(from) : moment()
+    let b = (this.isDateString(to)) ? moment(to) : moment()
+    return a.to(b)
   }
 }

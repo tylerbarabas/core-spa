@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import UtilityComponent from '../../extendables/utility-component'
 import './index.scss'
 
-export default class RadioSearchFilter extends React.Component {
+export default class RadioSearchFilter extends UtilityComponent {
   constructor(){
     super()
     this.checked = null
@@ -107,12 +108,18 @@ export default class RadioSearchFilter extends React.Component {
   }
 
   render(){
-    let { name } = this.props
+    let {
+      name,
+      shouldUseLabel,
+      shouldUseReset,
+    } = this.props
     let placeholder = this.props.placeholder || ''
+    let sul = (shouldUseLabel === false) ? false : true
+    let sur = (shouldUseReset === false) ? false : true
     return (
       <div className="radio-search-filter">
-        <strong>{name}</strong>
-        <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
+        <strong style={this.getDisplay(sul)}>{name}</strong>
+        <div className="reset-all" onClick={this.resetFilter.bind(this)} style={this.getDisplay(sur)}>Reset</div>
         <input type="text" placeholder={placeholder} className="search-filter" onChange={e => {
           this.setState({searchQuery: e.target.value})
         }} value={this.state.searchQuery} />
@@ -130,4 +137,6 @@ RadioSearchFilter.propTypes = {
   shouldClear: PropTypes.bool,
   initialValue: PropTypes.string,
   placeholder: PropTypes.string,
+  shouldUseLabel: PropTypes.bool,
+  shouldUseReset: PropTypes.bool,
 }

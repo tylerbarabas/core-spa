@@ -54,11 +54,17 @@ export default class DateFilter extends UtilityComponent {
   }
 
   render(){
-    let { name } = this.props
+    let {
+      name,
+      shouldUseLabel,
+      shouldUseReset,
+    } = this.props
+    let sul = (shouldUseLabel === false) ? false : true
+    let sur = (shouldUseReset === false) ? false : true
     return (
       <div className="date-filter">
-        <strong>{name}</strong>
-        <div className="reset-all" onClick={this.resetFilter.bind(this)}>Reset All</div>
+        <strong style={this.getDisplay(sul)}>{name}</strong>
+        <div className="reset-all" onClick={this.resetFilter.bind(this)} style={this.getDisplay(sur)}>Reset</div>
         { this.getOptions() }
       </div>
     )
@@ -70,4 +76,6 @@ DateFilter.propTypes = {
   name: PropTypes.string,
   action: PropTypes.func,
   shouldClear: PropTypes.bool,
+  shouldUseLabel: PropTypes.bool,
+  shouldUseReset: PropTypes.bool,
 }

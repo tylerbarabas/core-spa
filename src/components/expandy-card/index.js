@@ -13,8 +13,10 @@ export default class ExpandyCard extends React.Component {
   }
 
   toggleExpanded(){
+    let { onExpand } = this.props
     let { isExpanded } = this.state
     this.setState({ isExpanded: !isExpanded })
+    if (!isExpanded) onExpand()
   }
 
   render(){
@@ -43,7 +45,7 @@ export default class ExpandyCard extends React.Component {
           {topArea()}
         </div>
         <div className={`bottom-area${(isExpanded)?' is-expanded':''}`}>
-          {bottomArea()}
+          {bottomArea(isExpanded)}
         </div>
       </div>
     )
@@ -53,4 +55,5 @@ export default class ExpandyCard extends React.Component {
 ExpandyCard.propTypes = {
   topArea: PropTypes.func,
   bottomArea: PropTypes.func,
+  onExpand: PropTypes.func,  
 }

@@ -33,7 +33,7 @@ export default class Collapsible extends React.Component {
     return (
       <div onClick={this.clicked.bind(this)} className={`collapsible ${ac} ${className}`}>
         <div className="top-area">
-          { topTemplate() }
+          { topTemplate(isActive) }
         </div>
         <div className="inner-area">
           { innerTemplate() }

@@ -1,6 +1,8 @@
 div.checkbox-filter{
   background-color: #FFF;
   color: #000;
+  user-select: none;
+  padding-left: 1px;
 
   div.reset-all{
     float: right;

@@ -3,6 +3,10 @@
 .paginator-container {
   background-color: #FFF;
   border-bottom: 2px solid $background-grey;
+  padding: 10px;
+
+  margin-left: 2px;
+  margin-right: 2px;
 
   a.pagination-link {
     position: inherit;
