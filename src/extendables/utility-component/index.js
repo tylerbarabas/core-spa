@@ -14,12 +14,30 @@ export default class UtilityComponent extends React.Component {
   **/
   makeQueryString(obj){
     let str = ''
-    let i = 0
 
     for (let key in obj){
-      let piece = `${key}=${obj[key]}`
-      if (i > 0) piece = `&${piece}`
-      i += 1
+      let data = obj[key]
+      let piece = ''
+
+      if (data === null) continue
+
+      if (typeof data === 'string' || typeof data === 'number') {
+
+        piece = `&${key}=${data}`
+
+      } else if (Array.isArray(data) && data.length > 0) {
+        let a = ''
+
+        for (let o=0;o<data.length;o++){
+          if (o>0) a += ','
+
+          a += data[o]
+        }
+
+        piece = `&${key}=${a}`
+      }
+
+
       str += piece
     }
 

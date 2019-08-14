@@ -20,8 +20,8 @@ export default class DateFilter extends UtilityComponent {
   dateSelected(e){
     let { action, filterKey } = this.props
     this.setState({ checked: e.target.value })
-    let seconds = this.getSeconds(e.target.value)
-    action(seconds, filterKey)
+    let gteLte = this.getGteLte(e.target.value)
+    action(gteLte, filterKey)
   }
 
   resetFilter(){
