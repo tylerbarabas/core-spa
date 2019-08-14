@@ -75,9 +75,9 @@ export default class CheckboxSearchFilter extends UtilityComponent {
       arr = options.slice(0,10) 
     }
 
-    let selected = options.filter(o=>o.value===checked)
+    let selected = options.filter(o=>checked.indexOf(o.value) !== -1)
     let sIndex = arr.indexOf(selected[0])
-    if (checked !== null && sIndex === -1) {
+    if (checked.length > 0 && sIndex === -1) {
       arr.unshift(selected[0])
       arr.pop()
     }
@@ -106,7 +106,7 @@ export default class CheckboxSearchFilter extends UtilityComponent {
             id={`filter-${filterKey}-${i}`}
             value={o.value}
             onChange={this.checkboxSelected.bind(this)}
-            checked={(checked === o.value)}
+            checked={(checked.indexOf(o.value) !== -1)}
           /> <label htmlFor={`filter-${filterKey}-${i}`}>{o.display}</label>
         </div>
       )
