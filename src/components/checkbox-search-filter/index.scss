@@ -1,0 +1,30 @@
+div.checkbox-search-filter{
+  background-color: #FFF;
+  color: #000;
+  user-select: none;
+  padding-left: 1px;
+
+  div.reset-all{
+    float: right;
+    font-size: 14px;
+    color: #6cc4ca;
+    cursor: pointer;
+  }
+
+  input.search-filter{
+    margin-top: 7px;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+
+  div.filter-option {
+    font-size: 14px;
+    margin-top: 5px;
+
+    input {
+      margin-top: 1px;
+      position: relative;
+      top: -1px;
+    }
+  }
+}
