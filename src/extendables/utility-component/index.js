@@ -14,7 +14,6 @@ export default class UtilityComponent extends React.Component {
   **/
   makeQueryString(obj){
     let str = ''
-
     for (let key in obj){
       let data = obj[key]
       let piece = ''

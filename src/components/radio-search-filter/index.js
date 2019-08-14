@@ -6,10 +6,10 @@ import './index.scss'
 export default class RadioSearchFilter extends UtilityComponent {
   constructor(){
     super()
-    this.checked = null
     this.state = {
       filterArr: [],
-      searchQuery: ''
+      searchQuery: '',
+      checked: null,
     }
   }
 
@@ -27,19 +27,19 @@ export default class RadioSearchFilter extends UtilityComponent {
 
   componentDidMount(){
     let initialValue = this.props.initialValue || null
-    if (initialValue !== null) this.checked = initialValue
+    if (initialValue !== null) this.setState({ checked: initialValue})
     this.makeFilterArr()
   }
 
   radioSelected(e){
     let { action, filterKey } = this.props
-    this.checked = e.target.value
-    action(this.checked, filterKey)
+    this.setState({ checked: e.target.value })
+    action(e.target.value, filterKey)
   }
 
   makeFilterArr(props = this.props, state = this.state){
     let { options } = props
-    let { searchQuery } = state
+    let { searchQuery, checked } = state
     let arr = []
 
     if (searchQuery !== '') {
@@ -67,9 +67,9 @@ export default class RadioSearchFilter extends UtilityComponent {
       arr = options.slice(0,10) 
     }
 
-    let selected = options.filter(o=>o.value===this.checked)
+    let selected = options.filter(o=>o.value===checked)
     let sIndex = arr.indexOf(selected[0])
-    if (this.checked !== null && sIndex === -1) {
+    if (checked !== null && sIndex === -1) {
       arr.unshift(selected[0])
       arr.pop()
     }
@@ -81,13 +81,13 @@ export default class RadioSearchFilter extends UtilityComponent {
 
   resetFilter(){
     let { action, filterKey } = this.props
-    this.checked = null
-    action(this.checked, filterKey)
+    this.setState({ checked: null })
+    action(null, filterKey)
   }
 
   getDisplayOptions(){
     let { filterKey } = this.props
-    let { filterArr } = this.state
+    let { filterArr, checked } = this.state
     let template = []
     for (let i=0;i<filterArr.length;i+=1) {
       let o = filterArr[i]
@@ -98,7 +98,7 @@ export default class RadioSearchFilter extends UtilityComponent {
             id={`filter-${filterKey}-${i}`}
             value={o.value}
             onChange={this.radioSelected.bind(this)}
-            checked={(this.checked === o.value)}
+            checked={(checked === o.value)}
           /> <label htmlFor={`filter-${filterKey}-${i}`}>{o.display}</label>
         </div>
       )

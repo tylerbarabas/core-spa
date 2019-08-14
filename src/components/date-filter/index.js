@@ -27,7 +27,7 @@ export default class DateFilter extends UtilityComponent {
   resetFilter(){
     let { action, filterKey } = this.props
     this.setState({ checked: null })
-    action(null, filterKey)
+    action({gte: null, lte: null}, filterKey)
   }
 
   getOptions(){

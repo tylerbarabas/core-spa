@@ -33,7 +33,7 @@ export default class CheckboxFilter extends UtilityComponent {
   resetFilter(){
     let { action, filterKey } = this.props
     this.setState({ checked: [] })
-    action(this.state.checked, filterKey)
+    action([], filterKey)
   }
 
   getOptions(){

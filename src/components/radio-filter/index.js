@@ -24,8 +24,8 @@ export default class RadioFilter extends UtilityComponent {
 
   resetFilter(){
     let { action, filterKey } = this.props
-    this.setState({checked: null})
-    action(this.state.checked, filterKey)
+    this.setState({ checked: null })
+    action(null, filterKey)
   }
 
   getOptions(){
