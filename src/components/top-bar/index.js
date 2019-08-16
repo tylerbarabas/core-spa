@@ -85,54 +85,56 @@ export default class TopBar extends ParentVisualComponent {
     if ( firstName !== null ) userHidden = ''
     return (
       <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <Link className="navbar-item" to="/">
-            <img src="/rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
-            { name }
-          </Link>
-          <div role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" onClick={this.burgerClick.bind(this)}>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </div>
-        </div>
-        <div className="navbar-menu" id="rc-navbar">
-          <div className="navbar-start">
-            {this.getButtons()}
-          </div>
-          <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${ctxHidden}`}>
-            <div className="navbar-link is-arrowless ctx-selector">
-              { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
+        <div className="container">
+          <div className="navbar-brand">
+            <Link className="navbar-item" to="/">
+              <img src="/rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
+              { name }
+            </Link>
+            <div role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" onClick={this.burgerClick.bind(this)}>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
             </div>
-            <div className='navbar-dropdown is-right'>
-              <div className="navbar-item">
-                <div className="select is-small">
-                  <AutoSuggestBox placeholder={'Find a context...'} options={options} action={this.contextChanged.bind(this)}/>
+          </div>
+          <div className="navbar-menu" id="rc-navbar">
+            <div className="navbar-start">
+              {this.getButtons()}
+            </div>
+            <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${ctxHidden}`}>
+              <div className="navbar-link is-arrowless ctx-selector">
+                { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
+              </div>
+              <div className='navbar-dropdown is-right'>
+                <div className="navbar-item">
+                  <div className="select is-small">
+                    <AutoSuggestBox placeholder={'Find a context...'} options={options} action={this.contextChanged.bind(this)}/>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${userHidden}`}>
-            <div className="navbar-link is-arrowless">
-                Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
+            <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${userHidden}`}>
+              <div className="navbar-link is-arrowless">
+                  Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
+              </div>
+              <div className="navbar-dropdown is-right">
+                <div className="navbar-item" onClick={logout}>
+                    Logout
+                </div>
+              </div>
             </div>
-            <div className="navbar-dropdown is-right">
+            <div className={`navbar-item has-dropdown is-hoverable is-hidden-desktop${ctxHidden}`}>
+              <div className="navbar-link is-arrowless ctx-selector">
+                <AutoSuggestBox placeholder={'Find a context...'} options={options} action={this.contextChanged.bind(this)}/>
+              </div>
+            </div>
+            <div className={`navbar-item has-dropdown is-hoverable is-hidden-desktop${userHidden}`}>
               <div className="navbar-item" onClick={logout}>
                   Logout
               </div>
             </div>
-          </div>
-          <div className={`navbar-item has-dropdown is-hoverable is-hidden-desktop${ctxHidden}`}>
-            <div className="navbar-link is-arrowless ctx-selector">
-              <AutoSuggestBox placeholder={'Find a context...'} options={options} action={this.contextChanged.bind(this)}/>
-            </div>
-          </div>
-          <div className={`navbar-item has-dropdown is-hoverable is-hidden-desktop${userHidden}`}>
-            <div className="navbar-item" onClick={logout}>
-                Logout
-            </div>
-          </div>
 
+          </div>
         </div>
       </nav>
     )
