@@ -5,7 +5,6 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import AutoSuggestBox from '../auto-suggest-box'
 import ParentVisualComponent from '../../extendables/parent-visual-component'
-import './index.scss'
 
 export default class TopBar extends ParentVisualComponent {
   getButtons(){
@@ -88,8 +87,8 @@ export default class TopBar extends ParentVisualComponent {
         <div className="container">
           <div className="navbar-brand">
             <Link className="navbar-item" to="/">
-              <img src="/rc_circle.png" className="rc-circle" alt="RevCascade Logo"/>
-              { name }
+              <img src="/rc_circle.png" alt="RevCascade Logo"/>
+              <span className="has-text-white has-text-weight-bold m-l-sm">{ name }</span>
             </Link>
             <div role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" onClick={this.burgerClick.bind(this)}>
               <span aria-hidden="true"></span>

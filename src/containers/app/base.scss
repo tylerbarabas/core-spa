@@ -1,8 +1,5 @@
-@import '../../extendables/parent-container-component/variables';
-
 html, body {
     font-family: 'Lato', sans-serif;
-    color: $text-plain;
     height: 100%;
 }
 
@@ -24,21 +21,6 @@ div.container.top-level{
   }
 }
 
-//Style overwrites, these can be done via
-//webpack after we eject from react-scripts
-.is-primary {
-    background-color: $primary !important;
-}
 
-.is-secondary,
-.is-secondary:hover,
-.is-secondary:active,
-.is-secondary:focus,
-.is-secondary:visited {
-    background-color: $secondary !important;
-    border-color: transparent;
-    color: #FFF !important;
-}
-
-
+@import '../../extendables/parent-container-component/variables';
 @import './spacing.scss'
