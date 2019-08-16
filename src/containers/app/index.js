@@ -13,9 +13,9 @@ import TopBar from '../../components/top-bar'
 import Dashboard from '../dashboard'
 import PublicArea from '../public-area'
 import NotFound from '../not-found'
+import './base.scss'
 import 'bulma'
 import 'animate.css'
-import './base.scss'
 
 class App extends ParentContainerComponent {
   componentDidMount(){
