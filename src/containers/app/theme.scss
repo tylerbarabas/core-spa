@@ -1,0 +1,39 @@
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+$primary: #60ADD9;
+$primary-invert: findColorInvert($primary);
+$white-ter: #EEF1F9;
+
+@import "~bulma/sass/utilities/derived-variables";
+@import "~bulma/sass/utilities/animations";
+@import "~bulma/sass/utilities/mixins";
+@import "~bulma/sass/utilities/controls";
+
+//font
+$family-primary: 'Lato', sans-serif;
+
+// navbar variables
+$body-background-color: transparent;
+$navbar-background-color: #2E3E50;
+$navbar-item-color: #FFF;
+$navbar-item-hover-color:#FFF;
+$navbar-item-hover-background-color: lighten(#2E3E50,10%);
+$navbar-item-active-color: #FFF;
+$navbar-item-active-background-color: lighten(#2E3E50,10%);
+$navbar-burger-color: #FFFFFF;
+$navbar-padding-vertical: 2rem;
+$navbar-height: 4rem;
+$navbar-item-img-max-height: 2rem;
+
+// box
+$box-shadow: 0;
+$box-padding: 1.5rem;
+
+// input
+// https://bulma.io/documentation/form/input/#variables
+$input-shadow: none;
+$input-radius: 0px;
+
+// tables
+$table-cell-padding: 1em 0.75em;
