@@ -1,4 +1,4 @@
-@import '../../extendables/parent-container-component/variables';
+@import '../../containers/app/theme.scss';
 
 div.dash-table {
   margin-bottom: 40px;
@@ -18,11 +18,9 @@ div.dash-table {
   }
   p.description{
     font-size: 14px;
-    color: $text-plain;
   }
   p.count{
     font-size: 16px;
-    color: $text-plain;
     float: right;
     font-weight: bold;
   }
