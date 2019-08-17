@@ -1,26 +1,42 @@
-html, body {
-    font-family: 'Lato', sans-serif;
-    height: 100%;
-}
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
 
-div#root{
-    min-height: 100%;
-    transition: 400ms background-color;
-}
+$primary: #60ADD9;
+$primary-invert: findColorInvert($primary);
+$white-ter: #EEF1F9;
 
-div.container.top-level{
-  padding-left:  0;
-  padding-right: 0;
-}
+@import "~bulma/sass/utilities/derived-variables";
+@import "~bulma/sass/utilities/animations";
+@import "~bulma/sass/utilities/mixins";
+@import "~bulma/sass/utilities/controls";
 
-@media (max-width: 1088px) {
-  div.container.top-level {
-    width: calc(100% - 40px);
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
+//font
+$family-primary: 'Lato', sans-serif;
 
+// navbar variables
+$body-background-color: transparent;
+$navbar-background-color: #2E3E50;
+$navbar-item-color: #FFF;
+$navbar-item-hover-color:#FFF;
+$navbar-item-hover-background-color: lighten(#2E3E50,10%);
+$navbar-item-active-color: #FFF;
+$navbar-item-active-background-color: lighten(#2E3E50,10%);
+$navbar-burger-color: #FFFFFF;
+$navbar-padding-vertical: 2rem;
+$navbar-height: 4rem;
+$navbar-item-img-max-height: 2rem;
 
-@import '../../extendables/parent-container-component/variables';
-@import './spacing.scss'
+// box
+$box-shadow: 0;
+$box-padding: 1.5rem;
+
+// input
+// https://bulma.io/documentation/form/input/#variables
+$input-shadow: none;
+$input-radius: 0px;
+
+// tables
+$table-cell-padding: 1em 0.75em;
+
+@import '~bulma/bulma';
+@import './spacing.scss';
