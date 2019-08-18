@@ -1,8 +1,8 @@
-$sizeUnit: rem;
+$mysizeUnit: rem;
 $marginKey: 'm';
 $paddingKey: 'p';
 $separator: '-';
-$sizes: (
+$mysizes: (
     ('none', 0),
     ('xxs', 0.125),
     ('xs', 0.25),
@@ -19,27 +19,27 @@ $positions: (
     ('l', 'left')
 );
 
-@function sizeValue($key, $value) {
-    @return if($key == 'none', 0, $value + $sizeUnit);
+@function mysizeValue($key, $value) {
+    @return if($key == 'none', 0, $value + $mysizeUnit);
 }
 
-@each $size in $sizes {
-    $sizeKey: nth($size, 1);
-    $sizeValue: nth($size, 2);
-    .#{$marginKey}#{$separator}#{$sizeKey} {
-        margin: sizeValue($sizeKey, $sizeValue);
+@each $mysize in $mysizes {
+    $mysizeKey: nth($mysize, 1);
+    $mysizeValue: nth($mysize, 2);
+    .#{$marginKey}#{$separator}#{$mysizeKey} {
+        margin: mysizeValue($mysizeKey, $mysizeValue);
     }
-    .#{$paddingKey}#{$separator}#{$sizeKey} {
-        padding: sizeValue($sizeKey, $sizeValue);
+    .#{$paddingKey}#{$separator}#{$mysizeKey} {
+        padding: mysizeValue($mysizeKey, $mysizeValue);
     }
     @each $position in $positions {
         $posKey: nth($position, 1);
         $posValue: nth($position, 2);
-        .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
-            margin-#{$posValue}: sizeValue($sizeKey, $sizeValue);
+        .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$mysizeKey} {
+            margin-#{$posValue}: mysizeValue($mysizeKey, $mysizeValue);
         }
-        .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
-            padding-#{$posValue}: sizeValue($sizeKey, $sizeValue);
+        .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$mysizeKey} {
+            padding-#{$posValue}: mysizeValue($mysizeKey, $mysizeValue);
         }
     }
 }

@@ -233,8 +233,8 @@ export default class UtilityComponent extends React.Component {
 
     @param shouldUse - boolean
   **/
-  getDisplay(shouldUse){
-    return (shouldUse) ? DISPLAY_BLOCK : DISPLAY_NONE
+  getDisplay(shouldUse, d=DISPLAY_BLOCK){
+    return (shouldUse) ? d : DISPLAY_NONE
   }
 
   /**

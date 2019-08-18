@@ -3,9 +3,11 @@
 
 $primary: #60ADD9;
 $primary-invert: findColorInvert($primary);
+$link: #60add9;
 $white-ter: #EEF1F9;
 $background-blue: #2E3E50;
 $background-grey: #f2f3fa;
+
 
 @import "~bulma/sass/utilities/derived-variables";
 @import "~bulma/sass/utilities/animations";
