@@ -1,7 +1,6 @@
 div.basic-dropdown{
   width: 100%;
 
-
   div.dropdown-trigger{
     width: 100%;
   }
@@ -13,8 +12,6 @@ div.basic-dropdown{
     background-color: #FFF;
     
     span.icon{
-      position: absolute;
-      right: 15px;
       transition: transform 300ms;
 
       &.active{
@@ -25,7 +22,6 @@ div.basic-dropdown{
   }
 
   div.dropdown-menu {
-    width: 100%;
     background-color: #FFF;
     padding-top: 0;
   }
