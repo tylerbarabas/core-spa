@@ -16,7 +16,7 @@ export default class FilterModal extends React.Component {
     return (
       <div className={`filter-modal modal ${(isActive)?'is-active':''}`}>
         <div className="modal-background" />
-        <div className="modal-card animated flipInX">
+        <div className="modal-card animated fadeIn">
           <header className="modal-card-head">
             <p className="text-muted">Explore the filters below to target specific results.</p>
           </header>

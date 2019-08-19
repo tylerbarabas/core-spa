@@ -19,7 +19,7 @@ export default class CardModal extends React.Component {
     return (
       <div className={`card-modal modal ${(isActive)?'is-active':''}`}>
         <div className="modal-background" />
-        <div className="modal-card animated flipInX">
+        <div className="modal-card animated fadeIn">
           <header className="modal-card-head">
             <p className="modal-card-title">{modalTitle}</p>
             <button
