@@ -38,6 +38,10 @@ $box-padding: 1.5rem;
 // https://bulma.io/documentation/form/input/#variables
 $input-shadow: none;
 $input-radius: 0px;
+$input-focus-box-shadow-size: 0;
+$input-focus-box-shadow-color: transparent;
+$input-focus-border-color: #dbdbdb;
+$input-hover-border-color: #dbdbdb;
 
 // tables
 $table-cell-padding: 1em 0.75em;
