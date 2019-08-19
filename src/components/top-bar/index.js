@@ -84,7 +84,7 @@ export default class TopBar extends ParentVisualComponent {
     let userHidden = ' is-invisible'
     if ( firstName !== null ) userHidden = ''
     return (
-      <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''}`} role="navigation" aria-label="main navigation">
+      <nav className={`navbar animated fadeInDown${(!isAuthenticated) ? ' is-hidden':''} has-text-weight-bold`} role="navigation" aria-label="main navigation">
         <div className="container">
           <div className="navbar-brand">
             <Link className="navbar-item" to="/">
@@ -98,9 +98,7 @@ export default class TopBar extends ParentVisualComponent {
             </div>
           </div>
           <div className="navbar-menu" id="rc-navbar">
-            <div className="navbar-start">
-              {this.getButtons()}
-            </div>
+            {this.getButtons()}
             <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${ctxHidden}`}>
               <div className="navbar-link is-arrowless ctx-selector">
                 { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
