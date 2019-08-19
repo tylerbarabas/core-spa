@@ -27,19 +27,19 @@ $positions: (
     $mysizeKey: nth($mysize, 1);
     $mysizeValue: nth($mysize, 2);
     .#{$marginKey}#{$separator}#{$mysizeKey} {
-        margin: mysizeValue($mysizeKey, $mysizeValue);
+        margin: mysizeValue($mysizeKey, $mysizeValue) !important;
     }
     .#{$paddingKey}#{$separator}#{$mysizeKey} {
-        padding: mysizeValue($mysizeKey, $mysizeValue);
+        padding: mysizeValue($mysizeKey, $mysizeValue) !important;
     }
     @each $position in $positions {
         $posKey: nth($position, 1);
         $posValue: nth($position, 2);
         .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$mysizeKey} {
-            margin-#{$posValue}: mysizeValue($mysizeKey, $mysizeValue);
+            margin-#{$posValue}: mysizeValue($mysizeKey, $mysizeValue) !important;
         }
         .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$mysizeKey} {
-            padding-#{$posValue}: mysizeValue($mysizeKey, $mysizeValue);
+            padding-#{$posValue}: mysizeValue($mysizeKey, $mysizeValue) !important;
         }
     }
 }
