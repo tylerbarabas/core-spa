@@ -5,6 +5,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import AutoSuggestBox from '../auto-suggest-box'
 import ParentVisualComponent from '../../extendables/parent-visual-component'
+import './index.scss'
 
 export default class TopBar extends ParentVisualComponent {
   getButtons(){
@@ -135,6 +136,7 @@ export default class TopBar extends ParentVisualComponent {
 
           </div>
         </div>
+        <div className="has-gradient-primary" />
       </nav>
     )
   }
