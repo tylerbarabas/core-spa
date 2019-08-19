@@ -1,7 +1,7 @@
-@import '../../extendables/parent-container-component/variables';
+@import '../../../../core-spa/src/containers/app/theme';
 
 nav.navbar {
-  background-color: $background-darkblue;
+  background-color: $background-blue;
   color: $background-grey;
   border-bottom: 5px solid $primary;
   font-size: 25px;
