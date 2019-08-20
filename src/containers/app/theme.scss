@@ -3,7 +3,7 @@
 
 $primary: #60ADD9;
 $primary-invert: findColorInvert($primary);
-$link: #60add9;
+$link: $primary;
 $white-ter: #EEF1F9;
 $background-blue: #2E3E50;
 $background-grey: #f2f3fa;
@@ -19,12 +19,14 @@ $family-primary: 'Lato', sans-serif;
 
 // navbar variables
 $body-background-color: transparent;
-$navbar-background-color: #2E3E50;
+$navbar-background-color: $background-blue;
+$navbar-dropdown-background-color: $background-blue;
+
 $navbar-item-color: #FFF;
 $navbar-item-hover-color:#FFF;
-$navbar-item-hover-background-color: lighten(#2E3E50,10%);
+$navbar-item-hover-background-color: lighten($background-blue,10%);
 $navbar-item-active-color: #FFF;
-$navbar-item-active-background-color: lighten(#2E3E50,10%);
+$navbar-item-active-background-color: lighten($background-blue,10%);
 $navbar-burger-color: #FFFFFF;
 $navbar-padding-vertical: 2rem;
 $navbar-height: 4rem;
