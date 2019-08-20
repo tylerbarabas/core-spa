@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import AutoSuggestBox from '../auto-suggest-box'
 import ParentVisualComponent from '../../extendables/parent-visual-component'
@@ -19,8 +19,8 @@ export default class TopBar extends ParentVisualComponent {
         template.push(
           <div key={b.name} className='navbar-item has-dropdown is-hoverable'>
             <Link className='navbar-link is-arrowless' to={b.href}>
-              {b.name}
-              <FontAwesomeIcon icon={faChevronDown} />
+              <span>{b.name}</span>
+              <span className="icon small"><FontAwesomeIcon icon={faCaretDown} /></span>
             </Link>
             <div className="navbar-dropdown">
               {this.getSubmenu(b.submenu)}
@@ -101,7 +101,8 @@ export default class TopBar extends ParentVisualComponent {
             {this.getButtons()}
             <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${ctxHidden}`}>
               <div className="navbar-link is-arrowless ctx-selector">
-                { ctx.name } <FontAwesomeIcon icon={faChevronDown} />
+                <span>{ ctx.name }</span>
+                <span className="icon small"><FontAwesomeIcon icon={faCaretDown} /></span>
               </div>
               <div className='navbar-dropdown is-right'>
                 <div className="navbar-item">
@@ -113,7 +114,8 @@ export default class TopBar extends ParentVisualComponent {
             </div>
             <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${userHidden}`}>
               <div className="navbar-link is-arrowless">
-                  Hi, {firstName} <FontAwesomeIcon icon={faChevronDown} />
+                  <span>Hi, {firstName}</span>
+                  <span className="icon small"><FontAwesomeIcon icon={faCaretDown} /></span>
               </div>
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item" onClick={logout}>
