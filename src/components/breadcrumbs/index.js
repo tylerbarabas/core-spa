@@ -22,7 +22,7 @@ export default class Breadcrumbs extends React.Component {
     let { isAuthenticated } = this.props
     return (
       <div className={`container animated fadeIn${(!isAuthenticated) ? ' is-hidden':''}`}>
-        <nav className="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+        <nav className="breadcrumb has-succeeds-separator m-b-md" aria-label="breadcrumbs">
           <ul>
             <li className="home-icon"><FontAwesomeIcon icon={faHome} /></li>
             {this.getBreadcrumbs()}
