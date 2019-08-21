@@ -14,8 +14,13 @@ export default class CheckboxSearchFilter extends UtilityComponent {
   }
 
   componentDidUpdate(){
-    let { shouldClear } = this.props
-    if (shouldClear) this.resetFilter()
+    let { shouldClear, shouldUpdateTo } = this.props
+    if (typeof shouldUpdateTo !== 'undefined' && shouldUpdateTo !== false) this.updateTo(shouldUpdateTo)
+    else if (shouldClear) this.resetFilter()
+  }
+
+  updateTo(value){
+    this.setState({checked: value})
   }
 
   shouldComponentUpdate(nextProps, nextState){
@@ -143,6 +148,12 @@ CheckboxSearchFilter.propTypes = {
   options: PropTypes.array,
   action: PropTypes.func,
   shouldClear: PropTypes.bool,
+  shouldUpdateTo: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.array,
+  ]),
   initialValue: PropTypes.string,
   placeholder: PropTypes.string,
   shouldUseLabel: PropTypes.bool,
