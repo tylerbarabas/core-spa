@@ -114,8 +114,8 @@ export default class TopBar extends ParentVisualComponent {
             </div>
             <div className={`navbar-item has-dropdown is-hoverable is-hidden-touch${userHidden}`}>
               <div className="navbar-link is-arrowless">
-                  <span>Hi, {firstName}</span>
-                  <span className="icon small"><FontAwesomeIcon icon={faCaretDown} /></span>
+                <span>Hi, {firstName}</span>
+                <span className="icon small"><FontAwesomeIcon icon={faCaretDown} /></span>
               </div>
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item is-pointer" onClick={logout}>
