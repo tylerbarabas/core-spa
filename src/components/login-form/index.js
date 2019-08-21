@@ -62,25 +62,27 @@ export default class LoginForm extends React.Component {
     let { errorMsg, isRequesting } = this.props
     return(
       <div className="section">
-        <div className={this.animateContainer()}>
-          <div className="column is-half">
-            <div><img className="logo" src="/logo.png" alt="RevCascade Logo" /></div>
-            <div className={'message '+(errorMsg?'error-msg':'')}>{ this.getMessage() }</div>
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              <div className="field">                            
-                <label htmlFor="login-email">Email</label>
-                <div className="control">
-                  <input className="is-one-quarter input login-fields is-large" type="text" id="login-email" />
+        <div className="container">
+          <div className={this.animateContainer()}>
+            <div className="column is-half">
+              <div><img className="logo" src="/logo.png" alt="RevCascade Logo" /></div>
+              <div className={'message '+(errorMsg?'error-msg':'')}>{ this.getMessage() }</div>
+              <form onSubmit={this.handleSubmit.bind(this)}>
+                <div className="field">                            
+                  <label htmlFor="login-email">Email</label>
+                  <div className="control">
+                    <input className="is-one-quarter input login-fields is-large" type="text" id="login-email" />
+                  </div>
                 </div>
-              </div>
-              <div className="field">                            
-                <label htmlFor="login-password">Password</label>
-                <div className="control">
-                  <input className="is-one-quarter input login-fields is-large" type="password" id="login-password" />
+                <div className="field">                            
+                  <label htmlFor="login-password">Password</label>
+                  <div className="control">
+                    <input className="is-one-quarter input login-fields is-large" type="password" id="login-password" />
+                  </div>
                 </div>
-              </div>
-              <button type="submit" className="button is-large is-primary login-button" disabled={(isRequesting)}>Sign In {this.isSpinner()}</button>
-            </form>
+                <button type="submit" className="button is-large is-primary login-button" disabled={(isRequesting)}>Sign In {this.isSpinner()}</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
