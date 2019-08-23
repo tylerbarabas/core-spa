@@ -14,3 +14,15 @@
 .has-radius {
   border-radius: 10px;
 }
+
+.has-gradient-primary {
+    background: #35c78c;
+    background: -webkit-gradient(linear,left top,right top,color-stop(30%,#35c78c),to(#43abe2));
+    background: linear-gradient(90deg,#35c78c 30%,#43abe2);
+}
+
+.has-gradient-inverted {
+    background: #43abe2;
+    background: -webkit-gradient(linear,left top,right top,color-stop(30%,#43abe2),to(#35c78c));
+    background: linear-gradient(90deg,#43abe2 30%,#35c78c);
+}
