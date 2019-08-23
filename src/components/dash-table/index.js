@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import './index.scss'
 
 export default class DashTable extends React.Component {
   getRows(){
@@ -10,60 +9,30 @@ export default class DashTable extends React.Component {
     for (let i=0;i<rows.length;i+=1){
       let r = rows[i]
       template.push(
-        <div className="columns" key={`dash-table-row-${i}`}>
-          <div className="column is-full dash-table-row">
-            <div className="columns is-mobile is-desktop">
-              <div className="column is-four-fifths">
-                <Link to={r.href} className="title">
+        <div className="columns is-mobile is-desktop has-background-white has-radius m-b-lg p-sm" key={`dash-table-row-${i}`}>
+              <div className="column">
+                <Link to={r.href} className="is-size-5 has-text-weight-bold has-text-primary">
                   {r.title}
                 </Link>
-                <p className="description">
+                <p className="is-size-6">
                   {r.description}
                 </p>
               </div>
-              <div className="column is-one-fifth">
+              <div className="column is-narrow">
                 <p className="count">
                   {r.count}
                 </p>
               </div>
-            </div>
-          </div>
         </div>
       )
     }
     return template
   }
 
-  getHeader(){
-    let { data } = this.props
-    let template = (
-      <div className="columns dash-table-header">
-        <div className="column is-full">
-          {data.header}
-        </div>
-      </div>
-    )
-    if (typeof data.viewAll !== 'undefined' && data.viewAll === true){
-      template = (
-        <div className="columns dash-table-header">
-          <div className="column is-four-fifths">
-            {data.header}
-          </div>
-          <div className="column is-one-fifth is-paddingless">
-            <button className="button view-all">
-              View All
-            </button>
-          </div>
-        </div>
-      )
-    }
-    return template
-  }
 
   render(){
     return (
       <div className="dash-table">
-        {this.getHeader()}
         {this.getRows()}
       </div>
     )
