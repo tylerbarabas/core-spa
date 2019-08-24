@@ -9,7 +9,6 @@ export default class SmallLoading extends React.Component {
     return (
       <div className="small-loading has-text-centered">
         <FontAwesomeIcon icon={faSpinner} spin className="loading-spinner" />
-        <p className="loading-text">{this.props.msg || 'Loading...'}</p>
       </div>
     )
   }

@@ -19,9 +19,8 @@ export default class Breadcrumbs extends React.Component {
   }
 
   render(){
-    let { isAuthenticated } = this.props
     return (
-      <div className={`container animated fadeIn${(!isAuthenticated) ? ' is-hidden':''}`}>
+      <div className="container animated fadeIn">
         <nav className="breadcrumb has-succeeds-separator m-b-lg" aria-label="breadcrumbs">
           <ul>
             <li className="home-icon"><FontAwesomeIcon icon={faHome} /></li>
@@ -34,5 +33,4 @@ export default class Breadcrumbs extends React.Component {
 }
 
 Breadcrumbs.propTypes = {
-  isAuthenticated: PropTypes.bool
 }

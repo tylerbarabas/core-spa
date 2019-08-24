@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import SmallLoading from 'core-spa/src/components/small-loading'
 import './index.scss'
 
 export default class DashTable extends React.Component {
@@ -31,9 +32,16 @@ export default class DashTable extends React.Component {
   }
 
   getCount(count){
-    if (count === 'View') return (
-      <span className="is-size-6 has-text-black">View</span>
-    )
+    let { isRequesting } = this.props
+    if (isRequesting) {
+      return (
+        <div className="is-size-7 has-text-black"><SmallLoading /></div>
+      )
+    } else if (count === 'View') {
+      return (
+        <span className="is-size-6 has-text-black">View</span>
+      )
+    }
     return count
   }
 
@@ -48,4 +56,5 @@ export default class DashTable extends React.Component {
 
 DashTable.propTypes = {
   data: PropTypes.object,
+  isRequesting: PropTypes.bool,
 }
