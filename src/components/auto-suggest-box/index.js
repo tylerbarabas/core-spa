@@ -62,7 +62,7 @@ export default class AutoSuggestBox extends React.Component {
       this.props.action(o)
     }
 
-    if (typeof this.props.onChange === 'function') this.props.onChange(e)
+    if (typeof this.props.onChange === 'function' && method !== 'down' && method !== 'UP') this.props.onChange(e)
   }
 
   getSuggestions(value) {
