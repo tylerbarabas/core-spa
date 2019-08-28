@@ -58,7 +58,7 @@ export default class CheckboxSearchFilter extends UtilityComponent {
     if (searchQuery !== '') {
       for (let i=0;i<options.length;i++){
         let { display } = options[i]
-        for (let o=searchQuery.length;o>0;o-=1){
+        for (let o=searchQuery.length;o>-1;o-=1){
           let substr = searchQuery.slice(0,o)
           if (display.toUpperCase().indexOf(substr.toUpperCase()) !== -1) {
             arr.push({o, a: options[i]})
