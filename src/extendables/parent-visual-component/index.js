@@ -29,7 +29,7 @@ export default class ParentVisualComponent extends UtilityComponent {
     Location module (props.location) must be handed down from the container.
   **/
   getParams(props = this.props){
-    if (typeof props.location === 'undefined') return false
+    if (typeof props.location === 'undefined' || props.location.search === '') return false
 
     let { search } = props.location
     let s = search.substr(1,search.length-1)
