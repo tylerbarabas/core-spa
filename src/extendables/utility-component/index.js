@@ -158,7 +158,7 @@ export default class UtilityComponent extends React.Component {
     that are usable with the API.
 
     @param time - can be 'today', 'yesterday', 'this_week', 'this_month',
-    'last_week', 'last_month', or an ISO date (ex: 2011-10-05T14:48:00.000Z).
+    'last_week', 'last_month', 'late', 'critically_late', or an ISO date (ex: 2011-10-05T14:48:00.000Z).
   **/
   getGteLte(time) {
     let t = time
@@ -214,13 +214,29 @@ export default class UtilityComponent extends React.Component {
       l.setHours(0,0,-1,0)
       l.setDate(1)
       break
+    case 'late': //greater than two but less than five days ago
+      g.setHours(0,0,0,0)
+      g.setDate(g.getDate() - 5)
+
+      l.setHours(23,59,59,0)
+      l.setDate(l.getDate() - 2)
+      break
+    case 'critically_late': //greater than five days ago
+      g = null
+
+      l.setHours(0,0,0,0)
+      l.setDate(l.getDate() - 5)
+      break
     case 'custom':
       g = new Date(time)
       l = null
       break
     }
 
-    return { gte: g.getTime()/1000, lte: (l !== null) ? l.getTime()/1000 : l }
+    return {
+      gte: (g !== null) ? g.getTime()/1000 : g,
+      lte: (l !== null) ? l.getTime()/1000 : l,
+    }
   }
 
   isDateString(str){
