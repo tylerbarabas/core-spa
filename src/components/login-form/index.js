@@ -71,7 +71,7 @@ export default class LoginForm extends React.Component {
                 <div className="field">                            
                   <label htmlFor="login-email">Email</label>
                   <div className="control">
-                    <input className="is-one-quarter input login-fields is-large" type="text" id="login-email" />
+                    <input className="is-one-quarter input login-fields is-large" type="text" id="login-email" autocomplete="off" />
                   </div>
                 </div>
                 <div className="field">                            
