@@ -45,31 +45,33 @@ export default class ContextSelector extends React.Component {
     let { selectedBrand, selectedRetailer } = this.state
 
     return (
-      <div className="section">
-        <div className="columns">
-          <div className="column is-three-fifths is-offset-one-fifth context-selector animated fadeIn">
-            <h1 className="title">Choose context.</h1>
-            <div className="form-control">
-              <label htmlFor="select-brand">Vendor</label>
-              <Select
-                id="select-brand"
-                className="select-context"
-                value={selectedBrand}
-                onChange={this.handleChange.bind(this)}
-                options={brands}
-                placeholder="Select vendor..."
-              /> 
-            </div>
-            <div className="form-control">
-              <label htmlFor="select-retailer">Retailer</label>
-              <Select
-                id="select-retailer"
-                className="select-context"
-                value={selectedRetailer}
-                onChange={this.handleChange.bind(this)}
-                options={retailers}
-                placeholder="Select retailer..."
-              /> 
+      <div className="section m-t-lg">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-three-fifths is-offset-one-fifth context-selector animated fadeIn">
+              <h1 className="title">Choose context.</h1>
+              <div className="form-control">
+                <label htmlFor="select-brand">Vendor</label>
+                <Select
+                  id="select-brand"
+                  className="select-context"
+                  value={selectedBrand}
+                  onChange={this.handleChange.bind(this)}
+                  options={brands}
+                  placeholder="Select vendor..."
+                /> 
+              </div>
+              <div className="form-control">
+                <label htmlFor="select-retailer">Retailer</label>
+                <Select
+                  id="select-retailer"
+                  className="select-context"
+                  value={selectedRetailer}
+                  onChange={this.handleChange.bind(this)}
+                  options={retailers}
+                  placeholder="Select retailer..."
+                /> 
+              </div>
             </div>
           </div>
         </div>
