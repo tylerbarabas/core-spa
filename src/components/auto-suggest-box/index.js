@@ -28,7 +28,7 @@ export default class AutoSuggestBox extends React.Component {
 
   getSuggestionValue (suggestion) {
     let dp = this.props.displayProp || DISPLAY_PROP
-    return suggestion[dp]
+    return (typeof suggestion !== 'undefined') ? suggestion[dp] : ''
   }
 
   renderSuggestion (suggestion) {
