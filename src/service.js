@@ -226,10 +226,15 @@ export default {
   },
   getOrderDetail: async (id, rb = 'retailers', oid) => {
     let uri = `${uri_orderDetail.replace(/:id/, id).replace(/:rb/,rb).replace(/:oid/, oid)}`
-    let res = await superFetch(uri)
+    let tenMinutes = 60000 * 10
+    let c = Cache.find(uri, tenMinutes)
     let data = false
-    if (res.ok){
-      data = await res.json()
+    if (c === null) {
+      let res = await superFetch(uri)
+      if (res.ok) data = await res.json()
+      Cache.record(uri, data)
+    } else {
+      data = c.res
     }
 
     return data
