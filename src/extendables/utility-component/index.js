@@ -265,6 +265,28 @@ export default class UtilityComponent extends React.Component {
   }
 
   /**
+    Converts an ISO date value in to month day and year, like "Aug 23rd, 2019"
+
+    @param date - ISO date string
+  **/
+  getMediumDate(date){
+    if (!this.isDateString(date)) return false
+    let m = moment(date)
+    return m.format('MMM D, YYYY')
+  }
+
+  /**
+    Converts an ISO date value in to digital clock time, like "1:56PM"
+
+    @param date - ISO date string
+  **/
+  getShortTime(date){
+    if (!this.isDateString(date)) return false
+    let m = moment(date)
+    return m.format('h:mmA')
+  }
+
+  /**
     Tells the approximate distance between two ISO dates
     @param to - ISO date string
     @param from - ISO date string
