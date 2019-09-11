@@ -216,10 +216,15 @@ export default {
   getOrders: async ( id, rb = 'retailers', searchTerm = '', searchBy = '', filterStr = '', page = 1 ) => {
     if ( filterStr.length > 0 ) filterStr = `&${filterStr}`
     let uri = `${uri_orders.replace(/:rb/, rb).replace(/:id/, id).replace(/:sb/,searchBy).replace(/:st/, searchTerm).replace(/:page/, page)}${filterStr}`
-    let res = await superFetch(uri)
+    let fiveMinutes = 60000 * 5
+    let c = Cache.find(uri, fiveMinutes)
     let data = false
-    if (res.ok){
-      data = await res.json()
+    if (c === null) {
+      let res = await superFetch(uri)
+      if (res.ok) data = await res.json()
+      Cache.record(uri, data)
+    } else {
+      data = c.res
     }
 
     return data
