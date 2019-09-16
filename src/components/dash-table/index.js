@@ -41,7 +41,7 @@ export default class DashTable extends React.Component {
       )
     } else if (count === 'View') {
       return (
-        <span className="is-size-6 has-text-black">View</span>
+        <span className="is-size-6 has-text-link">View</span>
       )
     }
     return count
