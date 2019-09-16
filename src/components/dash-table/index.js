@@ -21,8 +21,10 @@ export default class DashTable extends React.Component {
             </p>
           </div>
           <div className="column is-narrow is-vcentered">
-            <div className="count is-size-5 has-text-centered has-background-grey-lighter">
-              {this.getCount(r.count)}
+            <div className="count is-size-5 has-text-centered has-background-light has-radius">
+              <Link to={r.href} className="has-text-danger">
+                {this.getCount(r.count)}
+              </Link>
             </div>
           </div>
         </div>
