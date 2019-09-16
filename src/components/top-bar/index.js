@@ -8,16 +8,32 @@ import ParentVisualComponent from '../../extendables/parent-visual-component'
 import './index.scss'
 
 export default class TopBar extends ParentVisualComponent {
+  getIsActive(href, pathname){
+    return (href === pathname)?' is-active':''
+  }
+
   getButtons(){
     let buttons = this.props.buttons || []
     let template = []
+    let { location } = this.props
     for (let i=0;i<buttons.length;i++){
       let b = buttons[i]
       if (typeof b.submenu === 'undefined') {
-        template.push(<Link key={b.name} className='navbar-item' to={b.href}>{b.name}</Link>)
+        template.push(
+          <Link
+            key={b.name}
+            className={`navbar-item${this.getIsActive(b.href, location.pathname)}`}
+            to={b.href}
+          >
+            {b.name}
+          </Link>
+        )
       } else {
         template.push(
-          <div key={b.name} className='navbar-item has-dropdown is-hoverable'>
+          <div
+            key={b.name}
+            className={`navbar-item has-dropdown is-hoverable${this.getIsActive(b.href, location.pathname)}`}
+          >
             <Link className='navbar-link is-arrowless' to={b.href}>
               <span>{b.name}</span>
               <span className="icon small"><FontAwesomeIcon icon={faCaretDown} /></span>
@@ -150,4 +166,5 @@ TopBar.propTypes = {
   isAuthenticated: PropTypes.bool,
   logout: PropTypes.func,
   name: PropTypes.string,
+  location: PropTypes.object,
 }
