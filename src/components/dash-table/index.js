@@ -22,7 +22,7 @@ export default class DashTable extends React.Component {
           </div>
           <div className="column is-narrow is-vcentered">
             <div className="count is-size-5 has-text-centered has-background-light has-radius">
-              <Link to={r.href} className="has-text-danger">
+              <Link to={r.href} className={`has-text-weight-bold ${r.fontClass}`}>
                 {this.getCount(r.count)}
               </Link>
             </div>
@@ -41,7 +41,7 @@ export default class DashTable extends React.Component {
       )
     } else if (count === 'View') {
       return (
-        <span className="is-size-6 has-text-link">View</span>
+        <span className="is-size-6">View</span>
       )
     }
     return count
